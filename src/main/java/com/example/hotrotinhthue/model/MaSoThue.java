@@ -18,4 +18,8 @@ public class MaSoThue {
 
     @Column(name = "cccd", length = 255, nullable = false)
     private String cccd;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private NguoiNopThue nguoiNopThue;
 }

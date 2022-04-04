@@ -2,19 +2,23 @@ package com.example.hotrotinhthue.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "NguoiNopThue")
 @Data
 public class NguoiNopThue {
     @Id
-    @Column(name = "nguoiNopThue")
-    private String nguoiNopThue;
+    @Column(name = "maSoThue")
+    private String idMaSoThue;
+
+    @OneToOne()
+    @MapsId
+    @JoinColumn(name = "maSoThue")
+    private MaSoThue maSoThue;
 
     @Column(name = "matKhau", nullable = false)
     private String matKhau;
@@ -72,4 +76,11 @@ public class NguoiNopThue {
 
     @Column(name = "ngayHopDong")
     private Date ngayHopDong;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "maSoThue", fetch = FetchType.LAZY)
+    private List<ToKhaiThue> toKhaiThueList = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "maSoThue", fetch = FetchType.LAZY)
+    private List<BangNopThue> bangNopThueList = new ArrayList<>();
+
 }

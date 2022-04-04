@@ -13,9 +13,6 @@ public class ToKhaiThue {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "maSoThue")
-    private String maSoThue;
-
     @Column(name = "cuTru", nullable = false)
     private boolean cuTru;
 
@@ -63,5 +60,9 @@ public class ToKhaiThue {
 
     @Column(name = "chiTieu32")
     private long chiTieu32;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "maSoThue")
+    private NguoiNopThue nguoiNopThue;
 
 }
