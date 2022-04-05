@@ -8,8 +8,8 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "nguoinopthue")
 @Data
+@Table(name = "nguoinopthue")
 public class NguoiNopThue {
     @Id
     @Column(name = "id")
