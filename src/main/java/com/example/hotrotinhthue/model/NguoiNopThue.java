@@ -8,31 +8,34 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "NguoiNopThue")
+@Table(name = "nguoinopthue")
 @Data
 public class NguoiNopThue {
     @Id
-    @Column(name = "maSoThue")
-    private String idMaSoThue;
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
     @OneToOne()
-    @MapsId
-    @JoinColumn(name = "maSoThue")
+    @JoinColumn(name = "ma_so_thue")
     private MaSoThue maSoThue;
 
-    @Column(name = "matKhau", nullable = false)
+    @Column(name = "mat_khau", nullable = false)
     private String matKhau;
 
-    @Column(name = "hoTen", nullable = false)
+    @Column(name = "ho_ten", nullable = false)
     private String hoTen;
 
-    @Column(name = "tinhThanh")
+    @Column(name = "cccd", nullable = false)
+    private String cccd;
+
+    @Column(name = "tinh_thanh")
     private String tinhThanh;
 
-    @Column(name = "quanHuyen")
+    @Column(name = "quan_huyen")
     private String quanHuyen;
 
-    @Column(name = "diaChi")
+    @Column(name = "dia_chi")
     private String diaChi;
 
     @Column(name = "email")
@@ -44,43 +47,43 @@ public class NguoiNopThue {
     @Column(name = "fax")
     private String fax;
 
-    @Column(name = "daiLyThue", nullable = false)
+    @Column(name = "dai_ly_thue", nullable = false)
     private boolean daiLyThue;
 
-    @Column(name = "tenDaiLyThue")
+    @Column(name = "ten_dai_ly_thue")
     private String tenDaiLyThue;
 
-    @Column(name = "maSoThueDLT")
+    @Column(name = "ma_so_thue_dlt")
     private String maSoThueDLT;
 
-    @Column(name = "tinhThanhDLT")
+    @Column(name = "tinh_thanh_dlt")
     private String tinhThanhDLT;
 
-    @Column(name = "quanHuyenDLT")
+    @Column(name = "quan_huyen_dlt")
     private String quanHuyenDLT;
 
-    @Column(name = "diaChiDLT")
+    @Column(name = "dia_chi_dlt")
     private String diaChiDLT;
 
-    @Column(name = "emailDLT")
+    @Column(name = "email_dlt")
     private String emailDLT;
 
-    @Column(name = "sdtDLT")
+    @Column(name = "sdt_dlt")
     private String sdtDLT;
 
-    @Column(name = "faxDLT")
+    @Column(name = "fax_dlt")
     private String faxDLT;
 
-    @Column(name = "soHopDong")
-    private int soHopDong;
+    @Column(name = "so_hop_dong")
+    private String soHopDong;
 
-    @Column(name = "ngayHopDong")
+    @Column(name = "ngay_hop_dong")
     private Date ngayHopDong;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "maSoThue", fetch = FetchType.LAZY)
-    private List<ToKhaiThue> toKhaiThueList = new ArrayList<>();
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "maSoThue", fetch = FetchType.LAZY)
-    private List<BangNopThue> bangNopThueList = new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nguoiNopThue")
+//    private List<ToKhaiThue> toKhaiThueList = new ArrayList<>();
+//
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nguoiNopThue")
+//    private List<BangNopThue> bangNopThueList = new ArrayList<>();
 
 }

@@ -7,23 +7,24 @@ import java.util.Date;
 
 @Entity
 @Data
-@Table(name = "BangNopThue")
+@Table(name = "bangnopthue")
 public class BangNopThue {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "soTienNop")
+    @Column(name = "so_tien_nop")
     private long soTienNop;
 
-    @Column(name = "ngayNop")
+    @Column(name = "ngay_nop")
     private Date ngayNop;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "toKhaiThue", referencedColumnName = "id")
+    @JoinColumn(name = "to_khai_thue", referencedColumnName = "id")
     private ToKhaiThue toKhaiThue;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "maSoThue")
+    @JoinColumn(name = "nguoi_nop_thue")
     private NguoiNopThue nguoiNopThue;
+
 }
