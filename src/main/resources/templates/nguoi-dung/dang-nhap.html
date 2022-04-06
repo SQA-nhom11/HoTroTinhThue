@@ -7,39 +7,36 @@
 	<div class="main">
 		<div th:insert="fragment.html :: sidebar"></div>
 		<div class="content">
-			<div class="title-nav">&ensp;Đăng nhập</div>
-			<div class="form-cover-login">
-				<div class="form-cover">
-					<div class="form-cover-content">
-						<form name="form-login" method="post" action="#">
-							<table border="0" cellpadding="0" cellspacing="0" class="form_table">
-								<tbody>
-									<tr>
-									<tr>
-										<th align="left">&ensp; Mã số thuế</th>
-										<td><input type="text" id="username" name="username" value=""
-												class="input_text">
-										</td>
-									</tr>
-									<tr>
-										<th align="left">&ensp; Mật khẩu</th>
-										<td><input type="text" id="password" name="password" value=""
-												class="input_text">
-										</td>
-									</tr>
-
-									<tr>
-										<td></td>
-										<td><input name="button-login" type="button" class="inputBtn"
-												onclick="onSubmit()" value="Đăng nhập"></td>
-									</tr>
-								</tbody>
-							</table>
-						</form>
-					</div>
-				</div>
+			<div class="title-nav">
+				<span class="text_tt">Trang chủ » </span>
+				<span class="red_b">Đăng nhập</span>
 			</div>
+			<form name="form-login" method="post" action="#">
+				<div class="box_common_content">
+					<table class="form_table">
+						<tbody>
+							<tr>
+								<td style="text-align: right; width: 30%">Mã số thuế</td>
+								<td style="text-align: left">
+									<input type="text" id="username" name="username" value="" style="width: 358px" />
+								</td>
+							</tr>
+							<tr>
+								<td style="text-align: right; width: 30%">Mật khẩu</td>
+								<td style="text-align: left">
+									<input type="text" id="password" name="password" value="" style="width: 358px" />
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><input name="button-login" type="button" class="inputBtn" onclick="onSubmit()"
+										value="Đăng nhập"></td>
+							</tr>
+						</tbody>
+					</table>
+			</form>
 		</div>
+	</div>
 	</div>
 	<div th:insert="fragment.html :: footer"></div>
 </body>

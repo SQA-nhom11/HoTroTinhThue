@@ -12,7 +12,7 @@ h3 {
   width: 100%;
   border-bottom: solid 1px #b9deff;
   background-color: #e8f4fc;
-  padding: 5px;
+  padding: 2px 0 2px 0;
   margin-bottom: 10px;
   vertical-align: baseline;
 }
@@ -211,39 +211,15 @@ ul#tabmenu li a span {
     color: #737373;
 }
 
- .form-cover-register, .form-cover-login {
-    width: 930px;
-    margin: 0 auto;
-}
-
-.form-cover{
-    border-radius: 10px;
-    box-sizing: content-box;
-    padding: 15px;
-    margin: 0 auto;
-    /* position: relative;
-    left: 450px;
-    right: 400px; */
-}
-.form-cover-content{
-    width: 400px;
-    margin: 0 auto;
-
-}
-
-.form_table .input_text,.inputBtn{
+.inputBtn{
     padding: 2px 4px 1px 6px;
     margin-bottom: 5px;
     margin-left: 10px;
-    font-size: 13px;
     color: black;
     border: solid 0.5px hsl(208, 90%, 53%);
     border-radius:0;
     display: table-cell;
     vertical-align: inherit;
-}
-.form_table .inputBtn
-{
     color:#08457e;
     background: -webkit-linear-gradient(#d5eafa, #f1faff);
     background: -o-linear-gradient(#d5eafa, #f1faff);

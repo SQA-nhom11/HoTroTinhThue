@@ -10,9 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class IndexController {
+@RequestMapping("/")
+public class TrangChuController {
     @Autowired
     NguoiNopThueRepo nguoiNopThueRepo;
 
@@ -21,7 +23,7 @@ public class IndexController {
 
     @GetMapping({"/index", "/"})
     public String index() {
-        return "trang-chu";
+        return "index";
     }
     
     @GetMapping("dang-ki")
@@ -47,22 +49,5 @@ public class IndexController {
     @GetMapping("dang-nhap")
     public String dangNhap() {
     	return "nguoi-dung/dang-nhap";
-    }
-    
-    /////////////////////////////////////////
-    // Test front end
-    @GetMapping("khaithue")
-    public String khaithue() {
-    	return "khai-thue/khaithue";
-    }
-    
-    @GetMapping("chontokhai")
-    public String chontokhai() {
-    	return "khai-thue/chontokhai";
-    }
-    
-    @GetMapping("thongtintokhai")
-    public String thongtintokhai() {
-    	return "khai-thue/thongtintokhai";
     }
 }

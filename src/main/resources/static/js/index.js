@@ -6,7 +6,7 @@ $(document).ready(function () {
       return;
     }
     if (mauTKhai == "KKTNCN02") {
-      window.location.href = "./thongtintokhai.html";
+      window.location.href = "/khai-thue/to-khai";
     }
   });
 
@@ -26,7 +26,7 @@ $(document).ready(function () {
         return;
       }
     }
-    window.location.href = "./khaithue.html";
+    window.location.href = "/khai-thue/to-khai/dien-to-khai";
   });
 
   $("#namKeKhaiQuy").on("input", function () {
