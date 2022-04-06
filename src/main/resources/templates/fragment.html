@@ -20,7 +20,10 @@
 			</div>
 			<div sec:authorize="isAnonymous()" class="dangnhap">
 				<span class="button_login">
-					<a th:href="@{~/login}">Đăng nhập</a>
+					<a th:href="@{~/dang-nhap}">Đăng nhập</a>
+				</span>
+				<span class="button_login">
+					<a th:href="@{~/dang-ki}">Đăng kí</a>
 				</span>
 			</div>
 			<div sec:authorize="isAuthenticated()" class="dangnhap">
@@ -28,7 +31,7 @@
 					<strong>Xin chào:</strong>
 				</span>
 				<span class="button_login">
-					<strong>Đăng xuất</strong>
+					<a th:href="@{~/logout}">Đăng xuất</a>
 				</span>
 			</div>
 		</div>
