@@ -1,0 +1,63 @@
+ .form-cover-register, .form-cover-login {
+    width: 930px;
+    margin: 0 auto;
+}
+.form-cover-register{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.form-cover{
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+    border: solid 0.5px #b9deff;
+    box-sizing: content-box;
+    width: 400px;
+    margin: 0 auto;
+    /* position: relative;
+    left: 450px;
+    right: 400px; */
+}
+.form-cover-content{
+    width: 400px;
+    margin: 0 auto;
+
+}
+.form-cover h3{
+    font-size: 15px;
+    border-radius: 10px 10px 0px 0px;
+    margin-top: 0;
+    padding-top: 3px ;
+    padding-bottom: 3px ;
+    padding-left: 15px;
+    color: white;
+    background-image: url(../image/anhnen.jpg);
+    background-repeat: repeat-x;
+    background-position: top;
+}
+.form_table .input_text,.inputBtn{
+    padding: 2px 4px 1px 6px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    font-size: 13px;
+    color: black;
+    border: solid 0.5px hsl(208, 90%, 53%);
+    border-radius:0;
+    display: table-cell;
+    vertical-align: inherit;
+}
+.form_table .inputBtn
+{
+    color:#08457e;
+    background: -webkit-linear-gradient(#d5eafa, #f1faff);
+    background: -o-linear-gradient(#d5eafa, #f1faff);
+    background: -moz-linear-gradient(#d5eafa, #f1faff);
+    background: linear-gradient(#d5eafa, #f1faff);
+    border-radius: 3px;
+}
+.title-register{
+    font-size: 15px;
+    color: #404040;
+    background-color: #e8f4fc;
+}
+.color_red{
+    color: red;
+}

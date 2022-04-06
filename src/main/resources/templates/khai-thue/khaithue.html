@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" th:href="@{~/css/style-khaithue.css}" />
+	<script th:src="@{~/js/index.js}" type="text/javascript"></script>
+    <title>Nộp thuế cá nhân</title>
+  </head>
+  <body>
+    <form id="declarationForm" action="">
+      <div class="box_common_head">
+        <h3>
+          <div class="tieudelon">
+            <span class="text_tt">Kê khai thuế > </span>
+            <span class="red_b">Khai thuế</span>
+          </div>
+        </h3>
+      </div>
+
+      <div class="box_common_content">
+        <table class="form_table_khaithue">
+          <tbody>
+            <tr>
+              <td colspan="3">
+                Cá nhân cư trú có thu nhập từ tiền lương, tiền công
+              </td>
+              <td style="text-align: left">
+                <input type="checkbox" id="coCuTru" checked />
+              </td>
+            </tr>
+
+            <tr>
+              <td>1</td>
+              <td colspan="2">Tổng thu nhập chịu thuế phát sinh trong kỳ</td>
+              <td style="text-align: left">
+                <input
+                  value="0"
+                  type="number"
+                  id="thuNhapChiuThue"
+                  name="thuNhapChiuThue"
+                  style="width: 130px"
+                />
+                <label style="color: red" id="loiThuNhap"></label>
+              </td>
+            </tr>
+
+            <tr>
+              <td>2</td>
+              <td colspan="2">
+                Thu nhập chịu thuế được miễn giảm theo hiệp định
+              </td>
+              <td style="text-align: left">
+                <input
+                  value="0"
+                  type="number"
+                  id="thuNhapChiuThueMienGiam"
+                  name="thuNhapChiuThueMienGiam"
+                  style="width: 130px"
+                />
+                <label style="color: red" id="loiMienGiam"></label>
+              </td>
+            </tr>
+
+            <tr>
+              <td rowspan="6">3</td>
+              <td colspan="2">Tổng các khoản giảm trừ</td>
+              <td style="text-align: left">
+                <input
+                  value="0"
+                  disabled
+                  type="number"
+                  id="tongGiamTru"
+                  name="tongGiamTru"
+                  style="width: 130px"
+                />
+              </td>
+            </tr>
+
+            <tr>
+              <td>a</td>
+              <td>Cho bản thân</td>
+              <td style="text-align: left">
+                <input
+                  value="0"
+                  type="number"
+                  id="giamTruBanThan"
+                  name="giamTruBanThan"
+                  style="width: 130px"
+                />
+                <label style="color: red" id="loiGiamTruBanThan"></label>
+              </td>
+            </tr>
+
+            <tr>
+              <td>b</td>
+              <td>Cho người phụ thuộc</td>
+              <td style="text-align: left">
+                <input
+                  value="0"
+                  type="number"
+                  id="giamTruNguoiPhuThuoc"
+                  name="giamTruNguoiPhuThuoc"
+                  style="width: 130px"
+                />
+                <label style="color: red" id="loiGiamTruNPT"></label>
+              </td>
+            </tr>
+
+            <tr>
+              <td>c</td>
+              <td>Cho từ thiện, nhân đạo, khuyến học</td>
+              <td style="text-align: left">
+                <input
+                  value="0"
+                  type="number"
+                  id="giamTruTuThien"
+                  name="giamTruTuThien"
+                  style="width: 130px"
+                />
+                <label style="color: red" id="loiGiamTruTuThien"></label>
+              </td>
+            </tr>
+
+            <tr>
+              <td>d</td>
+              <td>Các khoản đóng bảo hiểm được trừ</td>
+              <td style="text-align: left">
+                <input
+                  value="0"
+                  type="number"
+                  id="giamTruBaoHiem"
+                  name="giamTruBaoHiem"
+                  style="width: 130px"
+                />
+                <label style="color: red" id="loiGiamTruBaoHiem"></label>
+              </td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td>Khoản đóng quỹ hưu trí tự nguyện được trừ</td>
+              <td style="text-align: left">
+                <input
+                  value="0"
+                  type="number"
+                  id="giamTruHuuTri"
+                  name="giamTruHuuTri"
+                  style="width: 130px"
+                />
+                <label style="color: red" id="loiGiamTruHuuTri"></label>
+              </td>
+            </tr>
+
+            <tr>
+              <td>4</td>
+              <td colspan="2">Tổng thu nhập tính thuế</td>
+              <td style="text-align: left">
+                <input
+                  disabled
+                  value="0"
+                  type="number"
+                  id="thuNhapTinhThue"
+                  name="thuNhapTinhThue"
+                  style="width: 130px"
+                />
+              </td>
+            </tr>
+
+            <tr>
+              <td>5</td>
+              <td colspan="2">
+                Tổng số thuế thu nhập cá nhân phát sinh trong kỳ
+              </td>
+              <td style="text-align: left">
+                <input
+                  disabled
+                  value="0"
+                  type="number"
+                  id="thueThuNhapCaNhan"
+                  name="thueThuNhapCaNhan"
+                  style="width: 130px"
+                />
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                Cá nhân không cư trú có thu nhập từ tiền lương, tiền công
+              </td>
+              <td style="text-align: left">
+                <input type="checkbox" id="khongCuTru" />
+              </td>
+            </tr>
+
+            <tr>
+              <td>1</td>
+              <td colspan="2">Tổng thu nhập tính thuế</td>
+              <td style="text-align: left">
+                <input
+                  disabled
+                  value="0"
+                  type="number"
+                  id="thuNhapTinhThueKCT"
+                  name="thuNhapTinhThueKCT"
+                  style="width: 130px"
+                />
+                <label style="color: red" id="loiThuNhapKCT"></label>
+              </td>
+            </tr>
+
+            <tr>
+              <td>2</td>
+              <td colspan="2">Mức thuế suất (%)</td>
+              <td style="text-align: left">
+                <input
+                  disabled
+                  value="0"
+                  type="number"
+                  id="mucThueSuat"
+                  name="mucThueSuat"
+                  style="width: 130px"
+                />
+                <label style="color: red" id="loiThueSuat"></label>
+              </td>
+            </tr>
+
+            <tr>
+              <td>3</td>
+              <td colspan="2">Tổng số thuế thu nhập cá nhân phải nộp</td>
+              <td style="text-align: left">
+                <input
+                  disabled
+                  value="0"
+                  type="number"
+                  id="thueThuNhapCaNhanKCT"
+                  name="thueThuNhapCaNhanKCT"
+                  style="width: 130px"
+                />
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"></td>
+              <td>
+                <input
+                  style="margin-left: 230px"
+                  type="button"
+                  value="Nộp tờ khai"
+                  id="btnNopToKhai"
+                  class="inputBtn"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
+  </body>
+</html>

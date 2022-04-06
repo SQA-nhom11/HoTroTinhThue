@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="fragment.html :: header (pageTitle='Đăng kí tài khoản')"></head>
+
+<body>
+	<div class="main">
+		<div th:insert="fragment.html :: sidebar"></div>
+		<h2 class="title-nav">&ensp;Đăng ký tài khoản cá nhân</h2>
+		<div class="content">
+			<div class="form-cover-register">
+				<div class="form-cover-content">
+					<form name="form-register" method="post" action="#">
+						<table border="0" cellpadding="0" cellspacing="0" class="form_table">
+							<tbody>
+								<tr>
+									<th align="left">&ensp; Mã số thuế<font class="color_red">*</font>
+									</th>
+									<td><input type="text" id="mst" name="mst" value="" class="input_text">
+									</td>
+								</tr>
+								<tr>
+									<th align="left">&ensp; Họ và tên<font class="color_red">*</font>
+									</th>
+									<td><input type="text" id="ten" name="ten" value="" class="input_text">
+									</td>
+								</tr>
+								<tr>
+									<th align="left">&ensp; Địa chỉ cư trú<font class="color_red">*</font>
+									<td><input type="text" id="diaChi" name="diaChi" value="" class="input_text">
+									</td>
+								</tr>
+								<tr>
+									<th align="left">&ensp; Chứng minh thư<font class="color_red">*</font>
+									</th>
+									<td><input type="text" id="cmt" name="cmt" value="" class="input_text">
+									</td>
+								</tr>
+								<tr>
+									<th align="left">&ensp; Cơ quan thuế quản lý<font class="color_red">*</font>
+									</th>
+									<td><input type="text" id="coquanthue" name="coquanthue" value=""
+											class="input_text">
+									</td>
+								</tr>
+								<tr>
+									<th align="left">&ensp; Số điện thoại<font class="color_red">*</font>
+									</th>
+									<td><input type="text" id="sdt" name="sdt" value="" class="input_text">
+									</td>
+								</tr>
+								<tr>
+									<th align="left">&ensp; Email<font class="color_red">*</font>
+									</th>
+									<td><input type="text" id="email" name="email" value="" class="input_text">
+									</td>
+								</tr>
+								<tr>
+									<th align="left">&ensp; Mật khẩu<font class="color_red">*</font>
+									</th>
+									<td><input type="password" id="matKhau" name="matKhau" value="" class="input_text">
+									</td>
+								</tr>
+								<tr>
+									<th align="left">&ensp; Nhập lại Mật khẩu<font class="color_red">*</font>
+									</th>
+									<td><input type="password" id="nhapLaiMatKhau" name="nhapLaiMatKhau" value=""
+											class="input_text">
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center"><span style="color: red">
+										</span></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><input name="button-register" type="button" class="inputBtn"
+											onclick="onSubmit()" value="Đăng ký "></td>
+								</tr>
+								<tr>
+									<td colspan="2">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:insert="fragment.html :: footer"></div>
+</body>
+
+</html>

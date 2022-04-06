@@ -21,13 +21,13 @@ public class IndexController {
 
     @GetMapping({"/index", "/"})
     public String index() {
-        return "index";
+        return "trang-chu";
     }
     
     @GetMapping("dang-ki")
     public String dangKi(Model model) {
     	model.addAttribute("nguoiNopThue", new NguoiNopThue());
-    	return "index";
+    	return "nguoi-dung/dang-ki";
     }
     
     @PostMapping("dang-ki")
@@ -37,7 +37,7 @@ public class IndexController {
     		|| !m.getHoTen().equals(nguoinopthue.getHoTen())) {
     		model.addAttribute("nguoiNopThue", nguoinopthue);
     		System.out.println("Du lieu dang ki khong ton tai trong he thong");
-    		return "index";
+    		return "nguoi-dung/dang-ki";
     	}
     	
     	nguoiNopThueRepo.save(nguoinopthue);
@@ -46,29 +46,23 @@ public class IndexController {
     
     @GetMapping("dang-nhap")
     public String dangNhap() {
-    	return "index";
+    	return "nguoi-dung/dang-nhap";
     }
     
-
-//	@GetMapping("/user")
-//	public String getNguoiNopThue(ModelMap model, final HttpServletRequest request,
-//			final HttpServletResponse response) {
-//		List<NguoiNopThue> nguoiNopThueList = nguoiNopThueRepo.findAll();
-//		System.out.println(nguoiNopThueList.get(0));
-//		return "index";
-//	}
-//
-//	@GetMapping("/tokhai")
-//	public String getToKhai(ModelMap model, final HttpServletRequest request, final HttpServletResponse response) {
-//		List<ToKhaiThue> toKhaiThueList = toKhaiThueRepo.findAll();
-//		System.out.println(toKhaiThueList.get(0));
-//		return "index";
-//	}
-//
-//	@GetMapping("/bangnop")
-//	public String getBangNop(ModelMap model, final HttpServletRequest request, final HttpServletResponse response) {
-//		List<BangNopThue> bangNopThueList = bangNopThueRepo.findAll();
-//		System.out.println(bangNopThueList.get(0));
-//		return "index";
-//	}
+    /////////////////////////////////////////
+    // Test front end
+    @GetMapping("khaithue")
+    public String khaithue() {
+    	return "khai-thue/khaithue";
+    }
+    
+    @GetMapping("chontokhai")
+    public String chontokhai() {
+    	return "khai-thue/chontokhai";
+    }
+    
+    @GetMapping("thongtintokhai")
+    public String thongtintokhai() {
+    	return "khai-thue/thongtintokhai";
+    }
 }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="fragment.html :: header (pageTitle='Đăng nhập')"></head>
+
+<body>
+	<div class="main">
+		<div th:insert="fragment.html :: sidebar"></div>
+		<h2 class="title-nav">&ensp;Đăng nhập</h2>
+		<div class="content">
+			<div class="form-cover-login">
+		<div class="form-cover">
+			<div class="form-cover-content">
+				<form name="form-login" method="post" action="#">
+					<table border="0" cellpadding="0" cellspacing="0" class="form_table">
+						<tbody>
+							<tr>
+							<tr>
+								<th align="left">&ensp; Mã số thuế</th>
+								<td><input type="text" id="username" name="username" value="" class="input_text">
+								</td>
+							</tr>
+							<tr>
+								<th align="left">&ensp; Mật khẩu</th>
+								<td><input type="text" id="password" name="password" value="" class="input_text">
+								</td>
+							</tr>
+
+							<tr>
+								<td></td>
+								<td><input name="button-login" type="button" class="inputBtn" onclick="onSubmit()"
+										value="Đăng nhập"></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+		</div>
+	</div>
+	<div th:insert="fragment.html :: footer"></div>
+</body>
+
+</html>
