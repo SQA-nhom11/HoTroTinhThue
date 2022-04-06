@@ -38,13 +38,13 @@
 		<div id="tabs" class="menu">
 			<ul id="tabmenu">
 				<li>
-					<a class="tab current" th:href="@{/}"><span>Trang chủ</span></a>
+					<a th:classappend="${#request.requestURI == '/' ? 'tab current':'tab'}" th:href="@{/}"><span>Trang chủ</span></a>
 				</li>
 				<li>
-					<a class="tab" th:href="@{~/khai-thue}"><span>Kê khai thuế</span></a>
+					<a th:classappend="${#request.requestURI.startsWith('/khai-thue') ? 'tab current':'tab'}" th:href="@{~/khai-thue}"><span>Kê khai thuế</span></a>
 				</li>
 				<li>
-					<a class="tab" th:href="@{~/nop-thue}"><span>Nộp thuế</span></a>
+					<a th:classappend="${#request.requestURI.startsWith('/nop-thue') ? 'tab current':'tab'}" th:href="@{~/nop-thue}"><span>Nộp thuế</span></a>
 				</li>
 			</ul>
 		</div>
