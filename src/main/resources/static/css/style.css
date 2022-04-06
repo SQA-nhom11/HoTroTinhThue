@@ -7,11 +7,13 @@ h3 {
   color: #404040;
 }
 
-.tieudelon {
+.title-nav {
   height: 24px;
   width: 100%;
   border-bottom: solid 1px #b9deff;
   background-color: #e8f4fc;
+  padding: 5px;
+  margin-bottom: 10px;
   vertical-align: baseline;
 }
 
@@ -193,7 +195,7 @@ ul#tabmenu li a span {
 }
 
 .content {
-  padding: 10px;
+  padding-bottom: 10px;
   width: 930px;
   border: solid 1px #b9deff;
   background-color: #f0f9ff;
@@ -217,7 +219,7 @@ ul#tabmenu li a span {
 .form-cover{
     border-radius: 10px;
     box-sizing: content-box;
-    padding: 20px;
+    padding: 15px;
     margin: 0 auto;
     /* position: relative;
     left: 450px;
@@ -248,15 +250,6 @@ ul#tabmenu li a span {
     background: -moz-linear-gradient(#d5eafa, #f1faff);
     background: linear-gradient(#d5eafa, #f1faff);
     border-radius: 3px;
-}
-.title-nav{
-	width: 930px;
-    font-size: 15px;
-    color: #404040;
-    background-color: #e8f4fc;
-    border: solid 1px #b9deff;
-  	padding: 10px;
-  	margin: 0 auto;
 }
 .color_red{
     color: red;
