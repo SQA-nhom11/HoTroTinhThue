@@ -20,16 +20,18 @@ public class SecureConf extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
 
-                .antMatchers("/css/**", "/js/**", "/webfonts/**", "/upload/**", "/summernote/**", "/files/**")
+                .antMatchers("/css/**", "/js/**", "/webfonts/**", "/upload/**",
+                        "/files/**", "/", "/dang-nhap/**", "/dang-ki/**", "/trang-chu/**")
                 .permitAll()
-
+                .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/to-khai/**", "/nop-thue/**", "/khai-thue/**").authenticated()
                 .and()
                 .exceptionHandling().accessDeniedPage("/403")
                 .and()
-                .formLogin().loginPage("/login").loginProcessingUrl("/perform_login").defaultSuccessUrl("/", true)
-                .failureUrl("/login?login_error=true").permitAll()
+                .formLogin().loginPage("/dang-nhap").loginProcessingUrl("/dang-nhap").defaultSuccessUrl("/", true)
+                .failureUrl("/dang-nhap?login_error=true").permitAll()
                 .and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/home").invalidateHttpSession(true)
+                .logout().logoutUrl("/dang-xuat").logoutSuccessUrl("/").invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID").permitAll();
     }
 
