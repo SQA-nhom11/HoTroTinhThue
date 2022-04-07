@@ -3,18 +3,15 @@ package com.example.hotrotinhthue.model;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Data
 @Table(name = "nguoinopthue")
 public class NguoiNopThue implements UserDetails {
-    @Id
+	@Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -83,64 +80,40 @@ public class NguoiNopThue implements UserDetails {
     @Column(name = "ngay_hop_dong")
     private Date ngayHopDong;
 
-    @ManyToMany(
-            cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE, CascadeType.DETACH},
-            fetch = FetchType.EAGER)
-    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Role> roles = new ArrayList<Role>();
-
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles;
-    }
+	public boolean isAccountNonExpired() {
+		return true;
+	}
 
-    public List<Role> getRoles() {
-        return roles;
-    }
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+	
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 
-    public void addRole(Role role) {
-        role.getUsers().add(this);
-        roles.add(role);
-    }
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return null;
+	}
 
-    public void removeRole(Role role) {
-        role.getUsers().remove(this);
-        roles.remove(role);
-    }
+	@Override
+	public String getPassword() {
+		return matKhau;
+	}
 
-    @Override
-    public String getPassword() {
-        return this.matKhau;
-    }
-
-    @Override
-    public String getUsername() {
-        return this.maSoThue.getId();
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
+	@Override
+	public String getUsername() {
+		return maSoThue.getId();
+	}
 
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nguoiNopThue")

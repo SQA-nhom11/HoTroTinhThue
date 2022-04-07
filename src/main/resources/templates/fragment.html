@@ -28,7 +28,7 @@
 			</div>
 			<div sec:authorize="isAuthenticated()" class="dangnhap">
 				<span class="button_login">
-					<strong>Xin chào:</strong>
+					<strong th:text="'Xin chào: '+${#authentication.getPrincipal().getHoTen()}"></strong>
 				</span>
 				<span class="button_login">
 					<a th:href="@{~/dang-xuat}">Đăng xuất</a>

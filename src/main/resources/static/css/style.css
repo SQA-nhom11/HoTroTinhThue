@@ -58,10 +58,6 @@ input {
   padding: 4px 10px;
 }
 
-input {
-  text-align: left;
-}
-
 .inputBtn {
   border-radius: 0px !important;
   border: solid 1px #b9deff;
