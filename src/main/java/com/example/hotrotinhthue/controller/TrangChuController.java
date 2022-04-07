@@ -58,9 +58,8 @@ public class TrangChuController {
         String password = bCrypt.encode(nguoinopthue.getPassword());
     	nguoinopthue.setMatKhau(password);
         nguoinopthue.addRole(new Role());
-    	nguoiNopThueRepo.save(nguoinopthue);
         nguoinopthue.setRoles(getUserRole());
-        System.out.println(nguoinopthue);
+        nguoiNopThueRepo.save(nguoinopthue);
     	return "index";
     }
 

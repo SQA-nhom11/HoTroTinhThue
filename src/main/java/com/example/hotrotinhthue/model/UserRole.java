@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id", nullable = false)
+    @Column(name = "id", nullable = false)
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
