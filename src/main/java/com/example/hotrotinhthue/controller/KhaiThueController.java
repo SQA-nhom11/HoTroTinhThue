@@ -17,9 +17,4 @@ public class KhaiThueController {
     public String toKhai() {
     	return "khai-thue/to-khai";
     }
-	
-	@GetMapping("to-khai/dien-to-khai")
-    public String dienToKhai() {
-    	return "khai-thue/dien-to-khai";
-    }
 }

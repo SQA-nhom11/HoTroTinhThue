@@ -39,18 +39,13 @@ span.nav-now {
   padding: 10px;
 }
 
-.form-table {
-  border: 0;
-  width: 100%;
-}
-
 .form-table-khaithue,
 .form-table-khaithue th,
 .form-table-khaithue td {
   border: 1px solid #ccc;
   border-collapse: collapse;
 }
-.form-table-khaithue {
+.form-table-khaithue, .form-table {
   width: 85%;
   margin-left: auto;
   margin-right: auto;
