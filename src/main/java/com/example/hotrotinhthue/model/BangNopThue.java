@@ -13,10 +13,8 @@ public class BangNopThue {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "so_tien_nop")
     private long soTienNop;
 
-    @Column(name = "ngay_nop")
     private Date ngayNop;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -24,7 +22,7 @@ public class BangNopThue {
     private ToKhaiThue toKhaiThue;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "nguoi_nop_thue")
-    private NguoiNopThue nguoiNopThue;
+    @JoinColumn(name = "nguoi_dung")
+    private NguoiDung nguoiDung;
 
 }

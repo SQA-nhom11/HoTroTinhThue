@@ -1,23 +1,23 @@
 package com.example.hotrotinhthue.service;
 
-import com.example.hotrotinhthue.model.NguoiNopThue;
-import com.example.hotrotinhthue.repository.NguoiNopThueRepo;
+import com.example.hotrotinhthue.model.NguoiDung;
+import com.example.hotrotinhthue.repository.NguoiDungRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Service
-public class NguoiNopThueService {
+public class NguoiDungService {
     @PersistenceContext
     protected EntityManager entityManager;
 
     @Autowired
-    NguoiNopThueRepo nguoiNopThueRepo;
+    NguoiDungRepo nguoiDungRepo;
 
-    public NguoiNopThue loadUserByUsername(String maSoThue) {
+    public NguoiDung loadUserByUsername(String maSoThue) {
         try {
-            return (NguoiNopThue)nguoiNopThueRepo.findByMaSoThueId(maSoThue);
+            return (NguoiDung)nguoiDungRepo.findByMaSoThue(maSoThue);
         } catch (Exception e) {
             return null;
         }

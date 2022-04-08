@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("nop-thue")
 public class NopThueController {
 	@GetMapping("")
-    public String khaiThue() {
+    public String index() {
     	return "nop-thue/index";
     }
 }

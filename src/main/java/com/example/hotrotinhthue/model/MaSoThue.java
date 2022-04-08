@@ -10,12 +10,11 @@ import javax.persistence.*;
 @Table(name = "masothue")
 public class MaSoThue {
     @Id
-    @Column(name = "id")
     private String id;
 
-    @Column(name = "ho_ten", length = 255, nullable = false)
+    @Column(length = 255, nullable = false)
     private String hoTen;
 
-    @Column(name = "cccd", length = 255, nullable = false)
+    @Column(length = 255, nullable = false)
     private String cccd;
 }
