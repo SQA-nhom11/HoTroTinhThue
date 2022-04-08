@@ -8,12 +8,13 @@
 		<div th:insert="fragment.html :: sidebar"></div>
 		<div class="content">
 			<div class="title-nav">
-				<span class="text_tt">Trang chủ » </span>
-				<span class="red_b">Đăng nhập</span>
+				<span class="text-nav">Trang chủ » </span>
+				<span class="nav-now">Đăng nhập</span>
 			</div>
-			<form name="form-login" method="post" action="/dang-nhap">
-				<div class="box_common_content">
-					<table class="form_table">
+			<form name="form-login" method="post" th:action="@{~/dang-nhap}">
+				<label th:if="${param.login_error}" style="color: red; text-align: center; display: block;" id="loiDangKi">Tài khoản hoặc mật khẩu không chính xác!</label>
+				<div class="box-common-content">
+					<table class="form-table">
 						<tbody>
 							<tr>
 								<td style="text-align: right; width: 30%">Mã số thuế</td>
@@ -29,8 +30,7 @@
 							</tr>
 							<tr>
 								<td></td>
-								<td><input name="button-login" type="submit" class="inputBtn" onclick=""
-										value="Đăng nhập"></td>
+								<td><input type="submit" id="btnLogin" class="btn-fuction" value="Đăng nhập"></td>
 							</tr>
 						</tbody>
 					</table>

@@ -1,5 +1,6 @@
 body {
   font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 14px;
   margin: 0;
 }
 h3 {
@@ -7,65 +8,69 @@ h3 {
   color: #404040;
 }
 
+a {
+  text-decoration: none;
+}
+
+select, input, button {
+  border: 1px solid #ccc;
+  padding: 4px 10px;
+}
+
 .title-nav {
-  height: 24px;
   width: 100%;
   border-bottom: solid 1px #b9deff;
   background-color: #e8f4fc;
-  padding: 2px 0 2px 0;
+  padding: 5px 0 5px 0;
   margin-bottom: 10px;
   vertical-align: baseline;
 }
 
-span.text_tt {
-  font-size: 13px;
+span.text-nav {
+  margin-left: 10px;
 }
 
-span.red_b {
-  font-size: 13px;
+span.nav-now {
+  margin-left: 10px;
   color: #0099db;
 }
 
-.box_common_content {
-  font-size: 13px;
+.box-common-content {
   padding: 10px;
 }
 
-.form_table {
+.form-table {
   border: 0;
   width: 100%;
 }
 
-.form_table_khaithue,
-.form_table_khaithue th,
-.form_table_khaithue td {
+.form-table-khaithue,
+.form-table-khaithue th,
+.form-table-khaithue td {
   border: 1px solid #ccc;
   border-collapse: collapse;
 }
-.form_table_khaithue {
-  width: 80%;
+.form-table-khaithue {
+  width: 85%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.box_common_content table td {
+.box-common-content table td {
   padding: 5px;
 }
 
-select,
-input {
-  border: 1px solid #ccc;
-  padding: 4px 10px;
-}
-
-.inputBtn {
-  border-radius: 0px !important;
-  border: solid 1px #b9deff;
-  font-weight: bold;
+.btn-head, .btn-fuction {
+  border: solid 1px #89c5fa;
   box-sizing: content-box;
   padding: 4px 10px;
   color: #124977;
   background: linear-gradient(#d5eafa, #f1faff);
+}
+
+.btn-head {
+  border-radius: 8px;
+  box-sizing: content-box;
 }
 
 /* main */
@@ -82,7 +87,7 @@ input {
   width: 365px;
 }
 
-.top_contents {
+.top-contents {
   margin-right: 0;
   float: right;
   width: 550px;
@@ -95,24 +100,11 @@ input {
   margin-right: 25px;
 }
 
-.button_login {
-  font-size: 12px;
-  border-radius: 10px;
-  border: solid 1px #b9deff;
-  box-sizing: content-box;
-  background: linear-gradient(#d5eafa, #f1faff);
-  padding: 4px 10px;
-  margin-left: 10px;
-  color: #124977;
-  cursor: pointer;
-}
-
 .main {
   background: linear-gradient(#d5eafa, #ffffff);
 }
 
 .menu {
-  font-size: 13px;
   width: 930px;
   margin: 0 auto;
   color: #000;
@@ -126,7 +118,7 @@ ul#tabmenu {
   padding: 0;
   padding-left: 10px;
   position: relative;
-  background-image: url("../images/bg_menu.png");
+  background-image: url("../images/bg-menu.png");
   background-repeat: no-repeat;
   background-position: left top;
   height: 50px;
@@ -152,7 +144,7 @@ ul#tabmenu li {
 }
 
 ul#tabmenu li a {
-  /* background-image: url("../images/bg_menu_diagonal.png");
+  /* background-image: url("../images/bg-menu-diagonal.png");
   background-repeat: no-repeat;
   background-position: right top; */
   width: auto;
@@ -161,9 +153,8 @@ ul#tabmenu li a {
   color: #124977;
   font-weight: bold;
   letter-spacing: normal;
-  padding: 0 18px 0px 18px;
+  padding: 0 10px 0px 10px;
   line-height: 29px;
-  font-size: 12px;
   text-decoration: none;
   display: inline;
   outline: 0;
@@ -183,7 +174,7 @@ ul#tabmenu li a span {
 }
 
 .current {
-  /* background-image: url("../images/bg_menu_hover_left.png") !important;
+  /* background-image: url("../images/bg-menu-hover-left.png") !important;
   background-repeat: no-repeat !important;
   background-position: left top !important;
   color: #086de1 !important; */
@@ -199,31 +190,14 @@ ul#tabmenu li a span {
 }
 
 .footer {
-    width: 100%;
-    float: left;
-    text-align: center;
-    font-size: 75%;
-    padding: 15px;
-    color: #737373;
+  width: 100%;
+  float: left;
+  text-align: center;
+  font-size: 75%;
+  padding: 15px;
+  color: #737373;
 }
 
-.inputBtn{
-    padding: 2px 4px 1px 6px;
-    margin-bottom: 5px;
-    margin-left: 10px;
-    color: black;
-    border: solid 0.5px hsl(208, 90%, 53%);
-    border-radius:0;
-    display: table-cell;
-    vertical-align: inherit;
-    color:#08457e;
-    background: -webkit-linear-gradient(#d5eafa, #f1faff);
-    background: -o-linear-gradient(#d5eafa, #f1faff);
-    background: -moz-linear-gradient(#d5eafa, #f1faff);
-    background: linear-gradient(#d5eafa, #f1faff);
-    border-radius: 3px;
+.color-red {
+  color: red;
 }
-.color_red{
-    color: red;
-}
-

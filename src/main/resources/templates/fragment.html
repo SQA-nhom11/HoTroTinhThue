@@ -19,20 +19,21 @@
 				<img th:src="@{~/images/sitename.png}" />
 			</div>
 			<div sec:authorize="isAnonymous()" class="dangnhap">
-				<span class="button_login">
+				<button class="btn-head">
 					<a th:href="@{~/dang-nhap}">Đăng nhập</a>
-				</span>
-				<span class="button_login">
+				</button>
+				<button class="btn-head">
 					<a th:href="@{~/dang-ki}">Đăng kí</a>
-				</span>
+				</button>
 			</div>
 			<div sec:authorize="isAuthenticated()" class="dangnhap">
-				<span class="button_login">
-					<strong th:text="'Xin chào: '+${#authentication.getPrincipal().getHoTen()}"></strong>
-				</span>
-				<span class="button_login">
+				<button class="btn-head">
+					<span>Xin chào, </span>
+					<a th:href="@{~/nguoi-dung}"><strong th:text="${#authentication.getPrincipal().getHoTen()}"></strong></a>
+				</button>
+				<button class="btn-head">
 					<a th:href="@{~/dang-xuat}">Đăng xuất</a>
-				</span>
+				</button>
 			</div>
 		</div>
 		<div id="tabs" class="menu">

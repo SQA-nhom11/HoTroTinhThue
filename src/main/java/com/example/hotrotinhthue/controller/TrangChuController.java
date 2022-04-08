@@ -1,9 +1,9 @@
 package com.example.hotrotinhthue.controller;
 
 import com.example.hotrotinhthue.model.MaSoThue;
-import com.example.hotrotinhthue.model.NguoiNopThue;
+import com.example.hotrotinhthue.model.NguoiDung;
 import com.example.hotrotinhthue.repository.MaSoThueRepo;
-import com.example.hotrotinhthue.repository.NguoiNopThueRepo;
+import com.example.hotrotinhthue.repository.NguoiDungRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -17,44 +17,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class TrangChuController {
     @Autowired
-    NguoiNopThueRepo nguoiNopThueRepo;
+    NguoiDungRepo nguoiDungRepo;
 
     @Autowired
     MaSoThueRepo maSoThueRepo;
 
-    @GetMapping({"/index", "/"})
+    @GetMapping({"index", "/"})
     public String index() {
         return "index";
     }
     
-    @GetMapping("/dang-ki")
+    @GetMapping("dang-ki")
     public String dangKi(Model model) {
-    	model.addAttribute("nguoiNopThue", new NguoiNopThue());
-    	return "nguoi-dung/dang-ki";
+    	model.addAttribute("nguoiDung", new NguoiDung());
+    	return "dang-ki";
     }
     
     @PostMapping("dang-ki")
-    public String dangKi(@ModelAttribute("NguoiNopThue") NguoiNopThue nguoinopthue, Model model) {
-    	MaSoThue m=maSoThueRepo.findByCccd(nguoinopthue.getCccd());
-        System.out.println(nguoinopthue);
-    	if(m==null ||!m.getCccd().equals(nguoinopthue.getCccd())
-    		|| !m.getHoTen().equals(nguoinopthue.getHoTen())) {
-    		model.addAttribute("nguoiNopThue", nguoinopthue);
+    public String dangKi(@ModelAttribute("NguoiNopThue") NguoiDung nguoiDung, Model model) {
+    	MaSoThue m=maSoThueRepo.findById(nguoiDung.getMaSoThue()).orElse(null);
+        System.out.println(nguoiDung);
+    	if(m==null || !m.getId().equals(nguoiDung.getMaSoThue())
+    		||!m.getCccd().equals(nguoiDung.getCccd())
+    		|| !m.getHoTen().equals(nguoiDung.getHoTen())) {
+    		model.addAttribute("nguoiNopThue", nguoiDung);
+    		model.addAttribute("statusDangKi", "Dữ liệu đăng kí không tồn tại trong hệ thống!");
     		System.out.println("Du lieu dang ki khong ton tai trong he thong");
-    		return "nguoi-dung/dang-ki";
+    		return "dang-ki";
     	}
 
-        nguoinopthue.setDaiLyThue(false);
         BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder(4);
-    	nguoinopthue.setMatKhau(bCrypt.encode(nguoinopthue.getPassword()));
-    	nguoiNopThueRepo.save(nguoinopthue);
-        System.out.println(nguoinopthue);
+        nguoiDung.setMatKhau(bCrypt.encode(nguoiDung.getPassword()));
+    	nguoiDungRepo.save(nguoiDung);
+    	model.addAttribute("statusDangKi", "Đăng kí thành công!");
+        System.out.println("Dang ki thanh cong");
     	return "index";
     }
     
-    @GetMapping("/dang-nhap")
+    @GetMapping("dang-nhap")
     public String dangNhap() {
-    	return "nguoi-dung/dang-nhap";
+    	return "dang-nhap";
     }
-
 }

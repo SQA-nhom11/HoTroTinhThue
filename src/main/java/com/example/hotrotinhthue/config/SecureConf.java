@@ -24,7 +24,7 @@ public class SecureConf extends WebSecurityConfigurerAdapter {
                         "/files/**", "/", "/dang-nhap/**", "/dang-ki/**", "/trang-chu/**")
                 .permitAll()
                 .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
-                .antMatchers("/to-khai/**", "/nop-thue/**", "/khai-thue/**").authenticated()
+                .antMatchers("/to-khai/**", "/nop-thue/**", "/khai-thue/**", "/nguoi-dung/**").authenticated()
                 .and()
                 .exceptionHandling().accessDeniedPage("/403")
                 .and()
