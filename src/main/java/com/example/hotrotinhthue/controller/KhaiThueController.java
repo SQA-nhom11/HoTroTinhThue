@@ -18,8 +18,8 @@ public class KhaiThueController {
     	return "khai-thue/to-khai";
     }
     
-    @GetMapping("dien-to-khai")
-    public String dienToKhai() {
-    	return "khai-thue/dien-to-khai";
+    @GetMapping("tinh-thue")
+    public String tinhThue() {
+    	return "khai-thue/tinh-thue";
     }
 }

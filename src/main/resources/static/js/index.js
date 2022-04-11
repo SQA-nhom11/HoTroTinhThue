@@ -39,7 +39,7 @@ $(document).ready(function() {
         }
         $("#loiNamThang").hide();
     });
-    
+
     $("#daiLyThue").click(function(e) {
         var checkbox = $(this);
         if (!checkbox.is(":checked")) {
@@ -53,8 +53,7 @@ $(document).ready(function() {
             $("#emailDaiLy").prop("disabled", true);
             $("#soHopDong").prop("disabled", true);
             $("#ngayHopDong").prop("disabled", true);
-        }
-        else{
+        } else {
             $("#tenDaiLy").prop("disabled", false);
             $("#maSoThueDaiLy").prop("disabled", false);
             $("#diaChiDaiLy").prop("disabled", false);
@@ -67,9 +66,9 @@ $(document).ready(function() {
             $("#ngayHopDong").prop("disabled", false);
         }
     });
-    
-    
-    
+
+
+
 
     $("#kyTinhThue").change(function() {
         var kyTinhThue = $("#kyTinhThue option:selected").val();
@@ -82,7 +81,7 @@ $(document).ready(function() {
             $("#quy").show();
         }
     });
-    
+
     $("#btnConThongTinToKhai").click(function() {
         var kyTinhThue = $("#kyTinhThue option:selected").val();
         if (kyTinhThue == "Q") {
@@ -100,7 +99,7 @@ $(document).ready(function() {
             }
         }
         localStorage.setItem("kyTinhThue", kyTinhThue);
-        window.location.href = "/khai-thue/dien-to-khai";
+        window.location.href = "/khai-thue/tinh-thue";
     });
 
     $("#coCuTru").click(function(e) {
@@ -109,10 +108,10 @@ $(document).ready(function() {
             e.preventDefault();
             return;
         }
-        
+
         $("#khongCuTru").prop("checked", false);
         $("#thuNhapTinhThueKCT").prop("disabled", true);
-        
+
         $("#thueThuNhapCaNhanKCT").val(0);
         $("#thuNhapTinhThueKCT").val(0);
         $("#loiThuNhapKCT").hide();
@@ -138,11 +137,10 @@ $(document).ready(function() {
         $("#thuNhapChiuThue").val(0);
         $("#thuNhapChiuThueMienGiam").val(0);
         var kyTinhThue = localStorage.getItem("kyTinhThue");
-        if(kyTinhThue == "T"){
+        if (kyTinhThue == "T") {
             $("#giamTruBanThan").val(11000000);
             $("#tongGiamTru").val(11000000);
-        }
-        else{
+        } else {
             $("#giamTruBanThan").val(33000000);
             $("#tongGiamTru").val(33000000);
         }
@@ -213,15 +211,14 @@ $(document).ready(function() {
             return;
         }
         var kyTinhThue = localStorage.getItem("kyTinhThue");
-        if(kyTinhThue == "T"){
-            if(v%4400000 !== 0){
+        if (kyTinhThue == "T") {
+            if (v % 4400000 !== 0) {
                 $("#loiGiamTruNPT").text("* Mỗi người phụ thuộc giảm 4.400.000đ");
                 $("#loiGiamTruNPT").show();
                 return;
             }
-        }
-        else{
-            if(v%13200000 !== 0){
+        } else {
+            if (v % 13200000 !== 0) {
                 $("#loiGiamTruNPT").text("* Mỗi người phụ thuộc giảm 13.200.000đ");
                 $("#loiGiamTruNPT").show();
                 return;
@@ -307,18 +304,18 @@ $(document).ready(function() {
 
             var v = $("#giamTruNguoiPhuThuoc").val();
             var kyTinhThue = localStorage.getItem("kyTinhThue");
-            if (kyTinhThue == "T"){
-                if (!v || v < 0 || v%4400000 !== 0) {
+            if (kyTinhThue == "T") {
+                if (!v || v < 0 || v % 4400000 !== 0) {
                     $("#giamTruNguoiPhuThuoc").focus();
                     return;
                 }
-            }else{
-                if (!v || v < 0 || v%13200000 != 0) {
+            } else {
+                if (!v || v < 0 || v % 13200000 != 0) {
                     $("#giamTruNguoiPhuThuoc").focus();
                     return;
                 }
             }
-            
+
 
             var v = $("#giamTruTuThien").val();
             if (!v || v < 0) {
@@ -353,123 +350,283 @@ $(document).ready(function() {
             }
         }
     });
-    
+
 });
 
-function tinhThue(){
+// tinh thue
+function tinhThue() {
     var kyTinhThue = localStorage.getItem("kyTinhThue");
-        if ($("#coCuTru").is(":checked")) {
-                var thuNhapChiuThue = $("#thuNhapChiuThue").val();
-                if (!thuNhapChiuThue || thuNhapChiuThue < 0) {
-                    thuNhapChiuThue = 0;
-                    $("#thuNhapChiuThue").val(thuNhapChiuThue);
-                    $("#loiThuNhap").hide();
-                }
+    if ($("#coCuTru").is(":checked")) {
+        var thuNhapChiuThue = $("#thuNhapChiuThue").val();
+        if (!thuNhapChiuThue || thuNhapChiuThue < 0) {
+            thuNhapChiuThue = 0;
+            $("#thuNhapChiuThue").val(thuNhapChiuThue);
+            $("#loiThuNhap").hide();
+        }
 
-                var mienGiam = $("#thuNhapChiuThueMienGiam").val();
-                if (!mienGiam || mienGiam < 0) {
-                    mienGiam = 0;
-                    $("#thuNhapChiuThueMienGiam").val(mienGiam);
-                    $("#loiMienGiam").hide();
-                }
-                
-                var banThan = $("#giamTruBanThan").val();
+        var mienGiam = $("#thuNhapChiuThueMienGiam").val();
+        if (!mienGiam || mienGiam < 0) {
+            mienGiam = 0;
+            $("#thuNhapChiuThueMienGiam").val(mienGiam);
+            $("#loiMienGiam").hide();
+        }
 
-                var nguoiPhuThuoc = $("#giamTruNguoiPhuThuoc").val();
-                if(kyTinhThue == "T"){
-                    if (!nguoiPhuThuoc || nguoiPhuThuoc < 0 || nguoiPhuThuoc%4400000 !==0) {
-                        nguoiPhuThuoc = 0;
-                        $("#giamTruNguoiPhuThuoc").val(nguoiPhuThuoc);
-                        $("#loiGiamTruNPT").hide();
-                    }
-                }else{
-                    if (!nguoiPhuThuoc || nguoiPhuThuoc < 0 || nguoiPhuThuoc%13200000 !==0) {
-                        nguoiPhuThuoc = 0;
-                        $("#giamTruNguoiPhuThuoc").val(nguoiPhuThuoc);
-                        $("#loiGiamTruNPT").hide();
-                    }
-                }
+        var banThan = $("#giamTruBanThan").val();
 
-                var tuThien = $("#giamTruTuThien").val();
-                if (!tuThien || tuThien < 0) {
-                    tuThien = 0;
-                    $("#giamTruTuThien").val(tuThien);
-                    $("#loiGiamTruTuThien").hide();
-                }
-
-                var baoHiem = $("#giamTruBaoHiem").val();
-                if (!baoHiem || baoHiem < 0) {
-                    baoHiem = 0;
-                    $("#giamTruBaoHiem").val(baoHiem);
-                    $("#loiGiamTruBaoHiem").hide();
-                }
-
-                var huuTri = $("#giamTruHuuTri").val();
-                if (!huuTri || huuTri < 0) {
-                    huuTri = 0;
-                    $("#giamTruHuuTri").val(huuTri);
-                    $("#loiGiamTruHuuTri").hide();
-                }
-                var tongGiamTru = Number(banThan) + Number(nguoiPhuThuoc) + Number(tuThien) + Number(baoHiem) + Number(huuTri);
-                $("#tongGiamTru").val(tongGiamTru);
-                var thuNhapTinhThue = Number(thuNhapChiuThue)-Number(mienGiam) - Number(tongGiamTru);
-                if (thuNhapTinhThue <=0){
-                    $("#thuNhapTinhThue").val(0);
-                    $("#thueThuNhapCaNhan").val(0);
-                }else{
-                    if(kyTinhThue == "T"){
-                        $("#thuNhapTinhThue").val(thuNhapTinhThue);
-                        var thueThuNhapCaNhan;
-                        if (thuNhapTinhThue <= 5000000)
-                            thueThuNhapCaNhan = (thuNhapTinhThue*5/100).toFixed(0);
-                        else if(thuNhapTinhThue <= 10000000)
-                            thueThuNhapCaNhan = (thuNhapTinhThue*10/100-250000).toFixed(0);
-                        else if(thuNhapTinhThue <= 18000000)
-                            thueThuNhapCaNhan = (thuNhapTinhThue*15/100-750000).toFixed(0);
-                        else if(thuNhapTinhThue <= 32000000)
-                            thueThuNhapCaNhan = (thuNhapTinhThue*20/100-1650000).toFixed(0);
-                        else if(thuNhapTinhThue <= 52000000)
-                            thueThuNhapCaNhan = (thuNhapTinhThue*25/100-3250000).toFixed(0);
-                        else if(thuNhapTinhThue <= 80000000)
-                            thueThuNhapCaNhan = (thuNhapTinhThue*30/100-5850000).toFixed(0);
-                        else
-                            thueThuNhapCaNhan = (thuNhapTinhThue*35/100-9850000).toFixed(0);
-
-                        $("#thueThuNhapCaNhan").val(thueThuNhapCaNhan);
-                    }else{
-                        $("#thuNhapTinhThue").val(thuNhapTinhThue);
-                        var thueThuNhapCaNhan;
-                        if (thuNhapTinhThue <= 15000000)
-                            thueThuNhapCaNhan = (thuNhapTinhThue*5/100).toFixed(0);
-                        else if(thuNhapTinhThue <= 30000000)
-                            thueThuNhapCaNhan = (thuNhapTinhThue*10/100-250000*3).toFixed(0);
-                        else if(thuNhapTinhThue <= 54000000)
-                            thueThuNhapCaNhan = (thuNhapTinhThue*15/100-750000*3).toFixed(0);
-                        else if(thuNhapTinhThue <= 96000000)
-                            thueThuNhapCaNhan = (thuNhapTinhThue*20/100-1650000*3).toFixed(0);
-                        else if(thuNhapTinhThue <= 156000000)
-                            thueThuNhapCaNhan = (thuNhapTinhThue*25/100-3250000*3).toFixed(0);
-                        else if(thuNhapTinhThue <= 240000000)
-                            thueThuNhapCaNhan = (thuNhapTinhThue*30/100-5850000*3).toFixed(0);
-                        else
-                            thueThuNhapCaNhan = (thuNhapTinhThue*35/100-9850000*3).toFixed(0);
-
-                        $("#thueThuNhapCaNhan").val(thueThuNhapCaNhan);
-                    }
-                }
-
-            
-        }   
-
-    
-    if ($("#khongCuTru").is(":checked")) {
-                var thuNhapTinhThue = $("#thuNhapTinhThueKCT").val();
-                if (!thuNhapTinhThue || thuNhapTinhThue < 0) {
-                    thuNhapTinhThue = 0;
-                    $("#thuNhapTinhThueKCT").val(0);
-                    $("#loiThuNhapKCT").hide();
-                }
-                var thue = (thuNhapTinhThue*20/100).toFixed(0);
-                $("#thueThuNhapCaNhanKCT").val(thue);
+        var nguoiPhuThuoc = $("#giamTruNguoiPhuThuoc").val();
+        if (kyTinhThue == "T") {
+            if (!nguoiPhuThuoc || nguoiPhuThuoc < 0 || nguoiPhuThuoc % 4400000 !== 0) {
+                nguoiPhuThuoc = 0;
+                $("#giamTruNguoiPhuThuoc").val(nguoiPhuThuoc);
+                $("#loiGiamTruNPT").hide();
             }
+        } else {
+            if (!nguoiPhuThuoc || nguoiPhuThuoc < 0 || nguoiPhuThuoc % 13200000 !== 0) {
+                nguoiPhuThuoc = 0;
+                $("#giamTruNguoiPhuThuoc").val(nguoiPhuThuoc);
+                $("#loiGiamTruNPT").hide();
+            }
+        }
+
+        var tuThien = $("#giamTruTuThien").val();
+        if (!tuThien || tuThien < 0) {
+            tuThien = 0;
+            $("#giamTruTuThien").val(tuThien);
+            $("#loiGiamTruTuThien").hide();
+        }
+
+        var baoHiem = $("#giamTruBaoHiem").val();
+        if (!baoHiem || baoHiem < 0) {
+            baoHiem = 0;
+            $("#giamTruBaoHiem").val(baoHiem);
+            $("#loiGiamTruBaoHiem").hide();
+        }
+
+        var huuTri = $("#giamTruHuuTri").val();
+        if (!huuTri || huuTri < 0) {
+            huuTri = 0;
+            $("#giamTruHuuTri").val(huuTri);
+            $("#loiGiamTruHuuTri").hide();
+        }
+        var tongGiamTru = Number(banThan) + Number(nguoiPhuThuoc) + Number(tuThien) + Number(baoHiem) + Number(huuTri);
+        $("#tongGiamTru").val(tongGiamTru);
+        var thuNhapTinhThue = Number(thuNhapChiuThue) - Number(mienGiam) - Number(tongGiamTru);
+        if (thuNhapTinhThue <= 0) {
+            $("#thuNhapTinhThue").val(0);
+            $("#thueThuNhapCaNhan").val(0);
+        } else {
+            if (kyTinhThue == "T") {
+                $("#thuNhapTinhThue").val(thuNhapTinhThue);
+                var thueThuNhapCaNhan;
+                if (thuNhapTinhThue <= 5000000)
+                    thueThuNhapCaNhan = (thuNhapTinhThue * 5 / 100).toFixed(0);
+                else if (thuNhapTinhThue <= 10000000)
+                    thueThuNhapCaNhan = (thuNhapTinhThue * 10 / 100 - 250000).toFixed(0);
+                else if (thuNhapTinhThue <= 18000000)
+                    thueThuNhapCaNhan = (thuNhapTinhThue * 15 / 100 - 750000).toFixed(0);
+                else if (thuNhapTinhThue <= 32000000)
+                    thueThuNhapCaNhan = (thuNhapTinhThue * 20 / 100 - 1650000).toFixed(0);
+                else if (thuNhapTinhThue <= 52000000)
+                    thueThuNhapCaNhan = (thuNhapTinhThue * 25 / 100 - 3250000).toFixed(0);
+                else if (thuNhapTinhThue <= 80000000)
+                    thueThuNhapCaNhan = (thuNhapTinhThue * 30 / 100 - 5850000).toFixed(0);
+                else
+                    thueThuNhapCaNhan = (thuNhapTinhThue * 35 / 100 - 9850000).toFixed(0);
+
+                $("#thueThuNhapCaNhan").val(thueThuNhapCaNhan);
+            } else {
+                $("#thuNhapTinhThue").val(thuNhapTinhThue);
+                var thueThuNhapCaNhan;
+                if (thuNhapTinhThue <= 15000000)
+                    thueThuNhapCaNhan = (thuNhapTinhThue * 5 / 100).toFixed(0);
+                else if (thuNhapTinhThue <= 30000000)
+                    thueThuNhapCaNhan = (thuNhapTinhThue * 10 / 100 - 250000 * 3).toFixed(0);
+                else if (thuNhapTinhThue <= 54000000)
+                    thueThuNhapCaNhan = (thuNhapTinhThue * 15 / 100 - 750000 * 3).toFixed(0);
+                else if (thuNhapTinhThue <= 96000000)
+                    thueThuNhapCaNhan = (thuNhapTinhThue * 20 / 100 - 1650000 * 3).toFixed(0);
+                else if (thuNhapTinhThue <= 156000000)
+                    thueThuNhapCaNhan = (thuNhapTinhThue * 25 / 100 - 3250000 * 3).toFixed(0);
+                else if (thuNhapTinhThue <= 240000000)
+                    thueThuNhapCaNhan = (thuNhapTinhThue * 30 / 100 - 5850000 * 3).toFixed(0);
+                else
+                    thueThuNhapCaNhan = (thuNhapTinhThue * 35 / 100 - 9850000 * 3).toFixed(0);
+
+                $("#thueThuNhapCaNhan").val(thueThuNhapCaNhan);
+            }
+        }
+
+
+    }
+
+
+    if ($("#khongCuTru").is(":checked")) {
+        var thuNhapTinhThue = $("#thuNhapTinhThueKCT").val();
+        if (!thuNhapTinhThue || thuNhapTinhThue < 0) {
+            thuNhapTinhThue = 0;
+            $("#thuNhapTinhThueKCT").val(0);
+            $("#loiThuNhapKCT").hide();
+        }
+        var thue = (thuNhapTinhThue * 20 / 100).toFixed(0);
+        $("#thueThuNhapCaNhanKCT").val(thue);
+    }
+}
+
+
+// district
+window.onload = function() {
+    if ((address_2 = localStorage.getItem("address_2_saved"))) {
+        $('select[name="quanHuyen"] option').each(function() {
+            if ($(this).text() == address_2) {
+                $(this).attr("selected", "");
+            }
+        });
+    }
+    if ((district = localStorage.getItem("district"))) {
+        $('select[name="quanHuyen"]').html(district);
+        $('select[name="quanHuyen"]').on("change", function() {
+            var target = $(this).children("option:selected");
+            target.attr("selected", "");
+            $('select[name="quanHuyen"] option')
+                .not(target)
+                .removeAttr("selected");
+            address_2 = target.text();
+            district = $('select[name="quanHuyen"]').html();
+            localStorage.setItem("district", district);
+            localStorage.setItem("address_2_saved", address_2);
+        });
+    }
+    $('select[name="tinhThanh"]').each(function() {
+        var $this = $(this),
+            stc = "";
+        c.forEach(function(i, e) {
+            e += +1;
+            stc += "<option value=" + e + ">" + i + "</option>";
+            $this.html('<option value="">Tỉnh / Thành phố</option>' + stc);
+            if ((address_1 = localStorage.getItem("address_1_saved"))) {
+                $('select[name="tinhThanh"] option').each(
+                    function() {
+                        if ($(this).text() == address_1) {
+                            $(this).attr("selected", "");
+                        }
+                    }
+                );
+            }
+            $this.on("change", function(i) {
+                i = $this.children("option:selected").index() - 1;
+                var str = "",
+                    r = $this.val();
+                if (r != "") {
+                    arr[i].forEach(function(el) {
+                        str += '<option value="' + el + '">' + el + "</option>";
+                        $('select[name="quanHuyen"]').html(
+                            '<option value="">Quận / Huyện</option>' + str
+                        );
+                    });
+                    var address_1 = $this.children("option:selected").text();
+                    var district = $('select[name="quanHuyen"]').html();
+                    localStorage.setItem("address_1_saved", address_1);
+                    localStorage.setItem("district", district);
+                    $('select[name="quanHuyen"]').on(
+                        "change",
+                        function() {
+                            var target = $(this).children("option:selected");
+                            target.attr("selected", "");
+                            $('select[name="quanHuyen"] option')
+                                .not(target)
+                                .removeAttr("selected");
+                            var address_2 = target.text();
+                            district = $('select[name="quanHuyen"]').html();
+                            localStorage.setItem("district", district);
+                            localStorage.setItem("address_2_saved", address_2);
+                        }
+                    );
+                } else {
+                    $('select[name="quanHuyen"]').html(
+                        '<option value="">Quận / Huyện</option>'
+                    );
+                    district = $('select[name="quanHuyen"]').html();
+                    localStorage.setItem("district", district);
+                    localStorage.removeItem("address_1_saved", address_1);
+                }
+            });
+        });
+    });
+    if ((address_4 = localStorage.getItem("address_4_saved"))) {
+        $('select[name="quanHuyenDaiLy"] option').each(function() {
+            if ($(this).text() == address_4) {
+                $(this).attr("selected", "");
+            }
+        });
+    }
+    if ((district2 = localStorage.getItem("district2"))) {
+        $('select[name="quanHuyenDaiLy"]').html(district2);
+        $('select[name="quanHuyenDaiLy"]').on("change", function() {
+            var target = $(this).children("option:selected");
+            target.attr("selected", "");
+            $('select[name="quanHuyenDaiLy"] option')
+                .not(target)
+                .removeAttr("selected");
+            address_4 = target.text();
+            district2 = $('select[name="quanHuyenDaiLy"]').html();
+            localStorage.setItem("district2", district2);
+            localStorage.setItem("address_4_saved", address_4);
+        });
+    }
+    $('select[name="tinhThanhDaiLy"]').each(function() {
+        var $this = $(this),
+            stc = "";
+        c.forEach(function(i, e) {
+            e += +1;
+            stc += "<option value=" + e + ">" + i + "</option>";
+            $this.html('<option value="">Tỉnh / Thành phố</option>' + stc);
+            if ((address_3 = localStorage.getItem("address_3_saved"))) {
+                $('select[name="tinhThanhDaiLy"] option').each(
+                    function() {
+                        if ($(this).text() == address_3) {
+                            $(this).attr("selected", "");
+                        }
+                    }
+                );
+            }
+            $this.on("change", function(i) {
+                i = $this.children("option:selected").index() - 1;
+                var str = "",
+                    r = $this.val();
+                if (r != "") {
+                    arr[i].forEach(function(el) {
+                        str += '<option value="' + el + '">' + el + "</option>";
+                        $('select[name="quanHuyenDaiLy"]').html(
+                            '<option value="">Quận / Huyện</option>' + str
+                        );
+                    });
+                    var address_3 = $this.children("option:selected").text();
+                    var district2 = $('select[name="quanHuyenDaiLy"]').html();
+                    localStorage.setItem("address_3_saved", address_3);
+                    localStorage.setItem("district2", district2);
+                    $('select[name="quanHuyenDaiLy"]').on(
+                        "change",
+                        function() {
+                            var target = $(this).children("option:selected");
+                            target.attr("selected", "");
+                            $('select[name="quanHuyenDaiLy"] option')
+                                .not(target)
+                                .removeAttr("selected");
+                            var address_4 = target.text();
+                            district2 = $('select[name="quanHuyenDaiLy"]').html();
+                            localStorage.setItem("district2", district2);
+                            localStorage.setItem("address_4_saved", address_4);
+                        }
+                    );
+                } else {
+                    $('select[name="quanHuyenDaiLy"]').html(
+                        '<option value="">Quận / Huyện</option>'
+                    );
+                    district2 = $('select[name="quanHuyenDaiLy"]').html();
+                    localStorage.setItem("district2", district2);
+                    localStorage.removeItem("address_3_saved", address_3);
+                }
+            });
+        });
+    });
 }

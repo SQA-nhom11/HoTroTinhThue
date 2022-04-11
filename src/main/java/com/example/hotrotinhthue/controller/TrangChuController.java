@@ -4,6 +4,9 @@ import com.example.hotrotinhthue.model.MaSoThue;
 import com.example.hotrotinhthue.model.NguoiDung;
 import com.example.hotrotinhthue.repository.MaSoThueRepo;
 import com.example.hotrotinhthue.repository.NguoiDungRepo;
+
+import java.lang.ProcessBuilder.Redirect;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -51,7 +54,7 @@ public class TrangChuController {
     	nguoiDungRepo.save(nguoiDung);
     	model.addAttribute("statusDangKi", "Đăng kí thành công!");
         System.out.println("Dang ki thanh cong");
-    	return "index";
+    	return "dang-ki";
     }
     
     @GetMapping("dang-nhap")
