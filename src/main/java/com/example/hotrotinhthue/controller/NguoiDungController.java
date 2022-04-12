@@ -38,14 +38,14 @@ public class NguoiDungController {
 		System.out.println(matKhauMoi+" "+nhapLaiMatKhau);
 		
 		if(!matKhauMoi.equals(nhapLaiMatKhau)) {
-			model.addAttribute("statusChangePass", "Mật khẩu không trùng nhau!");
+			model.addAttribute("message", "Mật khẩu không trùng nhau!");
 			System.out.println("Mat khau khong trung nhau");
 			return "nguoi-dung/doi-mat-khau";
 		}
 		
 		nguoiDung.setMatKhau(bCrypt.encode(matKhauMoi));
 		nguoiDungRepo.save(nguoiDung);
-		model.addAttribute("statusChangePass", "Đổi mật khẩu thành công!");
+		model.addAttribute("message", "Đổi mật khẩu thành công!");
 		System.out.println("Doi mat khau thanh cong");
 		return "nguoi-dung/doi-mat-khau";
 	}
@@ -65,7 +65,7 @@ public class NguoiDungController {
 		nguoiDung.setEmail(nguoiDungMoi.getEmail());
 		
 		nguoiDungRepo.save(nguoiDung);
-		model.addAttribute("statusChangeInfo", "Thay đổi thông tin thành công!");
+		model.addAttribute("message", "Thay đổi thông tin thành công!");
 		model.addAttribute("nguoiDung", (NguoiDung) authentication.getPrincipal());
 		System.out.println("Thay doi thong tin thanh cong");
 		return "nguoi-dung/doi-thong-tin";

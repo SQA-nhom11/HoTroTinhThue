@@ -13,7 +13,7 @@
 				<span class="nav-now">Đổi mật khẩu</span>
 			</div>
 			<form name="form-change-password" method="post" th:action="@{/nguoi-dung/doi-mat-khau}">
-				<label th:if="${statusChangePass}" th:text="${statusChangePass}" style="color: red; text-align: center; display: block;" id="statusChangePassword"></label>
+				<label th:if="${message}" th:text="${message}" class="message"></label>
 				<div class="box-common-content">
 					<table class="form-table">
 						<tbody>

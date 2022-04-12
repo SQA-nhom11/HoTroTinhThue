@@ -196,3 +196,9 @@ ul#tabmenu li a span {
 .color-red {
   color: red;
 }
+
+.message {
+	color: red;
+	text-align: center;
+	display: block;
+}

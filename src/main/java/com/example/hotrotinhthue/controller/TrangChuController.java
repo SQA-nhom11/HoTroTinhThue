@@ -44,7 +44,7 @@ public class TrangChuController {
     		||!m.getCccd().equals(nguoiDung.getCccd())
     		|| !m.getHoTen().equals(nguoiDung.getHoTen())) {
     		model.addAttribute("nguoiNopThue", nguoiDung);
-    		model.addAttribute("statusDangKi", "Dữ liệu đăng kí không tồn tại trong hệ thống!");
+    		model.addAttribute("message", "Dữ liệu đăng kí không tồn tại trong hệ thống!");
     		System.out.println("Du lieu dang ki khong ton tai trong he thong");
     		return "dang-ki";
     	}
@@ -52,9 +52,9 @@ public class TrangChuController {
         BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder(4);
         nguoiDung.setMatKhau(bCrypt.encode(nguoiDung.getPassword()));
     	nguoiDungRepo.save(nguoiDung);
-    	model.addAttribute("statusDangKi", "Đăng kí thành công!");
+    	model.addAttribute("message", "Đăng kí thành công, mời đăng nhập!");
         System.out.println("Dang ki thanh cong");
-    	return "dang-ki";
+    	return "dang-nhap";
     }
     
     @GetMapping("dang-nhap")
