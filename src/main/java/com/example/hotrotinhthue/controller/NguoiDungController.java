@@ -1,5 +1,7 @@
 package com.example.hotrotinhthue.controller;
 
+import java.util.regex.Pattern;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,7 +24,7 @@ public class NguoiDungController {
 	
 	@GetMapping("")
     public String index(Model model, Authentication authentication) {
-		model.addAttribute("nguoiDung", (NguoiDung) authentication.getPrincipal());
+		model.addAttribute("nguoiDung", nguoiDungRepo.getById(((NguoiDung)authentication.getPrincipal()).getId()));
     	return "nguoi-dung/index";
     }
 	
@@ -32,11 +34,19 @@ public class NguoiDungController {
     }
 	
 	@PostMapping("doi-mat-khau")
-	public String doiMatKhau(Model model, String matKhauCu, String matKhauMoi, String nhapLaiMatKhau, Authentication authentication) {
+	public String doiMatKhau(Model model, String matKhauMoi, String nhapLaiMatKhau, Authentication authentication) {
 		NguoiDung nguoiDung=(NguoiDung) authentication.getPrincipal();
 		BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder(4);
 		System.out.println(matKhauMoi+" "+nhapLaiMatKhau);
 		
+		// Password check
+    	if(!Pattern.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,16}$", matKhauMoi)) {
+    		model.addAttribute("message", "Mật khẩu từ 8-16 kí tự, chứa ít nhất một chữ cái và một chữ số");
+    		System.out.println("Mat khau khong hop le");
+    		return "nguoi-dung/doi-mat-khau";
+    	}
+		
+		// Re-enter password check
 		if(!matKhauMoi.equals(nhapLaiMatKhau)) {
 			model.addAttribute("message", "Mật khẩu không trùng nhau!");
 			System.out.println("Mat khau khong trung nhau");
@@ -52,21 +62,50 @@ public class NguoiDungController {
 	
 	@GetMapping("doi-thong-tin")
     public String doiThongTin(Model model, Authentication authentication) {
-		model.addAttribute("nguoiDung", (NguoiDung) authentication.getPrincipal());
+		model.addAttribute("nguoiDung", nguoiDungRepo.getById(((NguoiDung)authentication.getPrincipal()).getId()));
     	return "nguoi-dung/doi-thong-tin";
     }
 	
 	@PostMapping("doi-thong-tin")
 	public String doiThongTin(@ModelAttribute("NguoiNopThue") NguoiDung nguoiDungMoi, Model model, Authentication authentication) {
-		NguoiDung nguoiDung=(NguoiDung) authentication.getPrincipal();
+		NguoiDung nguoiDung=nguoiDungRepo.getById(((NguoiDung)authentication.getPrincipal()).getId());
 		nguoiDung.setDiaChi(nguoiDungMoi.getDiaChi());
 		nguoiDung.setCoQuanThue(nguoiDungMoi.getCoQuanThue());
 		nguoiDung.setSdt(nguoiDungMoi.getSdt());
 		nguoiDung.setEmail(nguoiDungMoi.getEmail());
 		
+		// Default validate
+		boolean valid=true;
+        if(nguoiDung.getDiaChi().trim().equals("")) {
+        	model.addAttribute("errorDiaChi", "* Trường không để trống");
+        	valid=false;
+        }
+        	
+        if(nguoiDung.getCoQuanThue().trim().equals("")) {
+        	model.addAttribute("errorCoQuanThue", "* Trường không để trống");
+        	valid=false;
+        }
+        	
+        if(!Pattern.matches("^[0-9]+$", nguoiDung.getSdt())) {
+        	model.addAttribute("errorSdt", "* Số điện thoại không hợp lệ");
+        	valid=false;
+        }
+        	
+        if(!Pattern.matches("^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$", nguoiDung.getEmail())) {
+        	model.addAttribute("errorEmail", "* Email không hợp lệ");
+        	valid=false;
+        }
+		
+        if(!valid) {
+        	model.addAttribute("nguoiDung", nguoiDung);
+        	System.out.println("Co loi validate");
+        	return "nguoi-dung/doi-thong-tin";
+        }
+        
+        // Pass validate
 		nguoiDungRepo.save(nguoiDung);
 		model.addAttribute("message", "Thay đổi thông tin thành công!");
-		model.addAttribute("nguoiDung", (NguoiDung) authentication.getPrincipal());
+		model.addAttribute("nguoiDung", nguoiDungRepo.getById(((NguoiDung)authentication.getPrincipal()).getId()));
 		System.out.println("Thay doi thong tin thanh cong");
 		return "nguoi-dung/doi-thong-tin";
 	}

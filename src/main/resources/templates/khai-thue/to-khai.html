@@ -12,7 +12,7 @@
 				<span class="nav-now">Kê khai thuế</span>
 			</div>
 			<h1 style="text-align: center;">Tờ khai thuế thu nhập cá nhân</h1>
-			<i style="text-align: center; display: block;">(Áp dụng cho cá nhân cư trú và cá nhân không cư trú có thu nhập từ tiền lương, tiền<br /> công khai thuế trực tiếp với cơ quan thuế)</i>
+			<span class="subtitle">(Áp dụng cho cá nhân cư trú và cá nhân không cư trú có thu nhập từ tiền lương, tiền<br /> công khai thuế trực tiếp với cơ quan thuế)</span>
 			<form id="declarationForm" action="">
 				<div class="box-common-content">
 					<table class="form-table">
@@ -39,7 +39,7 @@
 									<label>Năm</label>
 									<input id="namKeKhaiQuy" style="width: 105px" type="number" min="1900" max="2099"
 										step="1" value="2022" />
-									<br /><label id="loiNamQuy" style="color: red"></label>
+									<label id="loiNamQuy" class="error"></label>
 								</td>
 							</tr>
 
@@ -63,7 +63,7 @@
 									<label>Năm</label>
 									<input id="namKeKhaiThang" style="width: 105px" type="number" min="1900" max="2099"
 										step="1" value="2022" />
-									<br /><label id="loiNamThang" style="color: red"></label>
+									<label id="loiNamThang" class="error"></label>
 								</td>
 							</tr>
 
