@@ -11,7 +11,7 @@ import java.util.Date;
 public class BangNopThue {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     private long soTienNop;
 

@@ -11,13 +11,59 @@ import java.util.Date;
 public class ToKhaiThue {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
-    @Column(name = "cu_tru", nullable = false)
+    private String kyTinhThue;
+
+    private int quyKeKhai;
+
+    private int thangKeKhai;
+
+    private int namKeKhai;
+
+    private String loaiToKhai;
+
+    private String hoTen;
+
+    private String maSoThue;
+
+    private String tinhThanh;
+
+    private String quanHuyen;
+
+    private String diaChi;
+
+    private String email;
+
+    private String sdt;
+
+    private String fax;
+
+    @Column(nullable = false)
+    private boolean daiLyThue;
+
+    private String tenDaiLyThue;
+
+    private String maSoThueDLT;
+
+    private String tinhThanhDLT;
+
+    private String quanHuyenDLT;
+
+    private String diaChiDLT;
+
+    private String emailDLT;
+
+    private String sdtDLT;
+
+    private String faxDLT;
+
+    private String soHopDong;
+
+    private Date ngayHopDong;
+
+    @Column(nullable = false)
     private boolean cuTru;
-
-    @Column(name = "da_nop_tien", nullable = false)
-    private boolean daNopTien;
 
     private Date ngayNop;
 

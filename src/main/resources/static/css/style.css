@@ -193,12 +193,24 @@ ul#tabmenu li a span {
   color: #737373;
 }
 
-.color-red {
+.color-red, .message, .error {
   color: red;
 }
 
-.message {
-	color: red;
+.subtitle {
+	font-style: italic;
 	text-align: center;
 	display: block;
+}
+
+.message {
+	text-align: center;
+	display: block;
+}
+
+.error {
+	height: 1.25em;
+	overflow: hidden;
+	display:inline-block;
+	padding-top: 2px;
 }
