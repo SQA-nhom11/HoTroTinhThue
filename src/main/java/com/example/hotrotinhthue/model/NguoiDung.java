@@ -7,7 +7,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Data
@@ -82,11 +84,7 @@ public class NguoiDung implements UserDetails {
 		return maSoThue;
 	}
 
-
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nguoiDung")
-//    private List<ToKhaiThue> toKhaiThueList = new ArrayList<>();
-//
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nguoiDung")
-//    private List<BangNopThue> bangNopThueList = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nguoiDung")
+    private List<ToKhaiThue> toKhaiThueList = new ArrayList<>();
 
 }

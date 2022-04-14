@@ -11,7 +11,7 @@ $(document).ready(function() {
     });
 
     $("#namKeKhaiQuy").on("input", function() {
-        var namQuy = $("#namKeKhaiQuy").val();
+        var namQuy = $("#namKeKhai").val();
         if (!namQuy) {
             $("#loiNamQuy").text("* Năm không để trống");
             $("#loiNamQuy").show();
@@ -72,11 +72,11 @@ $(document).ready(function() {
 
     $("#kyTinhThue").change(function() {
         var kyTinhThue = $("#kyTinhThue option:selected").val();
-        if (kyTinhThue == "T") {
+        if (kyTinhThue == "Tháng") {
             $("#quy").hide();
             $("#thang").show();
         }
-        if (kyTinhThue == "Q") {
+        if (kyTinhThue == "Quý") {
             $("#thang").hide();
             $("#quy").show();
         }
@@ -84,17 +84,17 @@ $(document).ready(function() {
 
     $("#btnConThongTinToKhai").click(function() {
         var kyTinhThue = $("#kyTinhThue option:selected").val();
-        if (kyTinhThue == "Q") {
+        if (kyTinhThue == "Quý") {
             var namQuy = $("#namKeKhaiQuy").val();
             if (!namQuy || namQuy < 2000 || namQuy > 2900) {
                 $("#namKeKhaiQuy").focus();
                 return;
             }
         }
-        if (kyTinhThue == "T") {
+        if (kyTinhThue == "Tháng") {
             var namThang = $("#namKeKhaiThang").val();
             if (!namThang || namThang < 2000 || namThang > 2900) {
-                $("#namKeKhaiQuy").focus();
+                $("#namKeKhaiThang").focus();
                 return;
             }
         }
@@ -137,7 +137,7 @@ $(document).ready(function() {
         $("#thuNhapChiuThue").val(0);
         $("#thuNhapChiuThueMienGiam").val(0);
         var kyTinhThue = localStorage.getItem("kyTinhThue");
-        if (kyTinhThue == "T") {
+        if (kyTinhThue == "Tháng") {
             $("#giamTruBanThan").val(11000000);
             $("#tongGiamTru").val(11000000);
         } else {
@@ -415,7 +415,7 @@ function tinhThue() {
             $("#thuNhapTinhThue").val(0);
             $("#thueThuNhapCaNhan").val(0);
         } else {
-            if (kyTinhThue == "T") {
+            if (kyTinhThue == "Tháng") {
                 $("#thuNhapTinhThue").val(thuNhapTinhThue);
                 var thueThuNhapCaNhan;
                 if (thuNhapTinhThue <= 5000000)
@@ -501,7 +501,7 @@ window.onload = function() {
             stc = "";
         c.forEach(function(i, e) {
             e += +1;
-            stc += "<option value=" + e + ">" + i + "</option>";
+            stc += '<option value="' + i + '">' + i + '</option>';
             $this.html('<option value="">Tỉnh / Thành phố</option>' + stc);
             if ((address_1 = localStorage.getItem("address_1_saved"))) {
                 $('select[name="tinhThanh"] option').each(

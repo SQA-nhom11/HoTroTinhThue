@@ -3,6 +3,9 @@ package com.example.hotrotinhthue.model;
 import lombok.Data;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.CreationTimestamp;
+
 import java.util.Date;
 
 @Entity
@@ -64,6 +67,8 @@ public class ToKhaiThue {
 
     private boolean cuTru;
 
+    @CreationTimestamp
+	@Column(updatable = false)
     private Date ngayNop;
 
     private long chiTieu20;
@@ -93,7 +98,11 @@ public class ToKhaiThue {
     private long chiTieu32;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "nguoi_dung")
     private NguoiDung nguoiDung;
+    
+    @PrePersist
+	void createdAt() {
+		this.ngayNop = new Date();
+	}
 
 }

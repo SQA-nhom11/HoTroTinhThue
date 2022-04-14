@@ -23,7 +23,7 @@
 									Cá nhân cư trú có thu nhập từ tiền lương, tiền công
 								</td>
 								<td style="text-align: left">
-									<input type="checkbox" id="coCuTru" checked />
+									<input type="checkbox" name="cuTru" id="coCuTru" checked />
 								</td>
 							</tr>
 
@@ -31,7 +31,7 @@
 								<td>1</td>
 								<td colspan="2">Tổng thu nhập chịu thuế phát sinh trong kỳ</td>
 								<td style="text-align: left">
-									<input value="0" type="number" id="thuNhapChiuThue" name="thuNhapChiuThue"
+									<input value="0" type="number" id="thuNhapChiuThue" name="chiTieu20"
                                                                                style="width: 130px" onchange="tinhThue()"/>
 									<br /><label style="color: red" id="loiThuNhap"></label>
 								</td>
@@ -44,7 +44,7 @@
 								</td>
 								<td style="text-align: left">
 									<input value="0" type="number" id="thuNhapChiuThueMienGiam"
-                                                                               name="thuNhapChiuThueMienGiam" style="width: 130px" onchange="tinhThue()"/>
+                                                                               name="chiTieu21" style="width: 130px" onchange="tinhThue()"/>
 									<br /><label style="color: red" id="loiMienGiam"></label>
 								</td>
 							</tr>
@@ -72,7 +72,7 @@
 								<td>b</td>
 								<td>Cho người phụ thuộc</td>
 								<td style="text-align: left">
-									<input value="0" type="number" id="giamTruNguoiPhuThuoc" name="giamTruNguoiPhuThuoc"
+									<input value="0" type="number" id="giamTruNguoiPhuThuoc" name="chiTieu24"
                                                                                style="width: 130px" onchange="tinhThue()"/>
 									<br /><label style="color: red" id="loiGiamTruNPT"></label>
 								</td>
@@ -82,7 +82,7 @@
 								<td>c</td>
 								<td>Cho từ thiện, nhân đạo, khuyến học</td>
 								<td style="text-align: left">
-									<input value="0" type="number" id="giamTruTuThien" name="giamTruTuThien"
+									<input value="0" type="number" id="giamTruTuThien" name="chiTieu25"
 										style="width: 130px" onchange="tinhThue()"/>
 									<br /><label style="color: red" id="loiGiamTruTuThien"></label>
 								</td>
@@ -92,7 +92,7 @@
 								<td>d</td>
 								<td>Các khoản đóng bảo hiểm được trừ</td>
 								<td style="text-align: left">
-									<input value="0" type="number" id="giamTruBaoHiem" name="giamTruBaoHiem"
+									<input value="0" type="number" id="giamTruBaoHiem" name="chiTieu26"
 										style="width: 130px" onchange="tinhThue()"/>
 									<br /><label style="color: red" id="loiGiamTruBaoHiem"></label>
 								</td>
@@ -102,7 +102,7 @@
 								<td></td>
 								<td>Khoản đóng quỹ hưu trí tự nguyện được trừ</td>
 								<td style="text-align: left">
-									<input value="0" type="number" id="giamTruHuuTri" name="giamTruHuuTri"
+									<input value="0" type="number" id="giamTruHuuTri" name="chiTieu27"
 										style="width: 130px" onchange="tinhThue()"/>
 									<br /><label style="color: red" id="loiGiamTruHuuTri"></label>
 								</td>
@@ -142,7 +142,7 @@
 								<td colspan="2">Tổng thu nhập tính thuế</td>
 								<td style="text-align: left">
 									<input disabled value="0" type="number" id="thuNhapTinhThueKCT"
-										name="thuNhapTinhThueKCT" style="width: 130px" onchange="tinhThue()"/>
+										name="chiTieu30" style="width: 130px" onchange="tinhThue()"/>
 									<br /><label style="color: red" id="loiThuNhapKCT"></label>
 								</td>
 							</tr>
@@ -180,17 +180,6 @@
 		</div>
 	</div>
 	<div th:insert="fragment.html :: footer"></div>
-        <script>
-            var kyTinhThue = localStorage.getItem("kyTinhThue");
-            if(kyTinhThue == "T"){
-                $("#giamTruBanThan").val(11000000);
-                $("#tongGiamTru").val(11000000);
-            }
-            else{
-                $("#giamTruBanThan").val(33000000);
-                $("#tongGiamTru").val(33000000);
-            }
-        </script>
 </body>
 
 </html>
