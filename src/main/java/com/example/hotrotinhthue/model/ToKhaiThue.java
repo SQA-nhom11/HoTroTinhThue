@@ -13,9 +13,6 @@ public class ToKhaiThue {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-<<<<<<< HEAD
-
-=======
     private String kyTinhThue;
 
     private int quyKeKhai;
@@ -65,8 +62,6 @@ public class ToKhaiThue {
 
     private Date ngayHopDong;
 
-    @Column(nullable = false)
->>>>>>> valid-user
     private boolean cuTru;
 
     private Date ngayNop;
