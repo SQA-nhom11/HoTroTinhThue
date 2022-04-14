@@ -54,9 +54,10 @@ public class KhaiThueController {
 	}
 
 	@PostMapping("tinh-thue")
-	public String tinhThue(boolean cuTru, long chiTieu20, long chiTieu21, long chiTieu24, long chiTieu25,
-			long chiTieu26, long chiTieu27, long chiTieu30, HttpSession session, Authentication authentication, Model model) {
+	public String tinhThue(boolean cuTru, Long chiTieu20, Long chiTieu21, Long chiTieu24, Long chiTieu25,
+			Long chiTieu26, Long chiTieu27, Long chiTieu30, HttpSession session, Authentication authentication, Model model) {
 		ToKhaiThue toKhaiThue = (ToKhaiThue) session.getAttribute("toKhaiThue");
+		System.out.println(toKhaiThue);
 		if (cuTru) {
 			toKhaiThue.setCuTru(true);
 			toKhaiThue.setChiTieu20(chiTieu20);
@@ -66,18 +67,35 @@ public class KhaiThueController {
 				toKhaiThue.setChiTieu23(11000000);
 			else
 				toKhaiThue.setChiTieu23(33000000);
-			toKhaiThue.setChiTieu24(chiTieu24);
-			toKhaiThue.setChiTieu25(chiTieu25);
-			toKhaiThue.setChiTieu26(chiTieu26);
-			toKhaiThue.setChiTieu27(chiTieu27);
-			toKhaiThue.setChiTieu22(toKhaiThue.getChiTieu23() + chiTieu24 + chiTieu25 + chiTieu26 + chiTieu27);
-			toKhaiThue.setChiTieu28(chiTieu20 - chiTieu21 - toKhaiThue.getChiTieu22());
+			toKhaiThue.setChiTieu24(chiTieu24.longValue());
+			toKhaiThue.setChiTieu25(chiTieu25.longValue());
+			toKhaiThue.setChiTieu26(chiTieu26.longValue());
+			toKhaiThue.setChiTieu27(chiTieu27.longValue());
+			toKhaiThue.setChiTieu22(toKhaiThue.getChiTieu23() + chiTieu24.longValue() + chiTieu25.longValue() + chiTieu26.longValue() + chiTieu27.longValue());
+			toKhaiThue.setChiTieu28(chiTieu20.longValue() - chiTieu21.longValue() - toKhaiThue.getChiTieu22());
 			toKhaiThue.setChiTieu29(tongThue(toKhaiThue.getChiTieu28(), toKhaiThue.getKyTinhThue()));
+			toKhaiThue.setChiTieu30(0);
+			toKhaiThue.setChiTieu31(20);
+			toKhaiThue.setChiTieu32(0);
 		} else {
 			toKhaiThue.setCuTru(false);
-			toKhaiThue.setChiTieu30(chiTieu30);
+			toKhaiThue.setChiTieu20(0);
+			toKhaiThue.setChiTieu21(0);
+			if (toKhaiThue.getKyTinhThue().equals("Tháng"))
+				toKhaiThue.setChiTieu23(11000000);
+			else
+				toKhaiThue.setChiTieu23(33000000);
+			toKhaiThue.setChiTieu24(0);
+			toKhaiThue.setChiTieu25(0);
+			toKhaiThue.setChiTieu26(0);
+			toKhaiThue.setChiTieu27(0);
+			toKhaiThue.setChiTieu22(0);
+			toKhaiThue.setChiTieu28(0);
+			toKhaiThue.setChiTieu29(0);
+			toKhaiThue.setCuTru(false);
+			toKhaiThue.setChiTieu30(chiTieu30.longValue());
 			toKhaiThue.setChiTieu31(20);
-			toKhaiThue.setChiTieu32((long) chiTieu30 * 20 / 100);
+			toKhaiThue.setChiTieu32((long) chiTieu30.longValue() * 20 / 100);
 		}
 		toKhaiThue.setNguoiDung(nguoiDungRepo.getById(((NguoiDung) authentication.getPrincipal()).getId()));
 

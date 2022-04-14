@@ -14,7 +14,7 @@
 			<h1 style="text-align: center;">Tờ khai thuế thu nhập cá nhân</h1>
 			<span class="subtitle">(Áp dụng cho cá nhân cư trú và cá nhân không cư trú có thu nhập từ tiền lương, tiền<br /> công khai thuế trực tiếp với cơ quan thuế)</span>
 			<span class="subtitle">(Tiếp tục)</span>
-			<form id="declarationForm" action="">
+			<form id="formTinhThue" method="post" onsubmit="return validateTinhThueForm()" th:action="@{~/khai-thue/tinh-thue}">
 				<div class="box-common-content">
 					<table class="form-table-khaithue">
 						<tbody>
@@ -32,7 +32,7 @@
 								<td colspan="2">Tổng thu nhập chịu thuế phát sinh trong kỳ</td>
 								<td style="text-align: left">
 									<input value="0" type="number" id="thuNhapChiuThue" name="chiTieu20"
-                                                                               style="width: 130px" onchange="tinhThue()"/>
+                                                                               style="width: 300px" onchange="tinhThue()"/>
 									<br /><label style="color: red" id="loiThuNhap"></label>
 								</td>
 							</tr>
@@ -44,7 +44,7 @@
 								</td>
 								<td style="text-align: left">
 									<input value="0" type="number" id="thuNhapChiuThueMienGiam"
-                                                                               name="chiTieu21" style="width: 130px" onchange="tinhThue()"/>
+                                                                               name="chiTieu21" style="width: 300px" onchange="tinhThue()"/>
 									<br /><label style="color: red" id="loiMienGiam"></label>
 								</td>
 							</tr>
@@ -54,7 +54,7 @@
 								<td colspan="2">Tổng các khoản giảm trừ</td>
 								<td style="text-align: left">
 									<input disabled type="number" id="tongGiamTru" name="tongGiamTru"
-										style="width: 130px" />
+										style="width: 300px" />
 								</td>
 							</tr>
 
@@ -63,7 +63,7 @@
 								<td>Cho bản thân</td>
 								<td style="text-align: left">
                                                                     <input type="number" id="giamTruBanThan" name="giamTruBanThan"
-                                                                               style="width: 130px" disabled/>
+                                                                               style="width: 300px" disabled/>
 									<br /><label style="color: red" id="loiGiamTruBanThan"></label>
 								</td>
 							</tr>
@@ -73,7 +73,7 @@
 								<td>Cho người phụ thuộc</td>
 								<td style="text-align: left">
 									<input value="0" type="number" id="giamTruNguoiPhuThuoc" name="chiTieu24"
-                                                                               style="width: 130px" onchange="tinhThue()"/>
+                                                                               style="width: 300px" onchange="tinhThue()"/>
 									<br /><label style="color: red" id="loiGiamTruNPT"></label>
 								</td>
 							</tr>
@@ -83,7 +83,7 @@
 								<td>Cho từ thiện, nhân đạo, khuyến học</td>
 								<td style="text-align: left">
 									<input value="0" type="number" id="giamTruTuThien" name="chiTieu25"
-										style="width: 130px" onchange="tinhThue()"/>
+										style="width: 300px" onchange="tinhThue()"/>
 									<br /><label style="color: red" id="loiGiamTruTuThien"></label>
 								</td>
 							</tr>
@@ -93,7 +93,7 @@
 								<td>Các khoản đóng bảo hiểm được trừ</td>
 								<td style="text-align: left">
 									<input value="0" type="number" id="giamTruBaoHiem" name="chiTieu26"
-										style="width: 130px" onchange="tinhThue()"/>
+										style="width: 300px" onchange="tinhThue()"/>
 									<br /><label style="color: red" id="loiGiamTruBaoHiem"></label>
 								</td>
 							</tr>
@@ -103,7 +103,7 @@
 								<td>Khoản đóng quỹ hưu trí tự nguyện được trừ</td>
 								<td style="text-align: left">
 									<input value="0" type="number" id="giamTruHuuTri" name="chiTieu27"
-										style="width: 130px" onchange="tinhThue()"/>
+										style="width: 300px" onchange="tinhThue()"/>
 									<br /><label style="color: red" id="loiGiamTruHuuTri"></label>
 								</td>
 							</tr>
@@ -113,7 +113,7 @@
 								<td colspan="2">Tổng thu nhập tính thuế</td>
 								<td style="text-align: left">
 									<input disabled value="0" type="number" id="thuNhapTinhThue" name="thuNhapTinhThue"
-										style="width: 130px" />
+										style="width: 300px" />
 								</td>
 							</tr>
 
@@ -124,7 +124,7 @@
 								</td>
 								<td style="text-align: left">
 									<input disabled value="0" type="number" id="thueThuNhapCaNhan"
-										name="thueThuNhapCaNhan" style="width: 130px" />
+										name="thueThuNhapCaNhan" style="width: 300px" />
 								</td>
 							</tr>
 
@@ -142,7 +142,7 @@
 								<td colspan="2">Tổng thu nhập tính thuế</td>
 								<td style="text-align: left">
 									<input disabled value="0" type="number" id="thuNhapTinhThueKCT"
-										name="chiTieu30" style="width: 130px" onchange="tinhThue()"/>
+										name="chiTieu30" style="width: 300px" onchange="tinhThue()"/>
 									<br /><label style="color: red" id="loiThuNhapKCT"></label>
 								</td>
 							</tr>
@@ -152,7 +152,7 @@
 								<td colspan="2">Mức thuế suất (%)</td>
 								<td style="text-align: left">
 									<input disabled value="20" type="number" id="mucThueSuat" name="mucThueSuat"
-										style="width: 130px" />
+										style="width: 300px" />
 									<br /><label style="color: red" id="loiThueSuat"></label>
 								</td>
 							</tr>
@@ -162,14 +162,14 @@
 								<td colspan="2">Tổng số thuế thu nhập cá nhân phải nộp</td>
 								<td style="text-align: left">
 									<input disabled value="0" type="number" id="thueThuNhapCaNhanKCT"
-										name="thueThuNhapCaNhanKCT" style="width: 130px" />
+										name="thueThuNhapCaNhanKCT" style="width: 300px" />
 								</td>
 							</tr>
 
 							<tr>
 								<td colspan="3"></td>
 								<td>
-									<input style="margin-left: 230px" type="button" value="Nộp tờ khai"
+									<input style="margin-left: 230px" type="submit" value="Nộp tờ khai"
 										id="btnNopToKhai" class="btn-fuction" />
 								</td>
 							</tr>
@@ -180,6 +180,9 @@
 		</div>
 	</div>
 	<div th:insert="fragment.html :: footer"></div>
+	<script type="text/javascript">
+        window.onload = loadTinhThue;
+    </script>
 </body>
 
 </html>
