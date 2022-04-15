@@ -27,7 +27,7 @@ public class NguoiDung implements UserDetails {
 
     @Column(nullable = false)
     @NotBlank(message = "* Trường không để trống")
-    @Pattern(regexp = "^([A-Z a-z]+)(\\s{1}[A-Z a-z]+)$", message = "* Họ tên không hợp lệ (không dấu)")
+//    @Pattern(regexp = "^([A-Z a-z]+)(\\s{1}[A-Z a-z]+)$", message = "* Họ tên không hợp lệ (không dấu)")
     private String hoTen;
 
 	@NotBlank(message = "* Trường không để trống")
