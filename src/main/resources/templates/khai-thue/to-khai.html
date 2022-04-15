@@ -146,7 +146,7 @@
 					<tr>
 						<td style="width: 45%">Đại lý thuế</td>
 						<td style="text-align: left">
-							<input th:field="*{daiLyThue}" type="checkbox" id="daiLyThue" name="daiLyThue"/>
+							<input th:field="*{daiLyThue}" type="checkbox" id="daiLyThue" name="daiLyThue" th:checked="*{daiLyThue}"/>
 						</td>
 					</tr>
 
@@ -154,24 +154,24 @@
 					<tr>
 						<td style="width: 45%">Tên đại lý thuế (*)</td>
 						<td style="text-align: left">
-							<input th:field="*{tenDaiLyThue}" name="tenDaiLyThue" type="text" id="tenDaiLy" style="width: 365px" disabled />
-							<br /><label style="color: red" id="loiTenDLT"></label>
+							<input th:field="*{tenDaiLyThue}" name="tenDaiLyThue" type="text" id="tenDaiLy" style="width: 365px" th:disabled="*{!daiLyThue}" />
+							<label th:if="${errorTenDaiLyThue}" th:text="${errorTenDaiLyThue}" class="error"></label>
 						</td>
 					</tr>
 
 					<tr>
 						<td style="width: 45%">Mã số thuế ĐLT (*)</td>
 						<td style="text-align: left">
-							<input th:field="*{maSoThueDLT}" name="maSoThueDLT" type="text" id="maSoThueDaiLy" style="width: 365px" disabled />
-							<br /><label style="color: red" id="loiMstDLT"></label>
+							<input th:field="*{maSoThueDLT}" name="maSoThueDLT" type="text" id="maSoThueDaiLy" style="width: 365px" th:disabled="*{!daiLyThue}" />
+							<label th:if="${errorMaSoThueDLT}" th:text="${errorMaSoThueDLT}" class="error"></label>
 						</td>
 					</tr>
 
 					<tr>
 						<td style="width: 45%">Địa chỉ ĐLT (*)</td>
 						<td style="text-align: left">
-							<input th:field="*{diaChiDLT}" name="diaChiDLT" type="text" id="diaChiDaiLy" style="width: 365px" disabled/>
-							<br /><label style="color: red" id="loiDiaChiDLT"></label>
+							<input th:field="*{diaChiDLT}" name="diaChiDLT" type="text" id="diaChiDaiLy" style="width: 365px" th:disabled="*{!daiLyThue}"/>
+							<label th:if="${errorDiaChiDLT}" th:text="${errorDiaChiDLT}" class="error"></label>
 						</td>
 					</tr>
 
@@ -179,7 +179,7 @@
 					<tr>
 						<td style="width: 45%">Tỉnh/thành phố ĐLT (*)</td>
 						<td style="text-align: left">
-							<select name="tinhThanhDLT" id="tinhThanhDaiLy" style="width: 387px" disabled>
+							<select name="tinhThanhDLT" id="tinhThanhDaiLy" style="width: 387px" th:disabled="*{!daiLyThue}">
 								<option value="">Tỉnh / Thành phố</option>
 							</select>
 							<br /><label style="color: red" id="loiTinhThanhDLT"></label>
@@ -190,7 +190,7 @@
 					<tr>
 						<td style="width: 45%">Quận/huyện ĐLT(*)</td>
 						<td style="text-align: left">
-							<select name="quanHuyenDLT" id="quanHuyenDaiLy" style="width: 387px" disabled>
+							<select name="quanHuyenDLT" id="quanHuyenDaiLy" style="width: 387px" th:disabled="*{!daiLyThue}">
 								<option value="">Quận / Huyện</option>
 							</select>
 							<br /><label style="color: red" id="loiQuanHuyenDLT"></label>
@@ -201,23 +201,24 @@
 					<tr>
 						<td style="width: 45%">Điện thoại ĐLT</td>
 						<td style="text-align: left">
-							<input type="text" th:field="*{sdtDLT}" name="sdtDLT" id="dienThoaiDaiLy" style="width: 365px" disabled/>
-
+							<input type="text" th:field="*{sdtDLT}" name="sdtDLT" id="dienThoaiDaiLy" style="width: 365px" th:disabled="*{!daiLyThue}"/>
+							<label th:if="${errorSdtDLT}" th:text="${errorSdtDLT}" class="error"></label>
 						</td>
 					</tr>
 
 					<tr>
 						<td style="width: 45%">Fax ĐLT</td>
 						<td style="text-align: left">
-							<input type="text" th:field="*{faxDLT}" name="faxDLT" id="faxDaiLy" style="width: 365px" disabled/>
+							<input type="text" th:field="*{faxDLT}" name="faxDLT" id="faxDaiLy" style="width: 365px" th:disabled="*{!daiLyThue}"/>
 
 						</td>
 					</tr>
 
 					<tr>
-						<td style="width: 45%">Email ĐLT</td>
+						<td style="width: 45%">Email ĐLT (*)</td>
 						<td style="text-align: left">
-							<input type="email" th:field="*{emailDLT}" name="emailDLT" id="emailDaiLy" style="width: 365px" disabled/>
+							<input type="email" th:field="*{emailDLT}" name="emailDLT" id="emailDaiLy" style="width: 365px" th:disabled="*{!daiLyThue}"/>
+							<label th:if="${errorEmailDLT}" th:text="${errorEmailDLT}" class="error"></label>
 						</td>
 					</tr>
 
@@ -227,10 +228,10 @@
 						</td>
 						<td style="text-align: left">
 							<label>Số</label>
-							<input th:field="*{soHopDong}" name="soHopDong" type="text" id="soHopDong" style="width: 137px" disabled/>
+							<input th:field="*{soHopDong}" name="soHopDong" type="text" id="soHopDong" style="width: 137px" th:disabled="*{!daiLyThue}"/>
 							<label>Ngày</label>
 							<input th:field="*{ngayHopDong}" name="ngayHopDong" placeholder="dd-mm-yyyy" value=""
-        min="1950-01-01" max="2050-12-31" type="date" id="ngayHopDong" style="width: 137px" disabled/>
+        min="1950-01-01" max="2050-12-31" type="date" id="ngayHopDong" style="width: 137px" th:disabled="*{!daiLyThue}"/>
 						</td>
 						<br /><label style="color: red" id="loiSoHopDong"></label>
 						<br /><label style="color: red" id="loiNgayHopDong"></label>
