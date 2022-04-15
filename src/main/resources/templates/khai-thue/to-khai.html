@@ -122,7 +122,7 @@
 					<tr>
 						<td style="width: 45%">Điện thoại (*)</td>
 						<td style="text-align: left">
-							<input th:field="*{sdt}" name="sdt" type="text" id="dienThoai" style="width: 365px" />
+							<input th:field="*{sdt}" name="sdt" type="text" id="dienThoai" style="width: 365px" readonly/>
 							<br /><label style="color: red" id="loiSdt"></label>
 						</td>
 					</tr>
@@ -138,7 +138,7 @@
 					<tr>
 						<td style="width: 45%">Email (*)</td>
 						<td style="text-align: left">
-							<input th:field="*{email}" name="email" type="email" id="email" style="width: 365px" />
+							<input th:field="*{email}" name="email" type="email" id="email" style="width: 365px" readonly/>
 							<br /><label style="color: red" id="loiEmail"></label>
 						</td>
 					</tr>
@@ -157,6 +157,7 @@
 						<td style="text-align: left">
 							<input th:field="*{tenDaiLyThue}" name="tenDaiLyThue" type="text" id="tenDaiLy" style="width: 365px" th:disabled="*{!daiLyThue}" />
 							<label th:if="${errorTenDaiLyThue}" th:text="${errorTenDaiLyThue}" class="error"></label>
+							<br /><label style="color: red" id="loiTenDLT"></label>
 						</td>
 					</tr>
 
@@ -165,6 +166,7 @@
 						<td style="text-align: left">
 							<input th:field="*{maSoThueDLT}" name="maSoThueDLT" type="text" id="maSoThueDaiLy" style="width: 365px" th:disabled="*{!daiLyThue}" />
 							<label th:if="${errorMaSoThueDLT}" th:text="${errorMaSoThueDLT}" class="error"></label>
+							<br /><label style="color: red" id="loiMstDLT"></label>
 						</td>
 					</tr>
 
@@ -200,7 +202,7 @@
 
 
 					<tr>
-						<td style="width: 45%">Điện thoại ĐLT</td>
+						<td style="width: 45%">Điện thoại ĐLT(*)</td>
 						<td style="text-align: left">
 							<input type="text" th:field="*{sdtDLT}" name="sdtDLT" id="dienThoaiDaiLy" style="width: 365px" th:disabled="*{!daiLyThue}"/>
 							<label th:if="${errorSdtDLT}" th:text="${errorSdtDLT}" class="error"></label>

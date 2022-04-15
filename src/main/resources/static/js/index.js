@@ -107,8 +107,8 @@ $(document).ready(function() {
 		$("#loiQuanHuyen").hide();
 	});
 	
-	$("#tenDaiLyThue").change(function() {
-		var hoTen = $("#tenDaiLyThue").val();
+	$("#tenDaiLy").change(function() {
+		var hoTen = $("#tenDaiLy").val();
 		if(!hoTen) {
 			$("#loiTenDLT").text("*Tên đại lý thuế không để trống");
             $("#loiTenDLT").show();
@@ -117,8 +117,8 @@ $(document).ready(function() {
 		$("#loiTenDLT").hide();
 	});
 	
-	$("#maSoThueDLT").change(function() {
-		var maSoThueDLT = $("#maSoThueDLT").val();
+	$("#maSoThueDaiLy").change(function() {
+		var maSoThueDLT = $("#maSoThueDaiLy").val();
 		if(!maSoThueDLT) {
 			$("#loiMstDLT").text("*Mã số thuế không để trống");
             $("#loiMstDLT").show();
@@ -847,14 +847,14 @@ function validateToKhaiForm() {
     }
     
 	var fax = $("#fax").val();
-	if(!/^\d{10}$/.test(fax)) {
+	if(fax && !/^\d{10}$/.test(fax)) {
 		$("#loiFax").text("*Số fax phải là số");
         $("#loiFax").show();
         return false;
 	}
 	
 	var dienThoai = $("#dienThoai").val();
-	if(!/^\d{10}$/.test(dienThoai)) {
+	if(dienThoai && !/^\d{10}$/.test(dienThoai)) {
 		$("#loiSdt").text("*Số điện thoại phải là số");
         $("#loiSdt").show();
         return false;
@@ -878,6 +878,7 @@ function validateToKhaiForm() {
 	        return false;
 	    }
 		if(!/^\d+$/.test(maSoThueDLT)) {
+            $("#maSoThueDaiLy").focus();
 			$("#loiMstDLT").text("*Mã số thuế phải là số");
             $("#loiMstDLT").show();
             return false;
@@ -909,7 +910,7 @@ function validateToKhaiForm() {
 	    
 	    var soHopDong = $("#soHopDong").val();
 		if(!soHopDong) {
-			$("#loiSoHopDong").focus();
+			$("#soHopDong").focus();
 			$("#loiSoHopDong").text("*Số hợp đồng không để trống");
             $("#loiSoHopDong").show();
             return false;
@@ -924,15 +925,15 @@ function validateToKhaiForm() {
 		}
 		
 		var fax = $("#faxDaiLy").val();
-		if(!/^\d{10}$/.test(fax)) {
-			$("#loiFaxDLT").text("*Số fax phải là số");
+		if(fax && !/^\d{10}$/.test(fax)) {
+			$("#loiFaxDLT").text("*Số fax phải gồm 10 số");
 	        $("#loiFaxDLT").show();
 	        return false;
 		}
 		
 		var dienThoai = $("#dienThoaiDaiLy").val();
-		if(!/^\d{10}$/.test(dienThoai)) {
-			$("#loiSdtDLT").text("*Số điện thoại phải là số");
+		if(dienThoai &&!/^\d{10}$/.test(dienThoai)) {
+			$("#loiSdtDLT").text("*Số điện thoại phải gồm 10 số");
 	        $("#loiSdtDLT").show();
 	        return false;
 		}
