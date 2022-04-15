@@ -34,8 +34,16 @@ public class KhaiThueController {
 
 	@GetMapping("to-khai")
 	public String toKhai(Model model, Authentication authentication) {
-		model.addAttribute("nguoiDung", nguoiDungRepo.getById(((NguoiDung) authentication.getPrincipal()).getId()));
-		model.addAttribute("toKhaiThue", new ToKhaiThue());
+		NguoiDung nguoiDung=nguoiDungRepo.getById(((NguoiDung) authentication.getPrincipal()).getId());
+		// init data form
+		ToKhaiThue toKhaiThue=new ToKhaiThue();
+		toKhaiThue.setNamKeKhai(2022);
+		toKhaiThue.setHoTen(nguoiDung.getHoTen());
+		toKhaiThue.setMaSoThue(nguoiDung.getMaSoThue());
+		toKhaiThue.setDiaChi(nguoiDung.getDiaChi());
+		toKhaiThue.setSdt(nguoiDung.getSdt());
+		toKhaiThue.setEmail(nguoiDung.getEmail());
+		model.addAttribute("toKhaiThue", toKhaiThue);
 		return "khai-thue/to-khai";
 	}
 

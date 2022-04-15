@@ -1,12 +1,9 @@
 package com.example.hotrotinhthue.model;
 
 import lombok.Data;
-
 import javax.persistence.*;
-
 import org.hibernate.annotations.CreationTimestamp;
-
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Data
@@ -63,7 +60,7 @@ public class ToKhaiThue {
 
     private String soHopDong;
 
-    private Date ngayHopDong;
+    private String ngayHopDong;
 
     private boolean cuTru;
 
@@ -102,7 +99,7 @@ public class ToKhaiThue {
     
     @PrePersist
 	void createdAt() {
-		this.ngayNop = new Date();
+		this.ngayNop = new Date(System.currentTimeMillis()) ;
 	}
 
 }

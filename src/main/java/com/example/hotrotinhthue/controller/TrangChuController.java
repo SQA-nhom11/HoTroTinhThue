@@ -32,6 +32,11 @@ public class TrangChuController {
         return "index";
     }
     
+    @GetMapping("error")
+	public String error() {
+		return "error";
+	}
+    
     @GetMapping("dang-ki")
     public String dangKi(Model model) {
     	model.addAttribute("nguoiDung", new NguoiDung());
