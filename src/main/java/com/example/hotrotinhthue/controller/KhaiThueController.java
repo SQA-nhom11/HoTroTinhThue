@@ -149,6 +149,7 @@ public class KhaiThueController {
 		// Pass validate
 		toKhaiThueRepo.save(toKhaiThue);
 		model.addAttribute("message", "Khai thuế thành công, mời bạn đóng thuế hoặc quay về trang chủ!");
+		model.addAttribute("nguoiDung", nguoiDungRepo.getById(((NguoiDung)authentication.getPrincipal()).getId()));
 		System.out.println("Khai bao thue thanh cong");
 		return "nop-thue/index";
 	}
