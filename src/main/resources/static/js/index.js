@@ -181,6 +181,47 @@ $(document).ready(function() {
 		}
 		$("#loiNgayHopDong").hide();
 	});
+	
+	$("#fax").change(function() {
+		var fax = $("#fax").val();
+		if(!/^\d{10}$/.test(fax)) {
+			$("#loiFax").text("*Số fax phải phải gồm 10 số");
+            $("#loiFax").show();
+            return;
+		}
+		$("#loiFax").hide();
+	});
+	
+	$("#dienThoai").change(function() {
+		var dienThoai = $("#dienThoai").val();
+		if(!/^\d{10}$/.test(dienThoai)) {
+			$("#loiSdt").text("*Số điện thoại phải gồm 10 số");
+            $("#loiSdt").show();
+            return;
+		}
+		$("#loiSdt").hide();
+	});
+	
+	$("#faxDaiLy").change(function() {
+		var fax = $("#faxDaiLy").val();
+		if(!/^\d{10}$/.test(fax)) {
+			$("#loiFaxDLT").text("*Số fax phải gồm 10 số");
+	        $("#loiFaxDLT").show();
+	        return;
+		}
+		$("#loiFaxDLT").hide();
+	});
+	
+	$("#dienThoaiDaiLy").change(function() {
+		var dienThoai = $("#dienThoaiDaiLy").val();
+		if(!/^\d{10}$/.test(dienThoai)) {
+			$("#loiSdtDLT").text("*Số điện thoại phải gồm 10 số");
+	        $("#loiSdtDLT").show();
+	        return;
+		}
+		$("#loiSdtDLT").hide();
+	});
+		
 
     $("#kyTinhThue").change(function() {
         var kyTinhThue = $("#kyTinhThue option:selected").val();
@@ -805,6 +846,20 @@ function validateToKhaiForm() {
         return false;
     }
     
+	var fax = $("#fax").val();
+	if(!/^\d{10}$/.test(fax)) {
+		$("#loiFax").text("*Số fax phải là số");
+        $("#loiFax").show();
+        return false;
+	}
+	
+	var dienThoai = $("#dienThoai").val();
+	if(!/^\d{10}$/.test(dienThoai)) {
+		$("#loiSdt").text("*Số điện thoại phải là số");
+        $("#loiSdt").show();
+        return false;
+	}
+
     var daiLyThue = $("#daiLyThue").prop( "checked" );
     if (daiLyThue) {
         var tenDaiLyThue = $("#tenDaiLy").val();
@@ -866,6 +921,20 @@ function validateToKhaiForm() {
 			$("#loiNgayHopDong").text("*Ngày hợp đồng không để trống");
             $("#loiNgayHopDong").show();
             return flase;
+		}
+		
+		var fax = $("#faxDaiLy").val();
+		if(!/^\d{10}$/.test(fax)) {
+			$("#loiFaxDLT").text("*Số fax phải là số");
+	        $("#loiFaxDLT").show();
+	        return false;
+		}
+		
+		var dienThoai = $("#dienThoaiDaiLy").val();
+		if(!/^\d{10}$/.test(dienThoai)) {
+			$("#loiSdtDLT").text("*Số điện thoại phải là số");
+	        $("#loiSdtDLT").show();
+	        return false;
 		}
     }
     

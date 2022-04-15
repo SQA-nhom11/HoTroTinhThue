@@ -127,7 +127,7 @@
 						<td style="width: 45%">Điện thoại</td>
 						<td style="text-align: left">
 							<input th:field="*{sdt}" name="sdt" type="text" id="dienThoai" style="width: 365px" />
-
+							<br /><label style="color: red" id="loiSdt"></label>
 						</td>
 					</tr>
 
@@ -135,7 +135,7 @@
 						<td style="width: 45%">Fax</td>
 						<td style="text-align: left">
 							<input th:field="*{fax}" name="fax" type="text" id="fax" style="width: 365px" />
-
+							<br /><label style="color: red" id="loiFax"></label>
 						</td>
 					</tr>
 
@@ -143,6 +143,7 @@
 						<td style="width: 45%">Email</td>
 						<td style="text-align: left">
 							<input th:field="*{email}" name="email" type="email" id="email" style="width: 365px" />
+							<br /><label style="color: red" id="loiEmail"></label>
 						</td>
 					</tr>
 
@@ -206,7 +207,7 @@
 						<td style="width: 45%">Điện thoại ĐLT</td>
 						<td style="text-align: left">
 							<input type="text" th:field="*{sdtDLT}" name="sdtDLT" id="dienThoaiDaiLy" style="width: 365px" disabled/>
-
+							<br /><label style="color: red" id="loiSdtDLT"></label>
 						</td>
 					</tr>
 
@@ -214,7 +215,7 @@
 						<td style="width: 45%">Fax ĐLT</td>
 						<td style="text-align: left">
 							<input type="text" th:field="*{faxDLT}" name="faxDLT" id="faxDaiLy" style="width: 365px" disabled/>
-
+							<br /><label style="color: red" id="loiFaxDLT"></label>
 						</td>
 					</tr>
 
