@@ -50,6 +50,11 @@ public class KhaiThueController {
 	@PostMapping("to-khai")
 	public String toKhai(@ModelAttribute("toKhaiThue") ToKhaiThue toKhaiThue, HttpSession session, Model model) {
 		System.out.println(toKhaiThue);
+		boolean isValid=true;
+		
+		if(!isValid) return "khai-thue/to-khai";
+		
+		// Pass validate
 		session.setAttribute("toKhaiThue", toKhaiThue);
 		return "khai-thue/tinh-thue";
 	}
