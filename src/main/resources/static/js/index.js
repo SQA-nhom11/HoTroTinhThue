@@ -181,6 +181,47 @@ $(document).ready(function() {
 		}
 		$("#loiNgayHopDong").hide();
 	});
+	
+	$("#fax").change(function() {
+		var fax = $("#fax").val();
+		if(!/^\d{10}$/.test(fax)) {
+			$("#loiFax").text("*Số fax phải phải gồm 10 số");
+            $("#loiFax").show();
+            return;
+		}
+		$("#loiFax").hide();
+	});
+	
+	$("#dienThoai").change(function() {
+		var dienThoai = $("#dienThoai").val();
+		if(!/^\d{10}$/.test(dienThoai)) {
+			$("#loiSdt").text("*Số điện thoại phải gồm 10 số");
+            $("#loiSdt").show();
+            return;
+		}
+		$("#loiSdt").hide();
+	});
+	
+	$("#faxDaiLy").change(function() {
+		var fax = $("#faxDaiLy").val();
+		if(!/^\d{10}$/.test(fax)) {
+			$("#loiFaxDLT").text("*Số fax phải gồm 10 số");
+	        $("#loiFaxDLT").show();
+	        return;
+		}
+		$("#loiFaxDLT").hide();
+	});
+	
+	$("#dienThoaiDaiLy").change(function() {
+		var dienThoai = $("#dienThoaiDaiLy").val();
+		if(!/^\d{10}$/.test(dienThoai)) {
+			$("#loiSdtDLT").text("*Số điện thoại phải gồm 10 số");
+	        $("#loiSdtDLT").show();
+	        return;
+		}
+		$("#loiSdtDLT").hide();
+	});
+		
 
     $("#kyTinhThue").change(function() {
         var kyTinhThue = $("#kyTinhThue option:selected").val();
@@ -321,7 +362,7 @@ $(document).ready(function() {
             return;
         }
         var kyTinhThue = localStorage.getItem("kyTinhThue");
-        if (kyTinhThue == "T") {
+        if (kyTinhThue == "Tháng") {
             if (v % 4400000 !== 0) {
                 $("#loiGiamTruNPT").text("* Mỗi người phụ thuộc giảm 4.400.000đ");
                 $("#loiGiamTruNPT").show();
@@ -754,7 +795,6 @@ function loadTinhThue() {
 }
 
 function validateToKhaiForm() {
-	return true;
    	var nam = $("#namKeKhai").val();
     if (!nam || nam < 2000 || nam > 2900) {
         $("#namKeKhai").focus();
@@ -806,7 +846,21 @@ function validateToKhaiForm() {
         return false;
     }
     
-    var daiLyThue = $("#daiLyThue").val();
+	var fax = $("#fax").val();
+	if(!/^\d{10}$/.test(fax)) {
+		$("#loiFax").text("*Số fax phải là số");
+        $("#loiFax").show();
+        return false;
+	}
+	
+	var dienThoai = $("#dienThoai").val();
+	if(!/^\d{10}$/.test(dienThoai)) {
+		$("#loiSdt").text("*Số điện thoại phải là số");
+        $("#loiSdt").show();
+        return false;
+	}
+
+    var daiLyThue = $("#daiLyThue").prop( "checked" );
     if (daiLyThue) {
         var tenDaiLyThue = $("#tenDaiLy").val();
 	    if (!tenDaiLyThue) {
@@ -821,7 +875,7 @@ function validateToKhaiForm() {
 	        $("#maSoThueDaiLy").focus();
 	        $("#loiMstDLT").text("*Mã số thuế không để trống");
             $("#loiMstDLT").show();
-	       
+	        return false;
 	    }
 		if(!/^\d+$/.test(maSoThueDLT)) {
 			$("#loiMstDLT").text("*Mã số thuế phải là số");
@@ -858,7 +912,7 @@ function validateToKhaiForm() {
 			$("#loiSoHopDong").focus();
 			$("#loiSoHopDong").text("*Số hợp đồng không để trống");
             $("#loiSoHopDong").show();
-            return;
+            return false;
 		}
 		
 		var ngayHopDong = $("#ngayHopDong").val();
@@ -866,7 +920,21 @@ function validateToKhaiForm() {
 			$("#ngayHopDong").focus();
 			$("#loiNgayHopDong").text("*Ngày hợp đồng không để trống");
             $("#loiNgayHopDong").show();
-            return;
+            return flase;
+		}
+		
+		var fax = $("#faxDaiLy").val();
+		if(!/^\d{10}$/.test(fax)) {
+			$("#loiFaxDLT").text("*Số fax phải là số");
+	        $("#loiFaxDLT").show();
+	        return false;
+		}
+		
+		var dienThoai = $("#dienThoaiDaiLy").val();
+		if(!/^\d{10}$/.test(dienThoai)) {
+			$("#loiSdtDLT").text("*Số điện thoại phải là số");
+	        $("#loiSdtDLT").show();
+	        return false;
 		}
     }
     
