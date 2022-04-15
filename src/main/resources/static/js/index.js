@@ -754,7 +754,6 @@ function loadTinhThue() {
 }
 
 function validateToKhaiForm() {
-	return true;
    	var nam = $("#namKeKhai").val();
     if (!nam || nam < 2000 || nam > 2900) {
         $("#namKeKhai").focus();
@@ -821,7 +820,7 @@ function validateToKhaiForm() {
 	        $("#maSoThueDaiLy").focus();
 	        $("#loiMstDLT").text("*Mã số thuế không để trống");
             $("#loiMstDLT").show();
-	       
+	        return false;
 	    }
 		if(!/^\d+$/.test(maSoThueDLT)) {
 			$("#loiMstDLT").text("*Mã số thuế phải là số");
@@ -858,7 +857,7 @@ function validateToKhaiForm() {
 			$("#loiSoHopDong").focus();
 			$("#loiSoHopDong").text("*Số hợp đồng không để trống");
             $("#loiSoHopDong").show();
-            return;
+            return false;
 		}
 		
 		var ngayHopDong = $("#ngayHopDong").val();
@@ -866,7 +865,7 @@ function validateToKhaiForm() {
 			$("#ngayHopDong").focus();
 			$("#loiNgayHopDong").text("*Ngày hợp đồng không để trống");
             $("#loiNgayHopDong").show();
-            return;
+            return flase;
 		}
     }
     
