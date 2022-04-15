@@ -94,7 +94,7 @@ $(document).ready(function() {
             $("#loiTinhThanh").show();
             return;
 		}
-		$("#loiTenNguoiNopThue").hide();
+		$("#loiTinhThanh").hide();
 	});
 	
 	$("#quanHuyen").change(function() {
@@ -185,7 +185,7 @@ $(document).ready(function() {
 	$("#fax").change(function() {
 		var fax = $("#fax").val();
 		if(!/^\d{10}$/.test(fax)) {
-			$("#loiFax").text("*Số fax phải phải gồm 10 số");
+			$("#loiFax").text("*Số fax phải gồm 10 số");
             $("#loiFax").show();
             return;
 		}
@@ -848,7 +848,7 @@ function validateToKhaiForm() {
     
 	var fax = $("#fax").val();
 	if(fax && !/^\d{10}$/.test(fax)) {
-		$("#loiFax").text("*Số fax phải là số");
+		$("#loiFax").text("*Số fax phải gồm 10 số");
         $("#loiFax").show();
         return false;
 	}
