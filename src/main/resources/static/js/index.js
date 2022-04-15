@@ -321,7 +321,7 @@ $(document).ready(function() {
             return;
         }
         var kyTinhThue = localStorage.getItem("kyTinhThue");
-        if (kyTinhThue == "T") {
+        if (kyTinhThue == "Tháng") {
             if (v % 4400000 !== 0) {
                 $("#loiGiamTruNPT").text("* Mỗi người phụ thuộc giảm 4.400.000đ");
                 $("#loiGiamTruNPT").show();
@@ -805,7 +805,7 @@ function validateToKhaiForm() {
         return false;
     }
     
-    var daiLyThue = $("#daiLyThue").val();
+    var daiLyThue = $("#daiLyThue").prop( "checked" );
     if (daiLyThue) {
         var tenDaiLyThue = $("#tenDaiLy").val();
 	    if (!tenDaiLyThue) {
