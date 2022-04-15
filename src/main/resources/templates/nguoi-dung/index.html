@@ -60,7 +60,7 @@
 							<td style="text-align: right; width: 30%">Tờ khai đã nộp</td>
 							<td style="text-align: left">
 								<select name="mauTKhai" id="mauTKhai" style="width: 380px">
-									<option value="KKTNCN02" selected>Tờ khai ngày 2/4/2022 - Mẫu số 02/KK-TNCN</option>
+									<option th:each="toKhaiThue : ${nguoiDung.toKhaiThueList}" th:text="'Tờ khai số '+${toKhaiThue.id}+' - Ngày '+${toKhaiThue.ngayNop}+': Mẫu số 02/KK-TNCN'" th:value="${toKhaiThue.id}"></option>
 								</select>
 							</td>
 						</tr>

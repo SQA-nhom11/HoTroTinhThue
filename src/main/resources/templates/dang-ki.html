@@ -11,7 +11,7 @@
 				<span class="text-nav">Trang chủ » </span>
 				<span class="nav-now">Đăng kí</span>
 			</div>
-			<form name="form-register" method="post" th:object="${nguoiDung}" th:action="@{~/dang-ki}">
+			<form name="form-register" th:object="${nguoiDung}" th:action="@{~/dang-ki}" method="post">
 				<label th:if="${message}" th:text="${message}" class="message"></label>
 				<div class="box-common-content">
 					<table class="form-table">

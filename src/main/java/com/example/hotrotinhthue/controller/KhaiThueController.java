@@ -5,6 +5,8 @@ import com.example.hotrotinhthue.model.ToKhaiThue;
 import com.example.hotrotinhthue.repository.NguoiDungRepo;
 import com.example.hotrotinhthue.repository.ToKhaiThueRepo;
 
+import java.util.regex.Pattern;
+
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
@@ -34,14 +36,59 @@ public class KhaiThueController {
 
 	@GetMapping("to-khai")
 	public String toKhai(Model model, Authentication authentication) {
-		model.addAttribute("nguoiDung", nguoiDungRepo.getById(((NguoiDung) authentication.getPrincipal()).getId()));
-		model.addAttribute("toKhaiThue", new ToKhaiThue());
+		NguoiDung nguoiDung=nguoiDungRepo.getById(((NguoiDung) authentication.getPrincipal()).getId());
+		// init data form
+		ToKhaiThue toKhaiThue=new ToKhaiThue();
+		toKhaiThue.setNamKeKhai(2022);
+		toKhaiThue.setHoTen(nguoiDung.getHoTen());
+		toKhaiThue.setMaSoThue(nguoiDung.getMaSoThue());
+		toKhaiThue.setDiaChi(nguoiDung.getDiaChi());
+		toKhaiThue.setSdt(nguoiDung.getSdt());
+		toKhaiThue.setEmail(nguoiDung.getEmail());
+		model.addAttribute("toKhaiThue", toKhaiThue);
 		return "khai-thue/to-khai";
 	}
 
 	@PostMapping("to-khai")
 	public String toKhai(@ModelAttribute("toKhaiThue") ToKhaiThue toKhaiThue, HttpSession session, Model model) {
 		System.out.println(toKhaiThue);
+		
+		// Default validate
+		boolean valid=true;
+		if(toKhaiThue.isDaiLyThue()) {
+			if(toKhaiThue.getTenDaiLyThue().trim().equals("")) {
+	        	model.addAttribute("errorTenDaiLyThue", "* Trường không để trống");
+	        	valid=false;
+	        }
+	        	
+			if(toKhaiThue.getMaSoThueDLT().trim().equals("")) {
+	        	model.addAttribute("errorMaSoThueDLT", "* Trường không để trống");
+	        	valid=false;
+	        }
+			
+			if(toKhaiThue.getDiaChiDLT().trim().equals("")) {
+	        	model.addAttribute("errorDiaChiDLT", "* Trường không để trống");
+	        	valid=false;
+	        }
+	        	
+	        if(!Pattern.matches("^[0-9]+$", toKhaiThue.getSdtDLT())) {
+	        	model.addAttribute("errorSdtDLT", "* Số điện thoại không hợp lệ");
+	        	valid=false;
+	        }
+	        	
+	        if(!Pattern.matches("^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$", toKhaiThue.getEmailDLT())) {
+	        	model.addAttribute("errorEmailDLT", "* Email không hợp lệ");
+	        	valid=false;
+	        }
+	        
+	        if(toKhaiThue.getSoHopDong().trim().equals("")) {
+	        	model.addAttribute("errorSoHopDong", "* Trường không để trống");
+	        	valid=false;
+	        }
+		}
+		if(!valid) return "khai-thue/to-khai";
+		
+		// Pass validate
 		session.setAttribute("toKhaiThue", toKhaiThue);
 		return "khai-thue/tinh-thue";
 	}
