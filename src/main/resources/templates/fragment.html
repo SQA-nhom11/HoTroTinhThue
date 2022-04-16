@@ -30,7 +30,7 @@
 			<div sec:authorize="isAuthenticated()" class="dangnhap">
 				<button class="btn-head">
 					<span>Xin chào, </span>
-					<a th:href="@{~/nguoi-dung}"><strong th:text="${#authentication.getPrincipal().getHoTen()}"></strong></a>
+					<strong th:text="${#authentication.getPrincipal().getHoTen()}"></strong>
 				</button>
 				<button class="btn-head">
 					<a th:href="@{~/dang-xuat}">Đăng xuất</a>
@@ -47,6 +47,9 @@
 				</li>
 				<li>
 					<a th:classappend="${#request.requestURI.startsWith('/nop-thue') ? 'tab current':'tab'}" th:href="@{~/nop-thue}"><span>Nộp thuế</span></a>
+				</li>
+				<li>
+					<a th:classappend="${#request.requestURI.startsWith('/nguoi-dung') ? 'tab current':'tab'}" th:href="@{~/nguoi-dung}"><span>Thông tin cá nhân</span></a>
 				</li>
 			</ul>
 		</div>
