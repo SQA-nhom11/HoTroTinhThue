@@ -4,34 +4,49 @@ import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Data
 @Table(name = "nguoidung")
 public class NguoiDung implements UserDetails {
 	@Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
+	@NotBlank(message = "* Trường không để trống")
     private String maSoThue;
 
     @Column(nullable = false)
     private String matKhau;
 
     @Column(nullable = false)
+    @NotBlank(message = "* Trường không để trống")
+//    @Pattern(regexp = "^([A-Z a-z]+)(\\s{1}[A-Z a-z]+)$", message = "* Họ tên không hợp lệ (không dấu)")
     private String hoTen;
-    
+
+	@NotBlank(message = "* Trường không để trống")
     private String diaChi;
 
     @Column(nullable = false)
+    @NotBlank(message = "* Trường không để trống")
+    @Pattern(regexp = "^[0-9]+$", message = "* Số căn cước công dân không hợp lệ")
     private String cccd;
     
+    @NotBlank(message = "* Trường không để trống")
     private String coQuanThue;
 
+    @NotBlank(message = "* Trường không để trống")
+    @Pattern(regexp = "^[0-9]+$", message = "* Số điện thoại không hợp lệ")
     private String sdt;
 
+    @NotBlank(message = "* Trường không để trống")
+    @Pattern(regexp = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$", message = "* Email không hợp lệ")
     private String email;
 
     @Override
@@ -69,11 +84,7 @@ public class NguoiDung implements UserDetails {
 		return maSoThue;
 	}
 
-
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nguoiDung")
-//    private List<ToKhaiThue> toKhaiThueList = new ArrayList<>();
-//
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nguoiDung")
-//    private List<BangNopThue> bangNopThueList = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nguoiDung")
+    private List<ToKhaiThue> toKhaiThueList = new ArrayList<>();
 
 }

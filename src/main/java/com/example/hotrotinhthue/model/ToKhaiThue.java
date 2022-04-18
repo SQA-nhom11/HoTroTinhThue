@@ -1,9 +1,9 @@
 package com.example.hotrotinhthue.model;
 
 import lombok.Data;
-
 import javax.persistence.*;
-import java.util.Date;
+import org.hibernate.annotations.CreationTimestamp;
+import java.sql.Date;
 
 @Entity
 @Data
@@ -11,14 +11,61 @@ import java.util.Date;
 public class ToKhaiThue {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
-    @Column(name = "cu_tru", nullable = false)
+    private String kyTinhThue;
+
+    private int quyKeKhai;
+
+    private int thangKeKhai;
+
+    private int namKeKhai;
+
+    private String loaiToKhai;
+
+    private String hoTen;
+
+    private String maSoThue;
+
+    private String tinhThanh;
+
+    private String quanHuyen;
+
+    private String diaChi;
+
+    private String email;
+
+    private String sdt;
+
+    private String fax;
+
+    @Column(nullable = false)
+    private boolean daiLyThue;
+
+    private String tenDaiLyThue;
+
+    private String maSoThueDLT;
+
+    private String tinhThanhDLT;
+
+    private String quanHuyenDLT;
+
+    private String diaChiDLT;
+
+    private String emailDLT;
+
+    private String sdtDLT;
+
+    private String faxDLT;
+
+    private String soHopDong;
+
+    private String ngayHopDong;
+
     private boolean cuTru;
 
-    @Column(name = "da_nop_tien", nullable = false)
-    private boolean daNopTien;
-
+    @CreationTimestamp
+	@Column(updatable = false)
     private Date ngayNop;
 
     private long chiTieu20;
@@ -48,7 +95,11 @@ public class ToKhaiThue {
     private long chiTieu32;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "nguoi_dung")
     private NguoiDung nguoiDung;
+    
+    @PrePersist
+	void createdAt() {
+		this.ngayNop = new Date(System.currentTimeMillis()) ;
+	}
 
 }

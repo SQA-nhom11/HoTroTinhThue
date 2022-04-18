@@ -12,8 +12,8 @@
 				<span class="text-nav">Người dùng » </span>
 				<span class="nav-now">Đổi thông tin</span>
 			</div>
-			<form name="form-register" method="post" th:action="@{~/nguoi-dung/doi-thong-tin}">
-				<label th:if="${statusChangeInfo}" th:text="${statusChangeInfo}" style="color: red; text-align: center; display: block;" id="loiDangKi"></label>
+			<form name="form-register" method="post" th:object="${nguoiDung}" th:action="@{~/nguoi-dung/doi-thong-tin}">
+				<label th:if="${message}" th:text="${message}" class="message"></label>
 				<div class="box-common-content">
 					<table class="form-table">
 						<tbody>
@@ -21,28 +21,29 @@
 								<td style="text-align: right; width: 30%">Mã số thuế<font class="color-red">*</font>
 								</td>
 								<td style="text-align: left">
-									<input type="text" id="mst" name="maSoThue" th:value="${nguoiDung.maSoThue}" style="width: 358px" disabled/>
+									<input type="text" id="mst" name="maSoThue" th:value="*{maSoThue}" style="width: 358px" disabled/>
 								</td>
 							</tr>
 							<tr>
 								<td style="text-align: right; width: 30%">Họ và tên<font class="color-red">*</font>
 								</td>
 								<td style="text-align: left">
-									<input type="text" id="ten" name="hoTen" th:value="${nguoiDung.hoTen}" style="width: 358px" disabled/>
+									<input type="text" id="ten" name="hoTen" th:value="*{hoTen}" style="width: 358px" disabled/>
 								</td>
 							</tr>
 							<tr>
 								<td style="text-align: right; width: 30%">Địa chỉ cư trú<font class="color-red">*</font>
 								</td>
 								<td style="text-align: left">
-									<input type="text" id="diaChi" name="diaChi" th:value="${nguoiDung.diaChi}" style="width: 358px" />
+									<input type="text" id="diaChi" name="diaChi" th:value="*{diaChi}" style="width: 358px" />
+									<label th:if="${errorDiaChi}" th:text="${errorDiaChi}" class="error"></label>
 								</td>
 							</tr>
 							<tr>
 								<td style="text-align: right; width: 30%">Căn cước công dân<font class="color-red">*</font>
 								</td>
 								<td style="text-align: left">
-									<input type="text" id="cccd" name="cccd" th:value="${nguoiDung.cccd}" style="width: 358px" disabled/>
+									<input type="text" id="cccd" name="cccd" th:value="*{cccd}" style="width: 358px" disabled/>
 								</td>
 							</tr>
 							<tr>
@@ -50,21 +51,24 @@
 									</font>
 								</td>
 								<td style="text-align: left">
-									<input type="text" id="coquanthue" name="coquanthue" th:value="${nguoiDung.coQuanThue}" style="width: 358px" />
+									<input type="text" id="coquanthue" name="coQuanThue" th:value="*{coQuanThue}" style="width: 358px" />
+									<label th:if="${errorCoQuanThue}" th:text="${errorCoQuanThue}" class="error"></label>
 								</td>
 							</tr>
 							<tr>
 								<td style="text-align: right; width: 30%">Số điện thoại<font class="color-red">*</font>
 								</td>
 								<td style="text-align: left">
-									<input type="text" id="sdt" name="sdt" th:value="${nguoiDung.sdt}" style="width: 358px" />
+									<input type="text" id="sdt" name="sdt" th:value="*{sdt}" style="width: 358px" />
+									<label th:if="${errorSdt}" th:text="${errorSdt}" class="error"></label>
 								</td>
 							</tr>
 							<tr>
 								<td style="text-align: right; width: 30%">Email<font class="color-red">*</font>
 								</td>
 								<td style="text-align: left">
-									<input type="text" id="email" name="email" th:value="${nguoiDung.email}" style="width: 358px" />
+									<input type="text" id="email" name="email" th:value="*{email}" style="width: 358px" />
+									<label th:if="${errorEmail}" th:text="${errorEmail}" class="error"></label>
 								</td>
 							</tr>
 							<tr>

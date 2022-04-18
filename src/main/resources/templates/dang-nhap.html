@@ -12,7 +12,8 @@
 				<span class="nav-now">Đăng nhập</span>
 			</div>
 			<form name="form-login" method="post" th:action="@{~/dang-nhap}">
-				<label th:if="${param.login_error}" style="color: red; text-align: center; display: block;" id="loiDangKi">Tài khoản hoặc mật khẩu không chính xác!</label>
+				<label th:if="${param.login_error}" class="message">Tài khoản hoặc mật khẩu không chính xác!</label>
+				<label th:if="${message}" th:text="${message}" class="message"></label>
 				<div class="box-common-content">
 					<table class="form-table">
 						<tbody>
