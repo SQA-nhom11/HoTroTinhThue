@@ -63,7 +63,7 @@
 						<td style="width: 45%">Năm<font class="color-red">*</font></td>
 						<td style="text-align: left">
 							<input name="namKeKhai" th:field="*{namKeKhai}" id="namKeKhai" style="width: 365px" type="number" min="1900" max="2099" step="1"/>
-							<label id="loiNamThang" class="error"></label>
+							<br /><label id="loiNamThang"  style="color: red" ></label>
 						</td>
 					</tr>
 
@@ -213,7 +213,7 @@
 						<td style="width: 45%">Fax ĐLT</td>
 						<td style="text-align: left">
 							<input type="text" th:field="*{faxDLT}" name="faxDLT" id="faxDaiLy" style="width: 365px" th:disabled="*{!daiLyThue}"/>
-							<label style="color: red" id="loiFaxDLT"></label>
+                                                        <br /><label style="color: red" id="loiFaxDLT"></label>
 						</td>
 					</tr>
 
@@ -237,8 +237,8 @@
                                                         <input th:field="*{ngayHopDong}" name="ngayHopDong" placeholder="dd-mm-yyyy" value=""
         min="1950-01-01" max="2050-12-31" type="date" id="ngayHopDong" style="width: 137px" th:disabled="*{!daiLyThue}"/>
                                                         <label th:if="${errorSoHopDong}" th:text="${errorSoHopDong}" class="error"></label>
-						<br /><label style="color: red" id="loiSoHopDong"></label>
-						<br /><label style="color: red" id="loiNgayHopDong"></label>
+                                                        <label style="color: red" id="loiSoHopDong"></label>
+                                                        <label style="color: red" id="loiNgayHopDong"></label>
 						</td>
 						
 					</tr>

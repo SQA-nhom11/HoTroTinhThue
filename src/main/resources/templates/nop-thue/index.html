@@ -20,7 +20,7 @@
 							<tr>
 								<td style="text-align: right; width: 30%">Chọn tờ khai</td>
 								<td style="text-align: left">
-									<select name="idToKhai" id="toKhai" style="width: 530px">
+									<select name="idToKhai" id="toKhai" style="width: 530px" autofocus="true">
 										<option th:if="${not #lists.isEmpty(nguoiDung.toKhaiThueList)}" th:each="toKhaiThue : ${nguoiDung.toKhaiThueList}" th:text="'Tờ khai số '+${toKhaiThue.id}+' - Ngày '+${toKhaiThue.ngayNop}+': Mẫu số 02/KK-TNCN'" th:value="${toKhaiThue.id}"></option>
 									</select>
 								</td>
