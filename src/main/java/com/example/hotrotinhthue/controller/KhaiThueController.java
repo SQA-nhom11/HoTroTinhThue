@@ -120,6 +120,7 @@ public class KhaiThueController {
 			toKhaiThue.setChiTieu27(chiTieu27.longValue());
 			toKhaiThue.setChiTieu22(toKhaiThue.getChiTieu23() + chiTieu24.longValue() + chiTieu25.longValue() + chiTieu26.longValue() + chiTieu27.longValue());
 			toKhaiThue.setChiTieu28(chiTieu20.longValue() - chiTieu21.longValue() - toKhaiThue.getChiTieu22());
+			if(toKhaiThue.getChiTieu28()<0) toKhaiThue.setChiTieu28(0);
 			toKhaiThue.setChiTieu29(tongThue(toKhaiThue.getChiTieu28(), toKhaiThue.getKyTinhThue()));
 			toKhaiThue.setChiTieu30(0);
 			toKhaiThue.setChiTieu31(20);
