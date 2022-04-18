@@ -12,7 +12,7 @@
 				<span class="text-nav">Trang chủ » </span>
 				<span class="nav-now">Kê khai thuế</span>
 			</div>
-			<form id="declarationForm" action="">
+                    <form id="declarationForm" th:action="@{~/khai-thue/to-khai}" method="get">
 				<div class="box-common-content">
 					<table class="form-table">
 						<tbody>
@@ -29,7 +29,7 @@
                                                         <tr>
 							<td></td>
 							<td>
-								<button th:href="@{~/to-khai}" style="margin-left: 230px" class="btn-fuction"><a th:href="@{~/khai-thue/to-khai}">Tiếp tục</a></
+                                                            <button type="submit" style="margin-left: 230px" class="btn-fuction">Tiếp tục</button>
 							</td>
 							</tr>
 						</tbody>

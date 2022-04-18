@@ -15,16 +15,16 @@
 				<label th:if="${param.login_error}" class="message">Tài khoản hoặc mật khẩu không chính xác!</label>
 				<label th:if="${message}" th:text="${message}" class="message"></label>
 				<div class="box-common-content">
-					<table class="form-table">
+                                    <table class="form-table" style="width: 65%">
 						<tbody>
 							<tr>
-								<td style="text-align: right; width: 30%">Mã số thuế</td>
+								<td style="width: 30%">Mã số thuế</td>
 								<td style="text-align: left">
 									<input type="text" id="username" name="username" value="" style="width: 358px" />
 								</td>
 							</tr>
 							<tr>
-								<td style="text-align: right; width: 30%">Mật khẩu</td>
+								<td style="width: 30%">Mật khẩu</td>
 								<td style="text-align: left">
 									<input type="password" id="password" name="password" value="" style="width: 358px" />
 								</td>

@@ -13,26 +13,26 @@
 				<span class="nav-now">Đổi thông tin</span>
 			</div>
 			<form name="form-register" method="post" th:object="${nguoiDung}" th:action="@{~/nguoi-dung/doi-thong-tin}">
-				<label th:if="${message}" th:text="${message}" class="message"></label>
+				<label th:if="${message}" th:text="${message}" class="message" style="color: #0099db"></label>
 				<div class="box-common-content">
-					<table class="form-table">
+					<table class="form-table" style="width: 65%">
 						<tbody>
 							<tr>
-								<td style="text-align: right; width: 30%">Mã số thuế<font class="color-red">*</font>
+								<td style="width: 30%">Mã số thuế<font class="color-red">*</font>
 								</td>
 								<td style="text-align: left">
 									<input type="text" id="mst" name="maSoThue" th:value="*{maSoThue}" style="width: 358px" disabled/>
 								</td>
 							</tr>
 							<tr>
-								<td style="text-align: right; width: 30%">Họ và tên<font class="color-red">*</font>
+								<td style="width: 30%">Họ và tên<font class="color-red">*</font>
 								</td>
 								<td style="text-align: left">
 									<input type="text" id="ten" name="hoTen" th:value="*{hoTen}" style="width: 358px" disabled/>
 								</td>
 							</tr>
 							<tr>
-								<td style="text-align: right; width: 30%">Địa chỉ cư trú<font class="color-red">*</font>
+								<td style="width: 30%">Địa chỉ cư trú<font class="color-red">*</font>
 								</td>
 								<td style="text-align: left">
 									<input type="text" id="diaChi" name="diaChi" th:value="*{diaChi}" style="width: 358px" />
@@ -40,14 +40,14 @@
 								</td>
 							</tr>
 							<tr>
-								<td style="text-align: right; width: 30%">Căn cước công dân<font class="color-red">*</font>
+								<td style="width: 30%">Căn cước công dân<font class="color-red">*</font>
 								</td>
 								<td style="text-align: left">
 									<input type="text" id="cccd" name="cccd" th:value="*{cccd}" style="width: 358px" disabled/>
 								</td>
 							</tr>
 							<tr>
-								<td style="text-align: right; width: 30%">Cơ quan thuế quản lý<font class="color-red">*
+								<td style="width: 30%">Cơ quan thuế quản lý<font class="color-red">*
 									</font>
 								</td>
 								<td style="text-align: left">
@@ -56,7 +56,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td style="text-align: right; width: 30%">Số điện thoại<font class="color-red">*</font>
+								<td style="width: 30%">Số điện thoại<font class="color-red">*</font>
 								</td>
 								<td style="text-align: left">
 									<input type="text" id="sdt" name="sdt" th:value="*{sdt}" style="width: 358px" />
@@ -64,7 +64,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td style="text-align: right; width: 30%">Email<font class="color-red">*</font>
+								<td style="width: 30%">Email<font class="color-red">*</font>
 								</td>
 								<td style="text-align: left">
 									<input type="text" id="email" name="email" th:value="*{email}" style="width: 358px" />
