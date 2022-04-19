@@ -35,7 +35,7 @@ public class NguoiDungController {
 	
 	@PostMapping("doi-mat-khau")
 	public String doiMatKhau(Model model, String matKhauMoi, String nhapLaiMatKhau, Authentication authentication) {
-		NguoiDung nguoiDung=(NguoiDung) authentication.getPrincipal();
+		NguoiDung nguoiDung=nguoiDungRepo.getById(((NguoiDung)authentication.getPrincipal()).getId());
 		BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder(4);
 		System.out.println(matKhauMoi+" "+nhapLaiMatKhau);
 		
