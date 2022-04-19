@@ -1,7 +1,9 @@
 package com.example.hotrotinhthue.controller;
 
+import com.example.hotrotinhthue.model.MaSoThue;
 import com.example.hotrotinhthue.model.NguoiDung;
 import com.example.hotrotinhthue.model.ToKhaiThue;
+import com.example.hotrotinhthue.repository.MaSoThueRepo;
 import com.example.hotrotinhthue.repository.NguoiDungRepo;
 import com.example.hotrotinhthue.repository.ToKhaiThueRepo;
 
@@ -28,6 +30,9 @@ public class KhaiThueController {
 	
 	@Autowired
 	ToKhaiThueRepo toKhaiThueRepo;
+
+	@Autowired
+	MaSoThueRepo maSoThueRepo;
 
 	@GetMapping("")
 	public String index() {
@@ -64,8 +69,14 @@ public class KhaiThueController {
 			if(toKhaiThue.getMaSoThueDLT().trim().equals("")) {
 	        	model.addAttribute("errorMaSoThueDLT", "* Trường không để trống");
 	        	valid=false;
-	        }
-			
+	        } else {
+				if(!maSoThueRepo.findById(toKhaiThue.getMaSoThueDLT().trim()).isPresent()) {
+					model.addAttribute("errorMaSoThueDLT", "* Mã số thuế này không tồn tại");
+					valid=false;
+				}
+			}
+
+
 			if(toKhaiThue.getDiaChiDLT().trim().equals("")) {
 	        	model.addAttribute("errorDiaChiDLT", "* Trường không để trống");
 	        	valid=false;
