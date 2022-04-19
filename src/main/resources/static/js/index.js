@@ -67,9 +67,9 @@ $(document).ready(function() {
 	$("#maSoThue").change(function() {
 		var maSoThue = $("#maSoThue").val();
 		if(!maSoThue) {
-			$("#loiMaSoThue").text("*Mã số thuế không để trống");
-            $("#loiMaSoThue").show();
-            return;
+                    $("#loiMaSoThue").text("*Mã số thuế không để trống");
+                    $("#loiMaSoThue").show();
+                    return;
 		}
 		if(!/^\d+$/.test(maSoThue)) {
 			$("#loiMaSoThue").text("*Mã số thuế phải là số");
