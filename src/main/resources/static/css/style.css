@@ -12,6 +12,10 @@ a {
   text-decoration: none;
 }
 
+button {
+    cursor: pointer;
+}
+
 select, input, button {
   border: 1px solid #ccc;
   padding: 4px 10px;
@@ -197,13 +201,17 @@ ul#tabmenu li a span {
   color: red;
 }
 
+.success-message {
+  color: blue;
+}
+
 .subtitle {
 	font-style: italic;
 	text-align: center;
 	display: block;
 }
 
-.message {
+.message, .success-message {
 	text-align: center;
 	display: block;
 }

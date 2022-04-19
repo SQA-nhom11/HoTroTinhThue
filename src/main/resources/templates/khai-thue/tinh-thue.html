@@ -13,7 +13,7 @@
 			</div>
 			<h1 style="text-align: center;">Tờ khai thuế thu nhập cá nhân</h1>
 			<span class="subtitle">(Áp dụng cho cá nhân cư trú và cá nhân không cư trú có thu nhập từ tiền lương, tiền<br /> công khai thuế trực tiếp với cơ quan thuế)</span>
-			<span class="subtitle">(Tiếp tục)</span>
+			<span class="subtitle">(Trang 2/2)</span>
 			<form id="formTinhThue" method="post" onsubmit="return validateTinhThueForm()" th:action="@{~/khai-thue/tinh-thue}">
 				<div class="box-common-content">
 					<table class="form-table-khaithue">
@@ -32,7 +32,7 @@
 								<td colspan="2">Tổng thu nhập chịu thuế phát sinh trong kỳ</td>
 								<td style="text-align: left">
 									<input value="0" type="number" id="thuNhapChiuThue" name="chiTieu20"
-                                                                               style="width: 300px" onchange="tinhThue()"/>
+                                                                               style="width: 300px" onchange="tinhThue()"  autofocus="true"/>
 									<br /><label style="color: red" id="loiThuNhap"></label>
 								</td>
 							</tr>
@@ -99,7 +99,7 @@
 							</tr>
 
 							<tr>
-								<td></td>
+								<td>e</td>
 								<td>Khoản đóng quỹ hưu trí tự nguyện được trừ</td>
 								<td style="text-align: left">
 									<input value="0" type="number" id="giamTruHuuTri" name="chiTieu27"
@@ -169,8 +169,8 @@
 							<tr>
 								<td colspan="3"></td>
 								<td>
-									<input style="margin-left: 230px" type="submit" value="Nộp tờ khai"
-										id="btnNopToKhai" class="btn-fuction" />
+                                                                    <button style="margin-left: 230px" type="submit"
+                                                                            id="btnNopToKhai" class="btn-fuction">Nộp tờ khai</button>
 								</td>
 							</tr>
 						</tbody>

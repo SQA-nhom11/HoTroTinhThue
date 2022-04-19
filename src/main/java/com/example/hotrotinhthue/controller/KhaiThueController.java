@@ -1,7 +1,9 @@
 package com.example.hotrotinhthue.controller;
 
+import com.example.hotrotinhthue.model.MaSoThue;
 import com.example.hotrotinhthue.model.NguoiDung;
 import com.example.hotrotinhthue.model.ToKhaiThue;
+import com.example.hotrotinhthue.repository.MaSoThueRepo;
 import com.example.hotrotinhthue.repository.NguoiDungRepo;
 import com.example.hotrotinhthue.repository.ToKhaiThueRepo;
 
@@ -28,6 +30,9 @@ public class KhaiThueController {
 	
 	@Autowired
 	ToKhaiThueRepo toKhaiThueRepo;
+
+	@Autowired
+	MaSoThueRepo maSoThueRepo;
 
 	@GetMapping("")
 	public String index() {
@@ -64,8 +69,14 @@ public class KhaiThueController {
 			if(toKhaiThue.getMaSoThueDLT().trim().equals("")) {
 	        	model.addAttribute("errorMaSoThueDLT", "* Trường không để trống");
 	        	valid=false;
-	        }
-			
+	        } else {
+				if(!maSoThueRepo.findById(toKhaiThue.getMaSoThueDLT().trim()).isPresent()) {
+					model.addAttribute("errorMaSoThueDLT", "* Mã số thuế này không tồn tại");
+					valid=false;
+				}
+			}
+
+
 			if(toKhaiThue.getDiaChiDLT().trim().equals("")) {
 	        	model.addAttribute("errorDiaChiDLT", "* Trường không để trống");
 	        	valid=false;
@@ -120,6 +131,7 @@ public class KhaiThueController {
 			toKhaiThue.setChiTieu27(chiTieu27.longValue());
 			toKhaiThue.setChiTieu22(toKhaiThue.getChiTieu23() + chiTieu24.longValue() + chiTieu25.longValue() + chiTieu26.longValue() + chiTieu27.longValue());
 			toKhaiThue.setChiTieu28(chiTieu20.longValue() - chiTieu21.longValue() - toKhaiThue.getChiTieu22());
+			if(toKhaiThue.getChiTieu28()<0) toKhaiThue.setChiTieu28(0);
 			toKhaiThue.setChiTieu29(tongThue(toKhaiThue.getChiTieu28(), toKhaiThue.getKyTinhThue()));
 			toKhaiThue.setChiTieu30(0);
 			toKhaiThue.setChiTieu31(20);
