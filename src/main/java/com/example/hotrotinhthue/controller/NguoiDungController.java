@@ -55,7 +55,7 @@ public class NguoiDungController {
 		
 		nguoiDung.setMatKhau(bCrypt.encode(matKhauMoi));
 		nguoiDungRepo.save(nguoiDung);
-		model.addAttribute("message", "Đổi mật khẩu thành công!");
+		model.addAttribute("successMessage", "Đổi mật khẩu thành công!");
 		System.out.println("Doi mat khau thanh cong");
 		return "nguoi-dung/doi-mat-khau";
 	}
@@ -107,6 +107,6 @@ public class NguoiDungController {
 		model.addAttribute("message", "Thay đổi thông tin thành công!");
 		model.addAttribute("nguoiDung", nguoiDungRepo.getById(((NguoiDung)authentication.getPrincipal()).getId()));
 		System.out.println("Thay doi thong tin thanh cong");
-		return "nguoi-dung/doi-thong-tin";
+		return "nguoi-dung/index";
 	}
 }

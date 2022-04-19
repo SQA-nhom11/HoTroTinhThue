@@ -65,14 +65,21 @@ public class TrangChuController {
     	}
         
         // Data exist check
-    	if(m==null || !m.getId().equals(nguoiDung.getMaSoThue())
-    		||!m.getCccd().equals(nguoiDung.getCccd())
-    		|| !m.getHoTen().equals(nguoiDung.getHoTen())) {
+    	if(m==null || !m.getId().equals(nguoiDung.getMaSoThue())) {
     		model.addAttribute("nguoiDung", nguoiDung);
-    		model.addAttribute("message", "Dữ liệu đăng kí không tồn tại trong hệ thống!");
-    		System.out.println("Du lieu dang ki khong ton tai trong he thong");
+    		model.addAttribute("message", "Mã số thuế không tồn tại!");
+    		System.out.println("Mã số thuế không tồn tại!");
     		return "dang-ki";
     	}
+
+		// Data exist check
+		if(m==null ||!m.getCccd().equals(nguoiDung.getCccd())
+				|| !m.getHoTen().equals(nguoiDung.getHoTen())) {
+			model.addAttribute("nguoiDung", nguoiDung);
+			model.addAttribute("message", "Thông tin họ và tên hoặc CCCD không đúng với mã số thuế!");
+			System.out.println("Thông tin họ và tên hoặc CCCD không đúng với mã số thuế!");
+			return "dang-ki";
+		}
     	
     	// Password check
     	if(!Pattern.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,16}$", nguoiDung.getMatKhau())) {

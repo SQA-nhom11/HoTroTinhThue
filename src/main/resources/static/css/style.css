@@ -201,13 +201,17 @@ ul#tabmenu li a span {
   color: red;
 }
 
+.success-message {
+  color: blue;
+}
+
 .subtitle {
 	font-style: italic;
 	text-align: center;
 	display: block;
 }
 
-.message {
+.message, .success-message {
 	text-align: center;
 	display: block;
 }
