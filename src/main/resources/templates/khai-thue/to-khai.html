@@ -130,7 +130,7 @@
 					<tr>
 						<td style="width: 45%">Fax</td>
 						<td style="text-align: left">
-							<input th:field="*{fax}" name="fax" type="text" id="fax" style="width: 365px" />
+							<input th:field="*{fax}" name="fax" type="number" id="fax" style="width: 365px" />
 							<br /><label style="color: red" id="loiFax"></label>
 						</td>
 					</tr>
@@ -213,7 +213,7 @@
 					<tr>
 						<td style="width: 45%">Fax ĐLT</td>
 						<td style="text-align: left">
-							<input type="text" th:field="*{faxDLT}" name="faxDLT" id="faxDaiLy" style="width: 365px" th:disabled="*{!daiLyThue}"/>
+							<input type="number" th:field="*{faxDLT}" name="faxDLT" id="faxDaiLy" style="width: 365px" th:disabled="*{!daiLyThue}"/>
                                                         <br /><label style="color: red" id="loiFaxDLT"></label>
 						</td>
 					</tr>
