@@ -870,6 +870,7 @@ function validateToKhaiForm() {
     
 	var fax = $("#fax").val();
 	if(fax && !/^\d{10}$/.test(fax)) {
+        $("#fax").focus();
 		$("#loiFax").text("*Số fax phải gồm 10 số");
         $("#loiFax").show();
         return false;
