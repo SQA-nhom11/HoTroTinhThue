@@ -41,7 +41,7 @@ public class NguoiDungController {
 		
 		// Password check
     	if(!Pattern.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,16}$", matKhauMoi)) {
-    		model.addAttribute("message", "Mật khẩu từ 8-16 kí tự, chứa ít nhất một chữ cái và một chữ số");
+    		model.addAttribute("message", "Mật khẩu từ 8-16 kí tự, chứa ít nhất một chữ và số");
     		System.out.println("Mat khau khong hop le");
     		return "nguoi-dung/doi-mat-khau";
     	}

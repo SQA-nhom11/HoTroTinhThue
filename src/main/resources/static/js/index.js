@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 //    $("#btnCon").click(function() {
 //        var mauTKhai = $("#mauTKhai option:selected").val();
 //        if (!mauTKhai) {
@@ -10,9 +10,8 @@ $(document).ready(function() {
 //        }
 //    });
 
-    
 
-    $("#namKeKhai").on("input", function() {
+    $("#namKeKhai").on("input", function () {
         var nam = $("#namKeKhai").val();
         if (!nam) {
             $("#loiNamThang").text("* Năm không để trống");
@@ -27,7 +26,7 @@ $(document).ready(function() {
         $("#loiNamThang").hide();
     });
 
-    $("#daiLyThue").click(function(e) {
+    $("#daiLyThue").click(function (e) {
         var checkbox = $(this);
         if (!checkbox.is(":checked")) {
             $("#tenDaiLy").prop("disabled", true);
@@ -54,198 +53,198 @@ $(document).ready(function() {
         }
     });
 
-	$("#hoTen").change(function() {
-		var hoTen = $("#hoTen").val();
-		if(!hoTen) {
-			$("#loiTenNguoiNopThue").text("*Họ tên không để trống");
+    $("#hoTen").change(function () {
+        var hoTen = $("#hoTen").val();
+        if (!hoTen) {
+            $("#loiTenNguoiNopThue").text("*Họ tên không để trống");
             $("#loiTenNguoiNopThue").show();
             return;
-		}
-		$("#loiTenNguoiNopThue").hide();
-	});
-	
-	$("#maSoThue").change(function() {
-		var maSoThue = $("#maSoThue").val();
-		if(!maSoThue) {
-                    $("#loiMaSoThue").text("*Mã số thuế không để trống");
-                    $("#loiMaSoThue").show();
-                    return;
-		}
-		if(!/^\d+$/.test(maSoThue)) {
-			$("#loiMaSoThue").text("*Mã số thuế phải là số");
+        }
+        $("#loiTenNguoiNopThue").hide();
+    });
+
+    $("#maSoThue").change(function () {
+        var maSoThue = $("#maSoThue").val();
+        if (!maSoThue) {
+            $("#loiMaSoThue").text("*Mã số thuế không để trống");
             $("#loiMaSoThue").show();
             return;
-		}
-		$("#loiMaSoThue").hide();
-	});
-	
-	$("#diaChi").change(function() {
-		var diaChi = $("#diaChi").val();
-		if(!diaChi) {
-			$("#loiDiaChi").text("*Địa chỉ không để trống");
+        }
+        if (!/^\d+$/.test(maSoThue)) {
+            $("#loiMaSoThue").text("*Mã số thuế phải là số");
+            $("#loiMaSoThue").show();
+            return;
+        }
+        $("#loiMaSoThue").hide();
+    });
+
+    $("#diaChi").change(function () {
+        var diaChi = $("#diaChi").val();
+        if (!diaChi) {
+            $("#loiDiaChi").text("*Địa chỉ không để trống");
             $("#loiDiaChi").show();
             return;
-		}
-		$("#loiDiaChi").hide();
-	});
-	
-	$("#tinhThanh").change(function() {
-		var tinhThanh = $("#tinhThanh").val();
-		if(!tinhThanh) {
-			$("#loiTinhThanh").text("*Hãy lựa chọn Tỉnh/Thành phố");
+        }
+        $("#loiDiaChi").hide();
+    });
+
+    $("#tinhThanh").change(function () {
+        var tinhThanh = $("#tinhThanh").val();
+        if (!tinhThanh) {
+            $("#loiTinhThanh").text("*Hãy lựa chọn Tỉnh/Thành phố");
             $("#loiTinhThanh").show();
             return;
-		}
-		$("#loiTinhThanh").hide();
-	});
-	
-	$("#quanHuyen").change(function() {
-		var quanHuyen = $("#quanHuyen").val();
-		if(!quanHuyen) {
-			$("#loiQuanHuyen").text("*Hãy lựa chọn Quận/Huyện");
+        }
+        $("#loiTinhThanh").hide();
+    });
+
+    $("#quanHuyen").change(function () {
+        var quanHuyen = $("#quanHuyen").val();
+        if (!quanHuyen) {
+            $("#loiQuanHuyen").text("*Hãy lựa chọn Quận/Huyện");
             $("#loiQuanHuyen").show();
             return;
-		}
-		$("#loiQuanHuyen").hide();
-	});
-	
-	$("#tenDaiLy").change(function() {
-		var hoTen = $("#tenDaiLy").val();
-		if(!hoTen) {
-			$("#loiTenDLT").text("*Tên đại lý thuế không để trống");
+        }
+        $("#loiQuanHuyen").hide();
+    });
+
+    $("#tenDaiLy").change(function () {
+        var hoTen = $("#tenDaiLy").val();
+        if (!hoTen) {
+            $("#loiTenDLT").text("*Tên đại lý thuế không để trống");
             $("#loiTenDLT").show();
             return;
-		}
-		$("#loiTenDLT").hide();
-	});
-	
-	$("#maSoThueDaiLy").change(function() {
-		var maSoThueDLT = $("#maSoThueDaiLy").val();
-		if(!maSoThueDLT) {
-			$("#loiMstDLT").text("*Mã số thuế không để trống");
+        }
+        $("#loiTenDLT").hide();
+    });
+
+    $("#maSoThueDaiLy").change(function () {
+        var maSoThueDLT = $("#maSoThueDaiLy").val();
+        if (!maSoThueDLT) {
+            $("#loiMstDLT").text("*Mã số thuế không để trống");
             $("#loiMstDLT").show();
             return;
-		}
-		if(!/^\d+$/.test(maSoThueDLT)) {
-			$("#loiMstDLT").text("*Mã số thuế phải là số");
+        }
+        if (!/^\d+$/.test(maSoThueDLT)) {
+            $("#loiMstDLT").text("*Mã số thuế phải là số");
             $("#loiMstDLT").show();
             return;
-		}
-		$("#loiMstDLT").hide();
-	});
-	
-	$("#diaChiDaiLy").change(function() {
-		var diaChi = $("#diaChiDaiLy").val();
-		if(!diaChi) {
-			$("#loiDiaChiDLT").text("*Địa chỉ không để trống");
+        }
+        $("#loiMstDLT").hide();
+    });
+
+    $("#diaChiDaiLy").change(function () {
+        var diaChi = $("#diaChiDaiLy").val();
+        if (!diaChi) {
+            $("#loiDiaChiDLT").text("*Địa chỉ không để trống");
             $("#loiDiaChiDLT").show();
             return;
-		}
-		$("#loiDiaChi").hide();
-	});
-	
-	$("#tinhThanhDaiLy").change(function() {
-		var tinhThanh = $("#tinhThanhDaiLy").val();
-		if(!tinhThanh) {
-			$("#loiTinhThanhDLT").text("*Hãy lựa chọn Tỉnh/Thành phố");
+        }
+        $("#loiDiaChi").hide();
+    });
+
+    $("#tinhThanhDaiLy").change(function () {
+        var tinhThanh = $("#tinhThanhDaiLy").val();
+        if (!tinhThanh) {
+            $("#loiTinhThanhDLT").text("*Hãy lựa chọn Tỉnh/Thành phố");
             $("#loiTinhThanhDLT").show();
             return;
-		}
-		$("#loiTinhThanhDLT").hide();
-	});
-	
-	$("#quanHuyenDaiLy").change(function() {
-		var quanHuyen = $("#quanHuyenDaiLy").val();
-		if(!quanHuyen) {
-			$("#loiQuanHuyenDLT").text("*Hãy lựa chọn Quận/Huyện");
+        }
+        $("#loiTinhThanhDLT").hide();
+    });
+
+    $("#quanHuyenDaiLy").change(function () {
+        var quanHuyen = $("#quanHuyenDaiLy").val();
+        if (!quanHuyen) {
+            $("#loiQuanHuyenDLT").text("*Hãy lựa chọn Quận/Huyện");
             $("#loiQuanHuyenDLT").show();
             return;
-		}
-		$("#loiQuanHuyenDLT").hide();
-	});
-        
-        $("#emailDaiLy").change(function() {
-		var email = $("#emailDaiLy").val();
-		if(!email) {
-			$("#loiEmailDLT").text("*Email không để trống");
+        }
+        $("#loiQuanHuyenDLT").hide();
+    });
+
+    $("#emailDaiLy").change(function () {
+        var email = $("#emailDaiLy").val();
+        if (!email) {
+            $("#loiEmailDLT").text("*Email không để trống");
             $("#loiEmailDLT").show();
             return;
-		}
-		$("#loiEmailDLT").hide();
-	});
-	
-	$("#soHopDong").change(function() {
-		var soHopDong = $("#soHopDong").val();
-                
-		if(!soHopDong) {
-			$("#loiSoHopDong").text("*Số hợp đồng không để trống");
+        }
+        $("#loiEmailDLT").hide();
+    });
+
+    $("#soHopDong").change(function () {
+        var soHopDong = $("#soHopDong").val();
+
+        if (!soHopDong) {
+            $("#loiSoHopDong").text("*Số hợp đồng không để trống");
             $("#loiSoHopDong").show();
             return;
-		}
-                if(!/^\d+$/.test(soHopDong)) {
-		    $("#loiSoHopDong").text("*Số hợp đồng là số");
-                    $("#loiSoHopDong").show();
-                return;
-                }
-                $("#loiSoHopDong").hide();
-	});
+        }
+        if (!/^\d+$/.test(soHopDong)) {
+            $("#loiSoHopDong").text("*Số hợp đồng là số");
+            $("#loiSoHopDong").show();
+            return;
+        }
+        $("#loiSoHopDong").hide();
+    });
 
-	$("#ngayHopDong").change(function() {
-		var ngayHopDong = $("#ngayHopDong").val();
-		if(!ngayHopDong) {
-                    $("#loiNgayHopDong").text("*Ngày hợp đồng không để trống");
-                    $("#loiNgayHopDong").show();
-                    return;
-		}
-		$("#loiNgayHopDong").hide();
-	});
-	
-	$("#fax").change(function() {
-		var fax = $("#fax").val();
-		if(!/^\d{10}$/.test(fax)) {
+    $("#ngayHopDong").change(function () {
+        var ngayHopDong = $("#ngayHopDong").val();
+        if (!ngayHopDong) {
+            $("#loiNgayHopDong").text("*Ngày hợp đồng không để trống");
+            $("#loiNgayHopDong").show();
+            return;
+        }
+        $("#loiNgayHopDong").hide();
+    });
+
+    $("#fax").change(function () {
+        var fax = $("#fax").val();
+        if (!/^\d{10}$/.test(fax)) {
             $("#loiFax").text("*Số fax phải gồm 10 số");
             $("#loiFax").show();
         }
-		$("#loiFax").hide();
-	});
-	
-	$("#dienThoai").change(function() {
-		var dienThoai = $("#dienThoai").val();
-		if(!/^\d{10}$/.test(dienThoai)) {
-                    $("#loiSdt").text("*Số điện thoại phải gồm 10 số");
-                    $("#loiSdt").show();
-                return;
-		}
-		$("#loiSdt").hide();
-	});
-	
-	$("#faxDaiLy").change(function() {
-		var fax = $("#faxDaiLy").val();
-		if(!/^\d{10}$/.test(fax)) {
-			$("#loiFaxDLT").text("*Số fax phải gồm 10 số");
-	        $("#loiFaxDLT").show();
-	        return;
-		}
-		$("#loiFaxDLT").hide();
-	});
-	
-	$("#dienThoaiDaiLy").change(function() {
-		var dienThoai = $("#dienThoaiDaiLy").val();
-		if(!/^\d{10}$/.test(dienThoai)) {
-                    $("#loiSdtDLT").text("*Số điện thoại phải gồm 10 số");
-                    $("#loiSdtDLT").show();
-	        return;
-		}
-                if(!dienThoai) {
-                    $("#loiSdtDLT").text("*Điện thoại không để trống");
-                    $("#loiSdtDLT").show();
-	        return;
-		}
-		$("#loiSdtDLT").hide();
-	});
-		
+        $("#loiFax").hide();
+    });
 
-    $("#kyTinhThue").change(function() {
+    $("#dienThoai").change(function () {
+        var dienThoai = $("#dienThoai").val();
+        if (!/^\d{10}$/.test(dienThoai)) {
+            $("#loiSdt").text("*Số điện thoại phải gồm 10 số");
+            $("#loiSdt").show();
+            return;
+        }
+        $("#loiSdt").hide();
+    });
+
+    $("#faxDaiLy").change(function () {
+        var fax = $("#faxDaiLy").val();
+        if (!/^\d{10}$/.test(fax)) {
+            $("#loiFaxDLT").text("*Số fax phải gồm 10 số");
+            $("#loiFaxDLT").show();
+            return;
+        }
+        $("#loiFaxDLT").hide();
+    });
+
+    $("#dienThoaiDaiLy").change(function () {
+        var dienThoai = $("#dienThoaiDaiLy").val();
+        if (!/^\d{10}$/.test(dienThoai)) {
+            $("#loiSdtDLT").text("*Số điện thoại phải gồm 10 số");
+            $("#loiSdtDLT").show();
+            return;
+        }
+        if (!dienThoai) {
+            $("#loiSdtDLT").text("*Điện thoại không để trống");
+            $("#loiSdtDLT").show();
+            return;
+        }
+        $("#loiSdtDLT").hide();
+    });
+
+
+    $("#kyTinhThue").change(function () {
         var kyTinhThue = $("#kyTinhThue option:selected").val();
         if (kyTinhThue == "Tháng") {
             $("#quy").hide();
@@ -269,16 +268,16 @@ $(document).ready(function() {
         window.location.href = "/khai-thue/tinh-thue";
     }); */
 
-    $("#coCuTru").click(function(e) {
+    $("#coCuTru").click(function (e) {
         var checkbox = $(this);
         if (!checkbox.is(":checked")) {
             e.preventDefault();
             return;
         }
-		$("#coCuTru").attr( "checked", true );
-		$("#khongCuTru").prop("checked", false);
-        $("#khongCuTru").removeAttr( "checked" );
-        
+        $("#coCuTru").attr("checked", true);
+        $("#khongCuTru").prop("checked", false);
+        $("#khongCuTru").removeAttr("checked");
+
         $("#thuNhapTinhThueKCT").prop("disabled", true);
 
         $("#thueThuNhapCaNhanKCT").val(0);
@@ -294,17 +293,17 @@ $(document).ready(function() {
         $("#giamTruHuuTri").prop("disabled", false);
     });
 
-    $("#khongCuTru").click(function(e) {
+    $("#khongCuTru").click(function (e) {
         var checkbox = $(this);
         if (!checkbox.is(":checked")) {
             e.preventDefault();
             return false;
         }
-        
-        $("#khongCuTru").attr( "checked", true );
+
+        $("#khongCuTru").attr("checked", true);
         $("#coCuTru").prop("checked", false);
-        $("#coCuTru").removeAttr( "checked" );
-        
+        $("#coCuTru").removeAttr("checked");
+
         $("#thuNhapTinhThueKCT").prop("disabled", false);
 
         $("#thuNhapChiuThue").val(0);
@@ -340,7 +339,7 @@ $(document).ready(function() {
         $("#giamTruHuuTri").prop("disabled", true);
     });
 
-    $("#thuNhapChiuThue").on("input", function() {
+    $("#thuNhapChiuThue").on("input", function () {
         var v = $("#thuNhapChiuThue").val();
         if (!v) {
             $("#loiThuNhap").text("* Không được để trống");
@@ -355,7 +354,7 @@ $(document).ready(function() {
         $("#loiThuNhap").hide();
     });
 
-    $("#thuNhapChiuThueMienGiam").on("input", function() {
+    $("#thuNhapChiuThueMienGiam").on("input", function () {
         var v = $("#thuNhapChiuThueMienGiam").val();
         if (!v) {
             $("#loiMienGiam").text("* Không được để trống");
@@ -371,7 +370,7 @@ $(document).ready(function() {
     });
 
 
-    $("#giamTruNguoiPhuThuoc").on("input", function() {
+    $("#giamTruNguoiPhuThuoc").on("input", function () {
         var v = $("#giamTruNguoiPhuThuoc").val();
         if (!v) {
             $("#loiGiamTruNPT").text("* Không được để trống");
@@ -400,7 +399,7 @@ $(document).ready(function() {
         $("#loiGiamTruNPT").hide();
     });
 
-    $("#giamTruTuThien").on("input", function() {
+    $("#giamTruTuThien").on("input", function () {
         var v = $("#giamTruTuThien").val();
         if (!v) {
             $("#loiGiamTruTuThien").text("* Không được để trống");
@@ -415,7 +414,7 @@ $(document).ready(function() {
         $("#loiGiamTruTuThien").hide();
     });
 
-    $("#giamTruBaoHiem").on("input", function() {
+    $("#giamTruBaoHiem").on("input", function () {
         var v = $("#giamTruBaoHiem").val();
         if (!v) {
             $("#loiGiamTruBaoHiem").text("* Không được để trống");
@@ -430,7 +429,7 @@ $(document).ready(function() {
         $("#loiGiamTruBaoHiem").hide();
     });
 
-    $("#giamTruHuuTri").on("input", function() {
+    $("#giamTruHuuTri").on("input", function () {
         var v = $("#giamTruHuuTri").val();
         if (!v) {
             $("#loiGiamTruHuuTri").text("* Không được để trống");
@@ -445,7 +444,7 @@ $(document).ready(function() {
         $("#loiGiamTruHuuTri").hide();
     });
 
-    $("#thuNhapTinhThueKCT").on("input", function() {
+    $("#thuNhapTinhThueKCT").on("input", function () {
         var v = $("#thuNhapTinhThueKCT").val();
         if (!v) {
             $("#loiThuNhapKCT").text("* Không được để trống");
@@ -461,7 +460,7 @@ $(document).ready(function() {
     });
 
 
-    $("#btnNopToKhai").click(function() {
+    $("#btnNopToKhai").click(function () {
         if ($("#coCuTru").is(":checked")) {
             var v = $("#thuNhapChiuThue").val();
             if (!v || v < 0) {
@@ -524,6 +523,7 @@ $(document).ready(function() {
         }
     });
 });
+
 // tinh thue
 function tinhThue() {
     var kyTinhThue = localStorage.getItem("kyTinhThue");
@@ -645,12 +645,12 @@ function tinhThue() {
 
 
 // district
-window.onload = function() {
-	var kyTinhThue = $("#kyTinhThue option:selected").val();
+window.onload = function () {
+    var kyTinhThue = $("#kyTinhThue option:selected").val();
     localStorage.setItem("kyTinhThue", kyTinhThue);
-    
+
     if ((address_2 = localStorage.getItem("address_2_saved"))) {
-        $('select[name="quanHuyen"] option').each(function() {
+        $('select[name="quanHuyen"] option').each(function () {
             if ($(this).text() == address_2) {
                 $(this).attr("selected", "");
             }
@@ -658,7 +658,7 @@ window.onload = function() {
     }
     if ((district = localStorage.getItem("district"))) {
         $('select[name="quanHuyen"]').html(district);
-        $('select[name="quanHuyen"]').on("change", function() {
+        $('select[name="quanHuyen"]').on("change", function () {
             var target = $(this).children("option:selected");
             target.attr("selected", "");
             $('select[name="quanHuyen"] option')
@@ -670,28 +670,28 @@ window.onload = function() {
             localStorage.setItem("address_2_saved", address_2);
         });
     }
-    $('select[name="tinhThanh"]').each(function() {
+    $('select[name="tinhThanh"]').each(function () {
         var $this = $(this),
             stc = "";
-        c.forEach(function(i, e) {
+        c.forEach(function (i, e) {
             e += +1;
             stc += '<option value="' + i + '">' + i + '</option>';
             $this.html('<option value="">Tỉnh / Thành phố</option>' + stc);
             if ((address_1 = localStorage.getItem("address_1_saved"))) {
                 $('select[name="tinhThanh"] option').each(
-                    function() {
+                    function () {
                         if ($(this).text() == address_1) {
                             $(this).attr("selected", "");
                         }
                     }
                 );
             }
-            $this.on("change", function(i) {
+            $this.on("change", function (i) {
                 i = $this.children("option:selected").index() - 1;
                 var str = "",
                     r = $this.val();
                 if (r != "") {
-                    arr[i].forEach(function(el) {
+                    arr[i].forEach(function (el) {
                         str += '<option value="' + el + '">' + el + "</option>";
                         $('select[name="quanHuyen"]').html(
                             '<option value="">Quận / Huyện</option>' + str
@@ -703,7 +703,7 @@ window.onload = function() {
                     localStorage.setItem("district", district);
                     $('select[name="quanHuyen"]').on(
                         "change",
-                        function() {
+                        function () {
                             var target = $(this).children("option:selected");
                             target.attr("selected", "");
                             $('select[name="quanHuyen"] option')
@@ -727,7 +727,7 @@ window.onload = function() {
         });
     });
     if ((address_4 = localStorage.getItem("address_4_saved"))) {
-        $('select[name="quanHuyenDLT"] option').each(function() {
+        $('select[name="quanHuyenDLT"] option').each(function () {
             if ($(this).text() == address_4) {
                 $(this).attr("selected", "");
             }
@@ -735,7 +735,7 @@ window.onload = function() {
     }
     if ((district2 = localStorage.getItem("district2"))) {
         $('select[name="quanHuyenDLT"]').html(district2);
-        $('select[name="quanHuyenDLT"]').on("change", function() {
+        $('select[name="quanHuyenDLT"]').on("change", function () {
             var target = $(this).children("option:selected");
             target.attr("selected", "");
             $('select[name="quanHuyenDLT"] option')
@@ -747,28 +747,28 @@ window.onload = function() {
             localStorage.setItem("address_4_saved", address_4);
         });
     }
-    $('select[name="tinhThanhDLT"]').each(function() {
+    $('select[name="tinhThanhDLT"]').each(function () {
         var $this = $(this),
             stc = "";
-        c.forEach(function(i, e) {
+        c.forEach(function (i, e) {
             e += +1;
             stc += "<option value=" + i + ">" + i + "</option>";
             $this.html('<option value="">Tỉnh / Thành phố</option>' + stc);
             if ((address_3 = localStorage.getItem("address_3_saved"))) {
                 $('select[name="tinhThanhDLT"] option').each(
-                    function() {
+                    function () {
                         if ($(this).text() == address_3) {
                             $(this).attr("selected", "");
                         }
                     }
                 );
             }
-            $this.on("change", function(i) {
+            $this.on("change", function (i) {
                 i = $this.children("option:selected").index() - 1;
                 var str = "",
                     r = $this.val();
                 if (r != "") {
-                    arr[i].forEach(function(el) {
+                    arr[i].forEach(function (el) {
                         str += '<option value="' + el + '">' + el + "</option>";
                         $('select[name="quanHuyenDLT"]').html(
                             '<option value="">Quận / Huyện</option>' + str
@@ -780,7 +780,7 @@ window.onload = function() {
                     localStorage.setItem("district2", district2);
                     $('select[name="quanHuyenDaiLy"]').on(
                         "change",
-                        function() {
+                        function () {
                             var target = $(this).children("option:selected");
                             target.attr("selected", "");
                             $('select[name="quanHuyenDLT"] option')
@@ -806,7 +806,7 @@ window.onload = function() {
 }
 
 function loadTinhThue() {
-   	var kyTinhThue = localStorage.getItem("kyTinhThue");
+    var kyTinhThue = localStorage.getItem("kyTinhThue");
     if (kyTinhThue == "Tháng") {
         $("#giamTruBanThan").val(11000000);
         $("#tongGiamTru").val(11000000);
@@ -817,12 +817,12 @@ function loadTinhThue() {
 }
 
 function validateToKhaiForm() {
-   	var nam = $("#namKeKhai").val();
+    var nam = $("#namKeKhai").val();
     if (!nam || nam < 2000 || nam > 2900) {
         $("#namKeKhai").focus();
         return false;
     }
-    
+
     var hoTen = $("#hoTen").val();
     if (!hoTen) {
         $("#hoTen").focus();
@@ -830,7 +830,7 @@ function validateToKhaiForm() {
         $("#loiTenNguoiNopThue").show();
         return false;
     }
-    
+
     var maSoThue = $("#maSoThue").val();
     if (!maSoThue) {
         $("#maSoThue").focus();
@@ -838,12 +838,12 @@ function validateToKhaiForm() {
         $("#loiMaSoThue").show();
         return false;
     }
-	if(!/^\d+$/.test(maSoThue)) {
-		$("#loiMaSoThue").text("*Mã số thuế phải là số");
+    if (!/^\d+$/.test(maSoThue)) {
+        $("#loiMaSoThue").text("*Mã số thuế phải là số");
         $("#loiMaSoThue").show();
         return false;
-	}
-    
+    }
+
     var diaChi = $("#diaChi").val();
     if (!diaChi) {
         $("#diaChi").focus();
@@ -851,7 +851,7 @@ function validateToKhaiForm() {
         $("#loiDiaChi").show();
         return false;
     }
-    
+
     var tinhThanh = $("#tinhThanh option:selected").val();
     if (!tinhThanh) {
         $("#tinhThanh").focus();
@@ -859,7 +859,7 @@ function validateToKhaiForm() {
         $("#loiTinhThanh").show();
         return false;
     }
-    
+
     var quanHuyen = $("#quanHuyen").val();
     if (!quanHuyen) {
         $("#quanHuyen").focus();
@@ -867,148 +867,148 @@ function validateToKhaiForm() {
         $("#loiQuanHuyen").show();
         return false;
     }
-    
-	var fax = $("#fax").val();
-	if(fax && !/^\d{10}$/.test(fax)) {
+
+    var fax = $("#fax").val();
+    if (fax && !/^\d{10}$/.test(fax)) {
         $("#fax").focus();
-		$("#loiFax").text("*Số fax phải gồm 10 số");
+        $("#loiFax").text("*Số fax phải gồm 10 số");
         $("#loiFax").show();
         return false;
-	}
-	
-	var dienThoai = $("#dienThoai").val();
-	if(dienThoai && !/^\d{10}$/.test(dienThoai)) {
-		$("#loiSdt").text("*Số điện thoại phải là số");
+    }
+
+    var dienThoai = $("#dienThoai").val();
+    if (dienThoai && !/^\d{10}$/.test(dienThoai)) {
+        $("#loiSdt").text("*Số điện thoại phải là số");
         $("#loiSdt").show();
         return false;
-	}
+    }
 
-    var daiLyThue = $("#daiLyThue").prop( "checked" );
+    var daiLyThue = $("#daiLyThue").prop("checked");
     if (daiLyThue) {
         var tenDaiLyThue = $("#tenDaiLy").val();
-	    if (!tenDaiLyThue) {
-	        $("#tenDaiLy").focus();
-	        $("#loiTenDLT").text("*Tên đại lý thuế không để trống");
+        if (!tenDaiLyThue) {
+            $("#tenDaiLy").focus();
+            $("#loiTenDLT").text("*Tên đại lý thuế không để trống");
             $("#loiTenDLT").show();
-	        return false;
-	    }
-	    
-	    var maSoThueDLT = $("#maSoThueDaiLy").val();
-	    if (!maSoThueDLT) {
-	        $("#maSoThueDaiLy").focus();
-	        $("#loiMstDLT").text("*Mã số thuế không để trống");
-            $("#loiMstDLT").show();
-	        return false;
-	    }
-		if(!/^\d+$/.test(maSoThueDLT)) {
+            return false;
+        }
+
+        var maSoThueDLT = $("#maSoThueDaiLy").val();
+        if (!maSoThueDLT) {
             $("#maSoThueDaiLy").focus();
-			$("#loiMstDLT").text("*Mã số thuế phải là số");
+            $("#loiMstDLT").text("*Mã số thuế không để trống");
             $("#loiMstDLT").show();
             return false;
-		}
-	    
-	    var diaChiDLT = $("#diaChiDaiLy").val();
-	    if (!diaChiDLT) {
-	        $("#diaChiDaiLy").focus();
-	        $("#loiDiaChiDLT").text("*Địa chỉ không để trống");
+        }
+        if (!/^\d+$/.test(maSoThueDLT)) {
+            $("#maSoThueDaiLy").focus();
+            $("#loiMstDLT").text("*Mã số thuế phải là số");
+            $("#loiMstDLT").show();
+            return false;
+        }
+
+        var diaChiDLT = $("#diaChiDaiLy").val();
+        if (!diaChiDLT) {
+            $("#diaChiDaiLy").focus();
+            $("#loiDiaChiDLT").text("*Địa chỉ không để trống");
             $("#loiDiaChiDLT").show();
-	        return false;
-	    }
-	    
-	    var tinhThanhDaiLy = $("#tinhThanhDaiLy option:selected").val();
-	    if (!tinhThanhDaiLy) {
-	        $("#tinhThanhDaiLy").focus();
-	        $("#loiTinhThanhDLT").text("*Hãy lựa chọn Tỉnh/Thành phố");
+            return false;
+        }
+
+        var tinhThanhDaiLy = $("#tinhThanhDaiLy option:selected").val();
+        if (!tinhThanhDaiLy) {
+            $("#tinhThanhDaiLy").focus();
+            $("#loiTinhThanhDLT").text("*Hãy lựa chọn Tỉnh/Thành phố");
             $("#loiTinhThanhDLT").show();
-	        return false;
-	    }
-	    
-	    var quanHuyenDaiLy = $("#quanHuyenDaiLy option:selected").val();
-	    if (!quanHuyenDaiLy) {
-	        $("#quanHuyenDaiLy").focus();
-	        $("#loiQuanHuyenDLT").text("*Hãy lựa chọn Quận/Huyện");
+            return false;
+        }
+
+        var quanHuyenDaiLy = $("#quanHuyenDaiLy option:selected").val();
+        if (!quanHuyenDaiLy) {
+            $("#quanHuyenDaiLy").focus();
+            $("#loiQuanHuyenDLT").text("*Hãy lựa chọn Quận/Huyện");
             $("#loiQuanHuyenDLT").show();
-	        return false;
-	    }
-            var email = $("#emailDaiLy").val();
-		if(!email) {
-			$("#emailDaiLy").focus();
-			$("#loiEmailDLT").text("*Email không để trống");
+            return false;
+        }
+
+        var dienThoai = $("#dienThoaiDaiLy").val();
+        if (dienThoai && !/^\d{10}$/.test(dienThoai)) {
+            $("#dienThoaiDaiLy").focus();
+            $("#loiSdtDLT").text("*Số điện thoại phải gồm 10 số");
+            $("#loiSdtDLT").show();
+            return false;
+        }
+        if (!dienThoai) {
+            $("#dienThoaiDaiLy").focus();
+            $("#loiSdtDLT").text("*Điện thoại không để trống");
+            $("#loiSdtDLT").show();
+            return false;
+        }
+
+        var fax = $("#faxDaiLy").val();
+        if (fax && !/^\d{10}$/.test(fax)) {
+            $("#faxDaiLy").focus();
+            $("#loiFaxDLT").text("*Số fax phải gồm 10 số");
+            $("#loiFaxDLT").show();
+            return false;
+        }
+
+        var email = $("#emailDaiLy").val();
+        if (!email) {
+            $("#emailDaiLy").focus();
+            $("#loiEmailDLT").text("*Email không để trống");
             $("#loiEmailDLT").show();
             return false;
-		}
-	    
-	    var soHopDong = $("#soHopDong").val();
-		if(!soHopDong) {
-			$("#soHopDong").focus();
-			$("#loiSoHopDong").text("*Số hợp đồng không để trống");
-                    $("#loiSoHopDong").show();
-                    return false;
-		}
-                if(!/^\d+$/.test(soHopDong)) {
-                    $("#soHopDong").focus();
-			$("#loiSoHopDong").text("*Số hợp đồng là số");
-                        $("#loiSoHopDong").show();
-            
-                    return false;
-                }
-		
-		var ngayHopDong = $("#ngayHopDong").val();
-		if(!ngayHopDong) {
-			$("#ngayHopDong").focus();
-			$("#loiNgayHopDong").text("*Ngày hợp đồng không để trống");
-                    $("#loiNgayHopDong").show();
-                    return false;
-		}
-		
-		var fax = $("#faxDaiLy").val();
-		if(fax && !/^\d{10}$/.test(fax)) {
-                    $("#faxDaiLy").focus();
-			$("#loiFaxDLT").text("*Số fax phải gồm 10 số");
-                    $("#loiFaxDLT").show();
-                    return false;
-		}
-		
-		var dienThoai = $("#dienThoaiDaiLy").val();
-		if(dienThoai &&!/^\d{10}$/.test(dienThoai)) {
-                    $("#dienThoaiDaiLy").focus();
-                    $("#loiSdtDLT").text("*Số điện thoại phải gồm 10 số");
-                    $("#loiSdtDLT").show();
-                    return false;
-                }
-                if(!dienThoai) {
-                    $("#dienThoaiDaiLy").focus();
-                    $("#loiSdtDLT").text("*Điện thoại không để trống");
-                    $("#loiSdtDLT").show();
-                    return false;
-		}
-		}
+        }
 
-        return true;
+        var soHopDong = $("#soHopDong").val();
+        if (!soHopDong) {
+            $("#soHopDong").focus();
+            $("#loiSoHopDong").text("*Số hợp đồng không để trống");
+            $("#loiSoHopDong").show();
+            return false;
+        }
+        if (!/^\d+$/.test(soHopDong)) {
+            $("#soHopDong").focus();
+            $("#loiSoHopDong").text("*Số hợp đồng là số");
+            $("#loiSoHopDong").show();
+
+            return false;
+        }
+
+        var ngayHopDong = $("#ngayHopDong").val();
+        if (!ngayHopDong) {
+            $("#ngayHopDong").focus();
+            $("#loiNgayHopDong").text("*Ngày hợp đồng không để trống");
+            $("#loiNgayHopDong").show();
+            return false;
+        }
     }
-    
-    
+
+    return true;
+}
+
 
 function validateTinhThueForm() {
-	var cuTru = $("#coCuTru").prop( "checked" );
-	console.log(cuTru)
-	if(cuTru) {
-		var thuNhapChiuThue = $("#thuNhapChiuThue").val();
-	    if (thuNhapChiuThue <= 0) {
-	        $("#tenDaiLy").focus();
-	        $("#loiThuNhap").text("*Thu nhập phải lớn hơn 0");
-	        $("#loiThuNhap").show();
-	        return false;
-	    }
-	} else {
-		var thuNhapTinhThue = $("#thuNhapTinhThueKCT").val();
-	    if (thuNhapTinhThue <= 0) {
-	        $("#thuNhapTinhThueKCT").focus();
-	        $("#loiThuNhapKCT").text("*Thu nhập phải lớn hơn 0");
-	        $("#loiThuNhapKCT").show();
-	        return false;
-	    }
-	}
-	
-   	return true;
+    var cuTru = $("#coCuTru").prop("checked");
+    console.log(cuTru)
+    if (cuTru) {
+        var thuNhapChiuThue = $("#thuNhapChiuThue").val();
+        if (thuNhapChiuThue <= 0) {
+            $("#tenDaiLy").focus();
+            $("#loiThuNhap").text("*Thu nhập phải lớn hơn 0");
+            $("#loiThuNhap").show();
+            return false;
+        }
+    } else {
+        var thuNhapTinhThue = $("#thuNhapTinhThueKCT").val();
+        if (thuNhapTinhThue <= 0) {
+            $("#thuNhapTinhThueKCT").focus();
+            $("#loiThuNhapKCT").text("*Thu nhập phải lớn hơn 0");
+            $("#loiThuNhapKCT").show();
+            return false;
+        }
+    }
+
+    return true;
 }
