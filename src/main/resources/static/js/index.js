@@ -1048,7 +1048,7 @@ function validateTinhThueForm() {
 //      return false;
 //    }
 //  }
-    const largeNumber = BigInt('1223372036854775807');
+    const largeNumber = BigInt('1000000000000000000');
     if ($("#coCuTru").is(":checked")) {
       var v = $("#thuNhapChiuThue").val();
       if (v <= 0) {
