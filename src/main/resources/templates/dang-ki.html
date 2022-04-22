@@ -20,7 +20,7 @@
 								<td style="width: 30%">Mã số thuế<font class="color-red">*</font>
 								</td>
 								<td style="text-align: left">
-									<input type="text" id="mst" name="maSoThue" th:field="*{maSoThue}" style="width: 358px" />
+                                                                    <input type="text" id="mst" name="maSoThue" th:field="*{maSoThue}" style="width: 358px" autofocus="true"/>
 									<label th:if="${#fields.hasErrors('maSoThue')}" th:errors="*{maSoThue}" class="error"></label>
 								</td>
 							</tr>

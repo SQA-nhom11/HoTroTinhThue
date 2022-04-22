@@ -51,7 +51,7 @@ public class TrangChuController {
         // Default validate
         if(result.hasErrors()) {
         	if(!Pattern.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,16}$", nguoiDung.getMatKhau()))
-        		model.addAttribute("errorPassword", "* Mật khẩu từ 8-16 kí tự, chứa ít nhất một chữ cái và một chữ số");
+        		model.addAttribute("errorPassword", "* Mật khẩu từ 8-16 kí tự, chứa ít nhất một chữ và số");
         	model.addAttribute("nguoiDung", nguoiDung);
         	System.out.println("Co loi validate");
 			return "dang-ki";
@@ -84,7 +84,7 @@ public class TrangChuController {
     	// Password check
     	if(!Pattern.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,16}$", nguoiDung.getMatKhau())) {
     		model.addAttribute("nguoiDung", nguoiDung);
-    		model.addAttribute("errorPassword", "* Mật khẩu từ 8-16 kí tự, chứa ít nhất một chữ cái và một chữ số");
+    		model.addAttribute("errorPassword", "* Mật khẩu từ 8-16 kí tự, chứa ít nhất một chữ và số");
     		System.out.println("Mat khau khong hop le");
     		return "dang-ki";
     	}
