@@ -12,7 +12,7 @@
 				<span class="text-nav">Người dùng » </span>
 				<span class="nav-now">Đổi thông tin</span>
 			</div>
-			<form name="form-register" method="post" th:object="${nguoiDung}" th:action="@{~/nguoi-dung/doi-thong-tin}">
+			<form name="form-register" method="post" th:object="${nguoiDung}" onsubmit="return validateDoiThongTinForm();" th:action="@{~/nguoi-dung/doi-thong-tin}">
 				<label th:if="${message}" th:text="${message}" class="success-message" style="color: blue"></label>
 				<div class="box-common-content">
 					<table class="form-table" style="width: 65%">
@@ -36,7 +36,8 @@
 								</td>
 								<td style="text-align: left">
 									<input type="text" id="diaChi" name="diaChi" th:value="*{diaChi}" style="width: 358px" autofocus="true"/>
-									<label th:if="${errorDiaChi}" th:text="${errorDiaChi}" class="error"></label>
+<!--									<label th:if="${errorDiaChi}" th:text="${errorDiaChi}" class="error"></label>-->
+									<br /><label style="color: red" id="loiDiaChi"></label>
 								</td>
 							</tr>
 							<tr>
@@ -52,7 +53,8 @@
 								</td>
 								<td style="text-align: left">
 									<input type="text" id="coquanthue" name="coQuanThue" th:value="*{coQuanThue}" style="width: 358px" />
-									<label th:if="${errorCoQuanThue}" th:text="${errorCoQuanThue}" class="error"></label>
+<!--									<label th:if="${errorCoQuanThue}" th:text="${errorCoQuanThue}" class="error"></label>-->
+									<br /><label style="color: red" id="loiCoQuanThue"></label>
 								</td>
 							</tr>
 							<tr>
@@ -60,7 +62,8 @@
 								</td>
 								<td style="text-align: left">
 									<input type="text" id="sdt" name="sdt" th:value="*{sdt}" style="width: 358px" />
-									<label th:if="${errorSdt}" th:text="${errorSdt}" class="error"></label>
+<!--									<label th:if="${errorSdt}" th:text="${errorSdt}" class="error"></label>-->
+									<br /><label style="color: red" id="loiSdt"></label>
 								</td>
 							</tr>
 							<tr>
@@ -68,7 +71,8 @@
 								</td>
 								<td style="text-align: left">
 									<input type="text" id="email" name="email" th:value="*{email}" style="width: 358px" />
-									<label th:if="${errorEmail}" th:text="${errorEmail}" class="error"></label>
+<!--									<label th:if="${errorEmail}" th:text="${errorEmail}" class="error"></label>-->
+									<br /><label style="color: red" id="loiEmail"></label>
 								</td>
 							</tr>
 							<tr>
