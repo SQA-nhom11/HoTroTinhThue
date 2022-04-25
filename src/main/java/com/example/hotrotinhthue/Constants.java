@@ -19,5 +19,4 @@ public interface Constants {
     int THUE_SUAT_KHONG_CU_TRU = 20;
 
     long GIAM_TRU_BAN_THAN = 11000000;
-    long GIAM_TRU_NGUOI_PHU_THUOC = 4400000;
 }

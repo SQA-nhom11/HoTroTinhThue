@@ -1,7 +1,7 @@
 package com.example.hotrotinhthue.controller;
 
 import com.example.hotrotinhthue.model.DaiLyThue;
-import com.example.hotrotinhthue.repository.DaiLyThueRepo;
+import com.example.hotrotinhthue.service.DaiLyThueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,14 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("dailythue")
 public class DailyThueController {
     @Autowired
-    DaiLyThueRepo daiLyThueRepo;
+    private DaiLyThueService daiLyThueService;
 
     @GetMapping("")
     public DaiLyThue getOne(@RequestParam String maSoThue) {
-        try {
-            return daiLyThueRepo.findById(maSoThue).get();
-        } catch (Exception e) {
-            return null;
-        }
+        return daiLyThueService.getDaiLyThue(maSoThue);
     }
 }

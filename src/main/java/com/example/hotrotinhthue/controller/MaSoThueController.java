@@ -1,9 +1,8 @@
 package com.example.hotrotinhthue.controller;
 
 import com.example.hotrotinhthue.model.MaSoThue;
-import com.example.hotrotinhthue.model.NguoiDung;
-import com.example.hotrotinhthue.repository.MaSoThueRepo;
-import com.example.hotrotinhthue.repository.NguoiDungRepo;
+import com.example.hotrotinhthue.service.MaSoThueService;
+import com.example.hotrotinhthue.service.NguoiDungService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,31 +13,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("masothue")
 public class MaSoThueController {
     @Autowired
-    MaSoThueRepo maSoThueRepo;
+    private MaSoThueService maSoThueService;
 
     @Autowired
-    NguoiDungRepo nguoiDungRepo;
+    private NguoiDungService nguoiDungService;
 
     @GetMapping("")
     public MaSoThue getOne(@RequestParam String maSoThue) {
-        try {
-            return maSoThueRepo.findById(maSoThue).get();
-        } catch (Exception e) {
-            return null;
-        }
+        return maSoThueService.getMaSoThue(maSoThue);
     }
 
     @GetMapping("/ton-tai")
     public boolean getNguoiDung(@RequestParam String maSoThue) {
-        try {
-            NguoiDung nguoiDung = nguoiDungRepo.findByMaSoThue(maSoThue);
-            if(nguoiDung != null) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            return false;
-        }
+        if(nguoiDungService.getNguoiDungByMaSoThue(maSoThue) != null) return true;
+        return false;
     }
 }
