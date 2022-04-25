@@ -369,14 +369,47 @@ $(document).ready(function () {
       $("#nhapLaiMatKhau").focus();
       $("#loiNhapLaiMatKhau").text("*Nhập lại mật khẩu không được để trống");
       $("#loiNhapLaiMatKhau").show();
-      error = true;
+      return;
     } else if (!(password === rePassword)) {
       $("#nhapLaiMatKhau").focus();
       $("#loiNhapLaiMatKhau").text("*Nhập lại mật khẩu không khớp");
       $("#loiNhapLaiMatKhau").show();
-      error = true;
+      return;
     }
     $("#loiNhapLaiMatKhau").hide();
+  });
+
+  $('#matKhauMoi').change(function () {
+    var newPass = $('#matKhauMoi').val();
+    if(!newPass) {
+      $("#matKhauMoi").focus();
+      $("#loiMatKhauMoi").text("*Mật khẩu không được để trống");
+      $("#loiMatKhauMoi").show();
+      return;
+    } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/.test(newPass)) {
+      $("#matKhauMoi").focus();
+      $("#loiMatKhauMoi").text("*Mật khẩu từ 8-16 kí tự, chứa ít nhất một chữ cái và một số");
+      $("#loiMatKhauMoi").show();
+      return;
+    }
+    $("#loiMatKhauMoi").hide();
+  });
+
+  $("#nhapDoiLaiMatKhau").change(function () {
+    var newPass = $('#matKhauMoi').val();
+    var rePassword = $('#nhapDoiLaiMatKhau').val();
+    if(!rePassword) {
+      $("#nhapDoiLaiMatKhau").focus();
+      $("#loiNhapDoiLaiMatKhau").text("*Nhập lại mật khẩu không được để trống");
+      $("#loiNhapDoiLaiMatKhau").show();
+      return;
+    } else if (!(newPass === rePassword)) {
+      $("#nhapDoiLaiMatKhau").focus();
+      $("#loiNhapDoiLaiMatKhau").text("*Nhập lại mật khẩu không khớp");
+      $("#loiNhapDoiLaiMatKhau").show();
+      return;
+    }
+    $("#loiNhapDoiLaiMatKhau").hide();
   });
 
   $("#kyTinhThue").change(function () {
@@ -1471,7 +1504,7 @@ async function getTonTai(id) {
 
 function validateDoiMatKhau() {
   var newPass = $('#matKhauMoi').val();
-  var rePassword = $('#nhapLaiMatKhau').val();
+  var rePassword = $('#nhapDoiLaiMatKhau').val();
   var error = false;
 
   if(!newPass) {
@@ -1487,16 +1520,18 @@ function validateDoiMatKhau() {
   }
 
   if(!rePassword) {
-    $("#nhapLaiMatKhau").focus();
-    $("#loiNhapLaiMatKhau").text("*Nhập lại mật khẩu không được để trống");
-    $("#loiNhapLaiMatKhau").show();
+    $("#nhapDoiLaiMatKhau").focus();
+    $("#loiNhapDoiLaiMatKhau").text("*Nhập lại mật khẩu không được để trống");
+    $("#loiNhapDoiLaiMatKhau").show();
     error = true;
   } else if (!(newPass === rePassword)) {
-    $("#nhapLaiMatKhau").focus();
-    $("#loiNhapLaiMatKhau").text("*Nhập lại mật khẩu không khớp");
-    $("#loiNhapLaiMatKhau").show();
+    $("#nhapDoiLaiMatKhau").focus();
+    $("#loiNhapDoiLaiMatKhau").text("*Nhập lại mật khẩu không khớp");
+    $("#loiNhapDoiLaiMatKhau").show();
     error = true;
   }
+  console.log(newPass);
+  console.log(rePassword);
   if (error) {
     return false;
   }
