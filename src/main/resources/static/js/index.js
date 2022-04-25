@@ -1468,3 +1468,37 @@ async function getTonTai(id) {
     type: 'GET',
   });
 };
+
+function validateDoiMatKhau() {
+  var newPass = $('#matKhauMoi').val();
+  var rePassword = $('#nhapLaiMatKhau').val();
+  var error = false;
+
+  if(!newPass) {
+    $("#matKhauMoi").focus();
+    $("#loiMatKhauMoi").text("*Mật khẩu không được để trống");
+    $("#loiMatKhauMoi").show();
+    error = true;
+  } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/.test(newPass)) {
+    $("#matKhauMoi").focus();
+    $("#loiMatKhauMoi").text("*Mật khẩu từ 8-16 kí tự, chứa ít nhất một chữ cái và một số");
+    $("#loiMatKhauMoi").show();
+    error = true;
+  }
+
+  if(!rePassword) {
+    $("#nhapLaiMatKhau").focus();
+    $("#loiNhapLaiMatKhau").text("*Nhập lại mật khẩu không được để trống");
+    $("#loiNhapLaiMatKhau").show();
+    error = true;
+  } else if (!(newPass === rePassword)) {
+    $("#nhapLaiMatKhau").focus();
+    $("#loiNhapLaiMatKhau").text("*Nhập lại mật khẩu không khớp");
+    $("#loiNhapLaiMatKhau").show();
+    error = true;
+  }
+  if (error) {
+    return false;
+  }
+  return true;
+}

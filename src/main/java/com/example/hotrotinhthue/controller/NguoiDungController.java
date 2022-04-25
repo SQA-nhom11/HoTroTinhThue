@@ -31,7 +31,8 @@ public class NguoiDungController {
 	
 	@PostMapping("doi-mat-khau")
 	public String doiMatKhau(Model model, String matKhauMoi, String nhapLaiMatKhau, Authentication authentication) {
-		if(nguoiDungService.changeNguoiDungPassword(matKhauMoi, nhapLaiMatKhau, ((NguoiDung)authentication.getPrincipal()).getId())==null) return "nguoi-dung/doi-mat-khau";
+		if(nguoiDungService.changeNguoiDungPassword(matKhauMoi, nhapLaiMatKhau, ((NguoiDung)authentication.getPrincipal()).getId())==null)
+			return "nguoi-dung/doi-mat-khau";
 		model.addAttribute("successMessage", "Đổi mật khẩu thành công!");
 		return "nguoi-dung/doi-mat-khau";
 	}

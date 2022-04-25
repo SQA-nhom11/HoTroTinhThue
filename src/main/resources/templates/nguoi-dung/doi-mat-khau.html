@@ -12,7 +12,7 @@
 				<span class="text-nav">Người dùng » </span>
 				<span class="nav-now">Đổi mật khẩu</span>
 			</div>
-			<form name="form-change-password" method="post" th:action="@{/nguoi-dung/doi-mat-khau}">
+			<form name="form-change-password" onsubmit="return validateDoiMatKhau();" method="post" th:action="@{/nguoi-dung/doi-mat-khau}">
 				<label th:if="${message}" th:text="${message}" class="message"></label>
 				<label th:if="${successMessage}" th:text="${successMessage}" class="success-message"></label>
 				<div class="box-common-content">
@@ -23,6 +23,7 @@
 								</td>
 								<td style="text-align: left">
 									<input type="password" id="matKhauMoi" name="matKhauMoi" style="width: 358px" autofocus="true"/>
+									<br /><label style="color: red" id="loiMatKhauMoi"></label>
 								</td>
 							</tr>
 							<tr>
@@ -31,6 +32,7 @@
 								</td>
 								<td style="text-align: left">
 									<input type="password" id="nhapLaiMatKhau" name="nhapLaiMatKhau" style="width: 358px" />
+									<br /><label style="color: red" id="loiNhapLaiMatKhau"></label>
 								</td>
 							</tr>
 							<tr>
