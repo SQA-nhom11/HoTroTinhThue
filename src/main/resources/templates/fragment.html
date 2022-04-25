@@ -28,10 +28,10 @@
 				</button>
 			</div>
 			<div sec:authorize="isAuthenticated()" class="dangnhap">
-                            <label style="color: #124977;">
-                                <span >Xin chào, </span>
-                                <strong th:text="${#authentication.getPrincipal().getHoTen()}"></strong>
-                            </label>
+                <button class="btn-head" style="pointer-events: none;">
+                    <span >Xin chào, </span>
+                    <strong th:text="${#authentication.getPrincipal().getHoTen()}"></strong>
+                </button>
 				<button class="btn-head">
 					<a th:href="@{~/dang-xuat}">Đăng xuất</a>
 				</button>

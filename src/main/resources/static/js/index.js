@@ -254,6 +254,130 @@ $(document).ready(function () {
     $("#loiNgayHopDong").hide();
   });
 
+  $("#coquanthue").change(function () {
+    var coquanthue = $('#coquanthue').val();
+    if(!coquanthue) {
+      $("#coquanthue").focus();
+      $("#loiCoQuanThue").text("*Cơ quan thuế không được để trống");
+      $("#loiCoQuanThue").show();
+      return;
+    }
+    $("#loiCoQuanThue").hide();
+  });
+
+  $("#sdt").change(function () {
+    var sdt = $('#sdt').val();
+    if(!sdt) {
+      $("#sdt").focus();
+      $("#loiSdt").text("*Số điện thoại không được để trống");
+      $("#loiSdt").show();
+      return;
+    } else if (!/^\d{10}$/.test(sdt)) {
+      $("#sdt").focus();
+      $("#loiSdt").text("*Số điện thoại phải gồm 10 số");
+      $("#loiSdt").show();
+      return;
+    }
+    $("#loiSdt").hide();
+  });
+
+  $("#email").change(function () {
+    var email = $('#email').val();
+    if(!email) {
+      $("#email").focus();
+      $("#loiEmail").text("*Email không được để trống");
+      $("#loiEmail").show();
+      return;
+    } else if (!/^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)$/.test(email)) {
+      $("#email").focus();
+      $("#loiEmail").text("*Email không hợp lệ");
+      $("#loiEmail").show();
+      return;
+    }
+    $("#loiEmail").hide();
+  });
+
+  $("#coquanthue").change(function () {
+    var coquanthue = $('#coquanthue').val();
+    if(!coquanthue) {
+      $("#coquanthue").focus();
+      $("#loiCoQuanThue").text("*Cơ quan thuế không được để trống");
+      $("#loiCoQuanThue").show();
+      return;
+    }
+    $("#loiCoQuanThue").hide();
+  });
+
+  $("#mst").change(function () {
+    var maSoThue = $('#mst').val();
+    if(!maSoThue) {
+      $("#mst").focus();
+      $("#loiMst").text("*Mã số thuế không được để trống");
+      $("#loiMst").show();
+      return;
+    }
+    $("#loiMst").hide();
+  });
+
+  $("#ten").change(function () {
+    var hoTen = $('#ten').val();
+    if(!hoTen) {
+      $("#ten").focus();
+      $("#loiHoTen").text("*Họ tên không được để trống");
+      $("#loiHoTen").show();
+      return;
+    }
+    $("#loiHoTen").hide();
+  });
+
+  $("#cccd").change(function () {
+    var cccd = $('#cccd').val();
+    if(!cccd) {
+      $("#cccd").focus();
+      $("#loiCccd").text("*CCCD không được để trống");
+      $("#loiCccd").show();
+      return;
+    } else if (!/^\d{12}$/.test(cccd)) {
+      $("#cccd").focus();
+      $("#loiCccd").text("*CCCD phải bao gồm 12 số");
+      $("#loiCccd").show();
+      return;
+    }
+    $("#loiCccd").hide();
+  });
+
+  $("#matKhau").change(function () {
+    var password = $('#matKhau').val();
+    if(!password) {
+      $("#matKhau").focus();
+      $("#loiMatKhau").text("*Mật khẩu không được để trống");
+      $("#loiMatKhau").show();
+      return;;
+    } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/.test(password)) {
+      $("#matKhau").focus();
+      $("#loiMatKhau").text("*Mật khẩu từ 8-16 kí tự, chứa ít nhất một chữ cái và một số");
+      $("#loiMatKhau").show();
+      return;
+    }
+    $("#loiMatKhau").hide();
+  });
+
+  $("#nhapLaiMatKhau").change(function () {
+    var password = $('#matKhau').val();
+    var rePassword = $('#nhapLaiMatKhau').val();
+    if(!rePassword) {
+      $("#nhapLaiMatKhau").focus();
+      $("#loiNhapLaiMatKhau").text("*Nhập lại mật khẩu không được để trống");
+      $("#loiNhapLaiMatKhau").show();
+      error = true;
+    } else if (!(password === rePassword)) {
+      $("#nhapLaiMatKhau").focus();
+      $("#loiNhapLaiMatKhau").text("*Nhập lại mật khẩu không khớp");
+      $("#loiNhapLaiMatKhau").show();
+      error = true;
+    }
+    $("#loiNhapLaiMatKhau").hide();
+  });
 
   $("#kyTinhThue").change(function () {
     var kyTinhThue = $("#kyTinhThue option:selected").val();
@@ -839,7 +963,8 @@ function loadTinhThue() {
   }
 }
 
-function validateToKhaiForm() {
+async function validateToKhaiForm(form) {
+  console.log(form)
   var nam = $("#namKeKhai").val();
   let year = new Date().getFullYear();
   if (!nam || nam < 2000 || nam > year) {
@@ -909,12 +1034,13 @@ function validateToKhaiForm() {
 
   var daiLyThue = $("#daiLyThue").prop("checked");
   if (daiLyThue) {
+    var error = false;
     var tenDaiLyThue = $("#tenDaiLy").val();
     if (!tenDaiLyThue) {
       $("#tenDaiLy").focus();
       $("#loiTenDLT").text("*Tên đại lý thuế không để trống");
       $("#loiTenDLT").show();
-      return false;
+      error = true;
     }
 
     var maSoThueDLT = $("#maSoThueDaiLy").val();
@@ -922,13 +1048,34 @@ function validateToKhaiForm() {
       $("#maSoThueDaiLy").focus();
       $("#loiMstDLT").text("*Mã số thuế không để trống");
       $("#loiMstDLT").show();
-      return false;
+      error = true;
     }
     if (!/^\d+$/.test(maSoThueDLT)) {
       $("#maSoThueDaiLy").focus();
       $("#loiMstDLT").text("*Mã số thuế phải là số");
       $("#loiMstDLT").show();
-      return false;
+      error = true;
+    }
+
+    if (maSoThueDLT !== "" && tenDaiLyThue !== "") {
+      try {
+        const data = await getDaiLyThue(maSoThueDLT);
+        console.log(data)
+        if(!data) {
+          $("#maSoThueDaiLy").focus();
+          $("#loiMstDLT").text("*Mã số thuế của đai lý không tồn tại");
+          $("#loiMstDLT").show();
+          error = true;
+        } else if(tenDaiLyThue !== data.ten) {
+          $("#tenDaiLy").focus();
+          $("#loiTenDLT").text("*Tên đại lý thuế không khớp với mã số thuế");
+          $("#loiTenDLT").show();
+          error = true;
+        }
+      } catch (e) {
+        console.log(e)
+        error = true;
+      }
     }
 
     var diaChiDLT = $("#diaChiDaiLy").val();
@@ -936,7 +1083,7 @@ function validateToKhaiForm() {
       $("#diaChiDaiLy").focus();
       $("#loiDiaChiDLT").text("*Địa chỉ không để trống");
       $("#loiDiaChiDLT").show();
-      return false;
+      error = true;
     }
 
     var tinhThanhDaiLy = $("#tinhThanhDaiLy option:selected").val();
@@ -944,7 +1091,7 @@ function validateToKhaiForm() {
       $("#tinhThanhDaiLy").focus();
       $("#loiTinhThanhDLT").text("*Hãy lựa chọn Tỉnh/Thành phố");
       $("#loiTinhThanhDLT").show();
-      return false;
+      error = true;
     }
 
     var quanHuyenDaiLy = $("#quanHuyenDaiLy option:selected").val();
@@ -952,7 +1099,7 @@ function validateToKhaiForm() {
       $("#quanHuyenDaiLy").focus();
       $("#loiQuanHuyenDLT").text("*Hãy lựa chọn Quận/Huyện");
       $("#loiQuanHuyenDLT").show();
-      return false;
+      error = true;
     }
     
     var dienThoai = $("#dienThoaiDaiLy").val();
@@ -960,13 +1107,13 @@ function validateToKhaiForm() {
       $("#dienThoaiDaiLy").focus();
       $("#loiSdtDLT").text("*Số điện thoại phải gồm 10 số");
       $("#loiSdtDLT").show();
-      return false;
+      error = true;
     }
     if (!dienThoai) {
       $("#dienThoaiDaiLy").focus();
       $("#loiSdtDLT").text("*Điện thoại không để trống");
       $("#loiSdtDLT").show();
-      return false;
+      error = true;
     }
     
     var fax = $("#faxDaiLy").val();
@@ -974,16 +1121,15 @@ function validateToKhaiForm() {
       $("#faxDaiLy").focus();
       $("#loiFaxDLT").text("*Số fax phải gồm 10 số");
       $("#loiFaxDLT").show();
-      return false;
+      error = true;
     }
 
-    
     var email = $("#emailDaiLy").val();
     if (!email) {
       $("#emailDaiLy").focus();
       $("#loiEmailDLT").text("*Email không để trống");
       $("#loiEmailDLT").show();
-      return false;
+      error = true;
     }
 
     var soHopDong = $("#soHopDong").val();
@@ -991,14 +1137,13 @@ function validateToKhaiForm() {
       $("#soHopDong").focus();
       $("#loiSoHopDong").text("*Số hợp đồng không để trống");
       $("#loiSoHopDong").show();
-      return false;
+      error = true;
     }
     if (!/^\d+$/.test(soHopDong)) {
       $("#soHopDong").focus();
       $("#loiSoHopDong").text("*Số hợp đồng là số");
       $("#loiSoHopDong").show();
-
-      return false;
+      error = true;
     }
 
     var ngayHopDong = $("#ngayHopDong").val();
@@ -1008,19 +1153,27 @@ function validateToKhaiForm() {
       $("#ngayHopDong").focus();
       $("#loiNgayHopDong").text("*Ngày hợp đồng không để trống");
       $("#loiNgayHopDong").show();
-      return false;
+      error = true;
     }
     if (dateNow < date){
       $("#ngayHopDong").focus();
       $("#loiNgayHopDong").text("*Ngày hợp đồng ngoài phạm vi");
       $("#loiNgayHopDong").show();
+      error = true;
+    }
+    if(error) {
       return false;
     }
-
   }
-
-  return true;
+  form.submit();
 }
+
+async function getDaiLyThue(id) {
+  return $.ajax({
+    url: `/dailythue?maSoThue=${id}`,
+    type: 'GET',
+  });
+};
 
 function validateTinhThueForm() {
 //  var cuTru = $("#coCuTru").prop("checked");
@@ -1118,3 +1271,200 @@ function validateTinhThueForm() {
 
   return true;
 }
+
+function validateDoiThongTinForm() {
+  var diaChi = $('#diaChi').val();
+  var coquanthue = $('#coquanthue').val();
+  var sdt = $('#sdt').val();
+  var email = $('#email').val();
+  var error = false;
+
+  if(!diaChi) {
+    $("#diaChi").focus();
+    $("#loiDiaChi").text("*Địa chỉ không được để trống");
+    $("#loiDiaChi").show();
+    error = true;
+  }
+  if(!coquanthue) {
+    $("#coquanthue").focus();
+    $("#loiCoQuanThue").text("*Cơ quan thuế không được để trống");
+    $("#loiCoQuanThue").show();
+    error = true;
+  }
+  if(!sdt) {
+    $("#sdt").focus();
+    $("#loiSdt").text("*Số điện thoại không được để trống");
+    $("#loiSdt").show();
+    error = true;
+  } else if (!/^\d{10}$/.test(sdt)) {
+    $("#sdt").focus();
+    $("#loiSdt").text("*Số điện thoại phải gồm 10 số");
+    $("#loiSdt").show();
+    error = true;
+  }
+  if(!email) {
+    $("#email").focus();
+    $("#loiEmail").text("*Email không được để trống");
+    $("#loiEmail").show();
+    error = true;
+  } else if (!/^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)$/.test(email)) {
+    $("#email").focus();
+    $("#loiEmail").text("*Email không hợp lệ");
+    $("#loiEmail").show();
+    error = true;
+  }
+  if (error) {
+    return false;
+  }
+}
+
+
+async function validateDangKyForm(form) {
+  var maSoThue = $('#mst').val();
+  var hoTen = $('#ten').val();
+  var cccd = $('#cccd').val();
+  var password = $('#matKhau').val();
+  var rePassword = $('#nhapLaiMatKhau').val();
+  var diaChi = $('#diaChi').val();
+  var coquanthue = $('#coquanthue').val();
+  var sdt = $('#sdt').val();
+  var email = $('#email').val();
+  var error = false;
+
+  if(!maSoThue) {
+    $("#mst").focus();
+    $("#loiMst").text("*Mã số thuế không được để trống");
+    $("#loiMst").show();
+    error = true;
+  }
+
+  if(!hoTen) {
+    $("#ten").focus();
+    $("#loiHoTen").text("*Họ tên không được để trống");
+    $("#loiHoTen").show();
+    error = true;
+  }
+
+  if(!cccd) {
+    $("#cccd").focus();
+    $("#loiCccd").text("*CCCD không được để trống");
+    $("#loiCccd").show();
+    error = true;
+  } else if (!/^\d{12}$/.test(cccd)) {
+    $("#cccd").focus();
+    $("#loiCccd").text("*CCCD phải bao gồm 12 số");
+    $("#loiCccd").show();
+    error = true;
+  }
+
+  if(!diaChi) {
+    $("#diaChi").focus();
+    $("#loiDiaChi").text("*Địa chỉ không được để trống");
+    $("#loiDiaChi").show();
+    error = true;
+  }
+  if(!coquanthue) {
+    $("#coquanthue").focus();
+    $("#loiCoQuanThue").text("*Cơ quan thuế không được để trống");
+    $("#loiCoQuanThue").show();
+    error = true;
+  }
+  if(!sdt) {
+    $("#sdt").focus();
+    $("#loiSdt").text("*Số điện thoại không được để trống");
+    $("#loiSdt").show();
+    error = true;
+  } else if (!/^\d{10}$/.test(sdt)) {
+    $("#sdt").focus();
+    $("#loiSdt").text("*Số điện thoại phải gồm 10 số");
+    $("#loiSdt").show();
+    error = true;
+  }
+  if(!email) {
+    $("#email").focus();
+    $("#loiEmail").text("*Email không được để trống");
+    $("#loiEmail").show();
+    error = true;
+  } else if (!/^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)$/.test(email)) {
+    $("#email").focus();
+    $("#loiEmail").text("*Email không hợp lệ");
+    $("#loiEmail").show();
+    error = true;
+  }
+
+  if(!password) {
+    $("#matKhau").focus();
+    $("#loiMatKhau").text("*Mật khẩu không được để trống");
+    $("#loiMatKhau").show();
+    error = true;
+  } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/.test(password)) {
+    $("#matKhau").focus();
+    $("#loiMatKhau").text("*Mật khẩu từ 8-16 kí tự, chứa ít nhất một chữ cái và một số");
+    $("#loiMatKhau").show();
+    error = true;
+  }
+
+  if(!rePassword) {
+    $("#nhapLaiMatKhau").focus();
+    $("#loiNhapLaiMatKhau").text("*Nhập lại mật khẩu không được để trống");
+    $("#loiNhapLaiMatKhau").show();
+    error = true;
+  } else if (!(password === rePassword)) {
+    $("#nhapLaiMatKhau").focus();
+    $("#loiNhapLaiMatKhau").text("*Nhập lại mật khẩu không khớp");
+    $("#loiNhapLaiMatKhau").show();
+    error = true;
+  }
+
+  if(cccd && hoTen && maSoThue) {
+    try {
+      const data = await getMaSoThue(maSoThue);
+      console.log(data)
+      if(!data) {
+        $("#mst").focus();
+        $("#loiMst").text("*Mã số thuế không tồn tại");
+        $("#loiMst").show();
+        error = true;
+      } else if(hoTen !== data.hoTen) {
+        $("#ten").focus();
+        $("#loiHoTen").text("*Tên đại lý thuế không khớp với mã số thuế");
+        $("#loiHoTen").show();
+        error = true;
+      } else if(cccd !== data.cccd) {
+        $("#cccd").focus();
+        $("#loiCccd").text("*CCCD không khớp với mã số thuế");
+        $("#loiCccd").show();
+        error = true;
+      } else {
+        const exist = await getTonTai(maSoThue);
+        if(exist) {
+          $("#mst").focus();
+          $("#loiMst").text("*Mã số thuế đã đăng kí, vui lòng sử dụng mã số thuế khác hoặc chuyển tới trang đăng nhập!");
+          $("#loiMst").show();
+          error = true;
+        }
+      }
+    } catch (e) {
+      console.log(e)
+      error = true;
+    }
+  }
+  if (error) {
+    return false;
+  }
+  form.submit();
+}
+
+async function getMaSoThue(id) {
+  return $.ajax({
+    url: `/masothue?maSoThue=${id}`,
+    type: 'GET',
+  });
+};
+
+async function getTonTai(id) {
+  return $.ajax({
+    url: `/masothue/ton-tai?maSoThue=${id}`,
+    type: 'GET',
+  });
+};
