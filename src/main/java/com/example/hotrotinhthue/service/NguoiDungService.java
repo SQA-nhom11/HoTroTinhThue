@@ -78,19 +78,18 @@ public class NguoiDungService {
     }
     
     public NguoiDung changeNguoiDungInfo(NguoiDung nguoiDungMoi, long id) {
+    	// Default validate
+    	if(nguoiDungMoi.getDiaChi().trim().equals("")) return null;
+    	if(nguoiDungMoi.getCoQuanThue().trim().equals("")) return null;
+    	if(!Pattern.matches("^\\d{10}$", nguoiDungMoi.getSdt())) return null;
+    	if(!Pattern.matches("^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$", nguoiDungMoi.getEmail())) return null;
+    	
+    	// Pass validate
     	NguoiDung nguoiDung=getNguoiDung(id);
     	nguoiDung.setDiaChi(nguoiDungMoi.getDiaChi());
 		nguoiDung.setCoQuanThue(nguoiDungMoi.getCoQuanThue());
 		nguoiDung.setSdt(nguoiDungMoi.getSdt());
 		nguoiDung.setEmail(nguoiDungMoi.getEmail());
-		
-    	// Default validate
-    	if(nguoiDung.getDiaChi().trim().equals("")) return null;
-    	if(nguoiDung.getCoQuanThue().trim().equals("")) return null;  	
-    	if(!Pattern.matches("^[0-9]+$", nguoiDung.getSdt())) return null;
-    	if(!Pattern.matches("^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$", nguoiDung.getEmail())) return null;
-    	
-    	// Pass validate
     	System.out.println("Thay doi thong tin thanh cong");
     	return nguoiDungRepo.save(nguoiDung);
     }

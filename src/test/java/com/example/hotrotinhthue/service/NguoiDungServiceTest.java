@@ -13,6 +13,8 @@ import org.springframework.validation.BindingResult;
 
 import com.example.hotrotinhthue.model.NguoiDung;
 
+import junit.framework.Assert;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class NguoiDungServiceTest {
@@ -132,44 +134,127 @@ public class NguoiDungServiceTest {
 		assertThat(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau)).isEqualToIgnoringGivenFields(nguoiDungExpected, "id", "matKhau", "toKhaiThueList");
 	}
 	
+	// Dia chi de trong
 	@Test
 	public void changeNguoiDungInfo_test1() {
+		// input
+		NguoiDung nguoiDungMoi=new NguoiDung();
+		nguoiDungMoi.setDiaChi("");
+		nguoiDungMoi.setCoQuanThue("Hà Nội");
+		nguoiDungMoi.setSdt("0431354251");
+		nguoiDungMoi.setEmail("cuongdinh@gmail.com");
+		long id=1;
 		
+		// expected result
+		NguoiDung nguoiDungExpected=null;
+		
+		assertThat(nguoiDungService.changeNguoiDungInfo(nguoiDungMoi, id)).isEqualTo(nguoiDungExpected);
 	}
 	
+	// Co quan thue de trong
 	@Test
 	public void changeNguoiDungInfo_test2() {
+		// input
+		NguoiDung nguoiDungMoi=new NguoiDung();
+		nguoiDungMoi.setDiaChi("Hà Tây");
+		nguoiDungMoi.setCoQuanThue("");
+		nguoiDungMoi.setSdt("0431354251");
+		nguoiDungMoi.setEmail("cuongdinh@gmail.com");
+		long id=1;
 		
+		// expected result
+		NguoiDung nguoiDungExpected=null;
+		
+		assertThat(nguoiDungService.changeNguoiDungInfo(nguoiDungMoi, id)).isEqualTo(nguoiDungExpected);
 	}
 	
+	// So dien thoai khong hop le
 	@Test
 	public void changeNguoiDungInfo_test3() {
+		// input
+		NguoiDung nguoiDungMoi=new NguoiDung();
+		nguoiDungMoi.setDiaChi("Hà Tây");
+		nguoiDungMoi.setCoQuanThue("Hà Nội");
+		nguoiDungMoi.setSdt("3223");
+		nguoiDungMoi.setEmail("cuongdinh@gmail.com");
+		long id=1;
 		
+		// expected result
+		NguoiDung nguoiDungExpected=null;
+			
+		assertThat(nguoiDungService.changeNguoiDungInfo(nguoiDungMoi, id)).isEqualTo(nguoiDungExpected);
 	}
-	
+
+	// Email khong hop le
 	@Test
 	public void changeNguoiDungInfo_test4() {
+		// input
+		NguoiDung nguoiDungMoi=new NguoiDung();
+		nguoiDungMoi.setDiaChi("Hà Tây");
+		nguoiDungMoi.setCoQuanThue("Hà Nội");
+		nguoiDungMoi.setSdt("0431354251");
+		nguoiDungMoi.setEmail("cuongpham@abc");
+		long id=1;
 		
+		// expected result
+		NguoiDung nguoiDungExpected=null;
+			
+		assertThat(nguoiDungService.changeNguoiDungInfo(nguoiDungMoi, id)).isEqualTo(nguoiDungExpected);
 	}
 	
+	// Pass validate
 	@Test
 	public void changeNguoiDungInfo_test5() {
+		// input
+		NguoiDung nguoiDungMoi=new NguoiDung();
+		nguoiDungMoi.setDiaChi("Hà Nam");
+		nguoiDungMoi.setCoQuanThue("Hà Nội");
+		nguoiDungMoi.setSdt("0431354251");
+		nguoiDungMoi.setEmail("cuongpham@gmail.com");
+		long id=1;
 		
+		// expected result
+		NguoiDung nguoiDungExpected=new NguoiDung(1, "123", "", "Đinh Mạnh Cường", "Hà Nam", "292414832415", "Hà Nội", "0431354251", "cuongpham@gmail.com", null);
+		assertThat(nguoiDungService.changeNguoiDungInfo(nguoiDungMoi, id)).isEqualToIgnoringGivenFields(nguoiDungExpected, "matKhau", "toKhaiThueList");
 	}
 	
+	// mat khau khong hop le
 	@Test
 	public void changeNguoiDungPassword_test1() {
+		// input
+		String matKhauMoi="cuongdepzai";
+		String nhapLaiMatKhau="cuongdepzai";
+		long id=1;
 		
+		// expected result
+		NguoiDung nguoiDungExpected=null;
+		assertThat(nguoiDungService.changeNguoiDungPassword(matKhauMoi, nhapLaiMatKhau, id)).isEqualTo(nguoiDungExpected);
 	}
 	
+	// mat khau khong trung nhau
 	@Test
 	public void changeNguoiDungPassword_test2() {
+		// input
+		String matKhauMoi="cuongdz123";
+		String nhapLaiMatKhau="cuongdz321";
+		long id=1;
 		
+		// expected result
+		NguoiDung nguoiDungExpected=null;
+		assertThat(nguoiDungService.changeNguoiDungPassword(matKhauMoi, nhapLaiMatKhau, id)).isEqualTo(nguoiDungExpected);
 	}
 	
+	// Pass validate
 	@Test
 	public void changeNguoiDungPassword_test3() {
+		// input
+		String matKhauMoi="cuongdz123";
+		String nhapLaiMatKhau="cuongdz123";
+		long id=1;
 		
+		// expected result
+		NguoiDung nguoiDungExpected=new NguoiDung(1, "123", "", "Đinh Mạnh Cường", "Hà Tây", "292414832415", "Hà Nội", "0431354251", "cuongdinh@gmail.com", null);
+		assertThat(nguoiDungService.changeNguoiDungPassword(matKhauMoi, nhapLaiMatKhau, id)).isEqualToIgnoringGivenFields(nguoiDungExpected, "matKhau", "toKhaiThueList");
 	}
 	
 	// nguoi dung co ton tai
