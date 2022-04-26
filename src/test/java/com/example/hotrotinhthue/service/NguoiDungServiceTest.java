@@ -24,6 +24,81 @@ public class NguoiDungServiceTest {
 	}
 	
 	@Test
+	public void addNguoiDung_test1() {
+		
+	}
+	
+	@Test
+	public void addNguoiDung_test2() {
+		
+	}
+	
+	@Test
+	public void addNguoiDung_test3() {
+		
+	}
+	
+	@Test
+	public void addNguoiDung_test4() {
+		
+	}
+	
+	@Test
+	public void addNguoiDung_test5() {
+		
+	}
+	
+	@Test
+	public void addNguoiDung_test6() {
+		
+	}
+	
+	@Test
+	public void addNguoiDung_test7() {
+		
+	}
+	
+	@Test
+	public void changeNguoiDungInfo_test1() {
+		
+	}
+	
+	@Test
+	public void changeNguoiDungInfo_test2() {
+		
+	}
+	
+	@Test
+	public void changeNguoiDungInfo_test3() {
+		
+	}
+	
+	@Test
+	public void changeNguoiDungInfo_test4() {
+		
+	}
+	
+	@Test
+	public void changeNguoiDungInfo_test5() {
+		
+	}
+	
+	@Test
+	public void changeNguoiDungPassword_test1() {
+		
+	}
+	
+	@Test
+	public void changeNguoiDungPassword_test2() {
+		
+	}
+	
+	@Test
+	public void changeNguoiDungPassword_test3() {
+		
+	}
+	
+	@Test
 	public void getNguoiDung_test1() {
 		long id=1;
 		NguoiDung nguoiDung=new NguoiDung(1, "123", "$2a$04$5uFp1c9B8L5RXlGYX35HWeByWiYp.P6yH9dmP53pjzU.B8z.5hb3e", "Cuong ML", "Hà Tây", "123456789000", "Hà Nội", "0244315432", "cuongml@gmail.com", null); // expected result
