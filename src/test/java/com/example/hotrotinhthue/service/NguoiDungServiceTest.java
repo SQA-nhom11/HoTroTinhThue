@@ -129,7 +129,7 @@ public class NguoiDungServiceTest {
 		// expected result
 		NguoiDung nguoiDungExpected=new NguoiDung(100, "456", "", "Nguyễn Trường Giang", "Hà Đông", "174382976452", "Hà Nội", "0325395325", "giangnguyen@gmail.com", null);
 						
-		assertThat(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau)).isEqualToIgnoringGivenFields(nguoiDungExpected, "matKhau", "toKhaiThueList");
+		assertThat(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau)).isEqualToIgnoringGivenFields(nguoiDungExpected, "id", "matKhau", "toKhaiThueList");
 	}
 	
 	@Test
