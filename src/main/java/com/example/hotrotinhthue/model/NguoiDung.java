@@ -89,7 +89,7 @@ public class NguoiDung implements UserDetails {
 		return maSoThue;
 	}
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nguoiDung")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "nguoiDung")
     private List<ToKhaiThue> toKhaiThueList = new ArrayList<>();
 
 }
