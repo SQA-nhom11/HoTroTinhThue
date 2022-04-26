@@ -18,14 +18,14 @@ public class DaiLyThueServiceTest {
 	private DaiLyThueService daiLyThueService;
 	
 	@Test
-	public void testGetDaiLyThue1() {
+	public void getDaiLyThue_test1() {
 		String id="123";
 		DaiLyThue daiLyThue=new DaiLyThue("123", "Nha sep"); // expected result
 		assertThat(daiLyThueService.getDaiLyThue(id)).isEqualTo(daiLyThue);
 	}
 	
 	@Test
-	public void testGetDaiLyThue2() {
+	public void getDaiLyThue_test2() {
 		String id="333";
 		DaiLyThue daiLyThue=null; // expected result
 		assertThat(daiLyThueService.getDaiLyThue(id)).isEqualTo(daiLyThue);
