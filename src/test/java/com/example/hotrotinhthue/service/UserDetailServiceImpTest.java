@@ -20,8 +20,6 @@ public class UserDetailServiceImpTest {
 	public void loadUserByUsername_test() {
 		String username="123";
 		NguoiDung nguoiDung=new NguoiDung(1, "123", "$2a$04$5uFp1c9B8L5RXlGYX35HWeByWiYp.P6yH9dmP53pjzU.B8z.5hb3e", "Cuong ML", "Hà Tây", "123456789000", "Hà Nội", "0244315432", "cuongml@gmail.com", null);  // expected result
-		NguoiDung test=(NguoiDung) userDetailServiceImp.loadUserByUsername(username);
-		test.setToKhaiThueList(null);
-		assertThat(test).isEqualToIgnoringGivenFields(nguoiDung, "toKhaiThueList");
+		assertThat(userDetailServiceImp.loadUserByUsername(username)).isEqualToIgnoringGivenFields(nguoiDung, "toKhaiThueList");
 	}
 }

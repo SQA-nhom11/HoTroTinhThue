@@ -20,8 +20,34 @@ public class NguoiDungServiceTest {
 	public void loadUserByUsername_test() {
 		String username="123";
 		NguoiDung nguoiDung=new NguoiDung(1, "123", "$2a$04$5uFp1c9B8L5RXlGYX35HWeByWiYp.P6yH9dmP53pjzU.B8z.5hb3e", "Cuong ML", "Hà Tây", "123456789000", "Hà Nội", "0244315432", "cuongml@gmail.com", null);  // expected result
-		NguoiDung test=nguoiDungService.loadUserByUsername(username);
-		test.setToKhaiThueList(null);
-		assertThat(test).isEqualToIgnoringGivenFields(nguoiDung, "toKhaiThueList");
+		assertThat(nguoiDungService.loadUserByUsername(username)).isEqualToIgnoringGivenFields(nguoiDung, "toKhaiThueList");
+	}
+	
+	@Test
+	public void getNguoiDung_test1() {
+		long id=1;
+		NguoiDung nguoiDung=new NguoiDung(1, "123", "$2a$04$5uFp1c9B8L5RXlGYX35HWeByWiYp.P6yH9dmP53pjzU.B8z.5hb3e", "Cuong ML", "Hà Tây", "123456789000", "Hà Nội", "0244315432", "cuongml@gmail.com", null); // expected result
+		assertThat(nguoiDungService.getNguoiDung(id)).isEqualToIgnoringGivenFields(nguoiDung, "toKhaiThueList");
+	}
+	
+	@Test
+	public void getNguoiDung_test2() {
+		long id=999;
+		NguoiDung nguoiDung=null; // expected result
+		assertThat(nguoiDungService.getNguoiDung(id)).isEqualTo(nguoiDung);
+	}
+	
+	@Test
+	public void getNguoiDungByMaSoThue_test1() {
+		String maSoThue="123";
+		NguoiDung nguoiDung=new NguoiDung(1, "123", "$2a$04$5uFp1c9B8L5RXlGYX35HWeByWiYp.P6yH9dmP53pjzU.B8z.5hb3e", "Cuong ML", "Hà Tây", "123456789000", "Hà Nội", "0244315432", "cuongml@gmail.com", null); // expected result
+		assertThat(nguoiDungService.getNguoiDungByMaSoThue(maSoThue)).isEqualToIgnoringGivenFields(nguoiDung, "toKhaiThueList");
+	}
+	
+	@Test
+	public void getNguoiDungByMaSoThue_test2() {
+		String maSoThue="999";
+		NguoiDung nguoiDung=null; // expected result
+		assertThat(nguoiDungService.getNguoiDungByMaSoThue(maSoThue)).isEqualTo(nguoiDung);
 	}
 }
