@@ -8,25 +8,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.example.hotrotinhthue.model.DaiLyThue;
+import com.example.hotrotinhthue.model.MaSoThue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class DaiLyThueServiceTest {
+public class MaSoThueServiceTest {
 	@Autowired
-	private DaiLyThueService daiLyThueService;
+	private MaSoThueService maSoThueService;
 	
 	@Test
-	public void getDaiLyThue_test1() {
+	public void getMaSoThue_test1() {
 		String id="123";
-		DaiLyThue daiLyThue=new DaiLyThue("123", "Nha sep"); // expected result
-		assertThat(daiLyThueService.getDaiLyThue(id)).isEqualTo(daiLyThue);
+		MaSoThue maSoThue=new MaSoThue("123", "Cuong ML", "123456789000"); // expected result
+		assertThat(maSoThueService.getMaSoThue(id)).isEqualTo(maSoThue);
 	}
 	
 	@Test
-	public void getDaiLyThue_test2() {
+	public void getMaSoThue_test2() {
 		String id="333";
-		DaiLyThue daiLyThue=null; // expected result
-		assertThat(daiLyThueService.getDaiLyThue(id)).isEqualTo(daiLyThue);
+		MaSoThue maSoThue=null; // expected result
+		assertThat(maSoThueService.getMaSoThue(id)).isEqualTo(maSoThue);
 	}
 }

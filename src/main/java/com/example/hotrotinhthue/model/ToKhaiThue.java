@@ -1,12 +1,17 @@
 package com.example.hotrotinhthue.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import java.sql.Date;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "tokhaithue")
 public class ToKhaiThue {
     @Id
