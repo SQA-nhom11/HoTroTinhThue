@@ -12,15 +12,15 @@ import com.example.hotrotinhthue.model.NguoiDung;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserDetailServiceImpTest {
+public class NguoiDungServiceTest {
 	@Autowired
-	private UserDetailServiceImp userDetailServiceImp;
+	private NguoiDungService nguoiDungService;
 	
 	@Test
 	public void loadUserByUsername_test() {
 		String username="123";
 		NguoiDung nguoiDung=new NguoiDung(1, "123", "$2a$04$5uFp1c9B8L5RXlGYX35HWeByWiYp.P6yH9dmP53pjzU.B8z.5hb3e", "Cuong ML", "Hà Tây", "123456789000", "Hà Nội", "0244315432", "cuongml@gmail.com", null);  // expected result
-		NguoiDung test=(NguoiDung) userDetailServiceImp.loadUserByUsername(username);
+		NguoiDung test=nguoiDungService.loadUserByUsername(username);
 		test.setToKhaiThueList(null);
 		assertThat(test).isEqualToIgnoringGivenFields(nguoiDung, "toKhaiThueList");
 	}
