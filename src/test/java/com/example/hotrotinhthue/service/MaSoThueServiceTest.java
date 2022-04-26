@@ -16,17 +16,27 @@ public class MaSoThueServiceTest {
 	@Autowired
 	private MaSoThueService maSoThueService;
 	
+	// ma so thue co ton tai
 	@Test
 	public void getMaSoThue_test1() {
+		// input
 		String id="123";
-		MaSoThue maSoThue=new MaSoThue("123", "Cuong ML", "123456789000"); // expected result
+		
+		// expected result
+		MaSoThue maSoThue=new MaSoThue("123", "Đinh Mạnh Cường", "292414832415");
+		
 		assertThat(maSoThueService.getMaSoThue(id)).isEqualTo(maSoThue);
 	}
 	
+	// ma so thue khong ton tai
 	@Test
 	public void getMaSoThue_test2() {
+		// input
 		String id="333";
-		MaSoThue maSoThue=null; // expected result
+		
+		// expected result
+		MaSoThue maSoThue=null;
+		
 		assertThat(maSoThueService.getMaSoThue(id)).isEqualTo(maSoThue);
 	}
 }
