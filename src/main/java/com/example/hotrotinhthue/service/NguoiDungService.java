@@ -57,6 +57,12 @@ public class NguoiDungService {
 			System.out.println("Thong tin ho va ten hoac CCCD khong dung voi ma so thue!");
 			return null;
 		}
+
+		// Password check
+		if(!Pattern.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,16}$", nguoiDung.getMatKhau())) {
+			System.out.println("Mat khau khong hop le");
+			return null;
+		}
     	
     	// Password check
     	if(!Pattern.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,16}$", nguoiDung.getMatKhau())) {
