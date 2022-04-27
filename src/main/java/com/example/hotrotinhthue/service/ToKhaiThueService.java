@@ -23,6 +23,8 @@ public class ToKhaiThueService implements Constants {
 
 	public ToKhaiThue initToKhaiThue(long id) {
 		NguoiDung nguoiDung = nguoiDungService.getNguoiDung(id);
+		if(nguoiDung == null)
+			return null;
 		ToKhaiThue toKhaiThue = new ToKhaiThue();
 		toKhaiThue.setNamKeKhai(2022);
 		toKhaiThue.setHoTen(nguoiDung.getHoTen());
@@ -36,6 +38,8 @@ public class ToKhaiThueService implements Constants {
 
 	public ToKhaiThue step1ToKhaiThue(ToKhaiThue toKhaiThue) {
 		// Default validate
+		if (!(toKhaiThue.getFax() == null) && !Pattern.matches("^[0-9]{10}$", toKhaiThue.getFax()))
+			return null;
 		if (toKhaiThue.isDaiLyThue()) {
 			if (toKhaiThue.getMaSoThueDLT().trim().equals(""))
 				return null;
@@ -49,11 +53,13 @@ public class ToKhaiThueService implements Constants {
 				return null;
 			if (toKhaiThue.getDiaChiDLT().trim().equals(""))
 				return null;
-			if (!Pattern.matches("^[0-9]+$", toKhaiThue.getSdtDLT()))
+			if (!Pattern.matches("^[0-9]{10}$", toKhaiThue.getSdtDLT()))
 				return null;
 			if (!Pattern.matches("^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$", toKhaiThue.getEmailDLT()))
 				return null;
 			if (toKhaiThue.getSoHopDong().trim().equals(""))
+				return null;
+			if (toKhaiThue.getNgayHopDong().trim().equals(""))
 				return null;
 		}
 
@@ -112,6 +118,8 @@ public class ToKhaiThueService implements Constants {
 	
 	public ToKhaiThue checkToKhai(long idToKhai, long idNguoiDung) {
 		NguoiDung nguoiDung=nguoiDungService.getNguoiDung(idNguoiDung);
+		if (nguoiDung == null)
+			return null;
 		for(ToKhaiThue toKhaiThue:nguoiDung.getToKhaiThueList())
 			if(toKhaiThue.getId()==idToKhai) return toKhaiThue;
 		return null;	
@@ -135,17 +143,17 @@ public class ToKhaiThueService implements Constants {
 			else
 				thueThuNhapCaNhan = (tong * THUE_SUAT_BAC_7 / 100 - 9850000);
 		} else {
-			if (tong <= THU_NHAP_BAC_1)
+			if (tong <= THU_NHAP_BAC_1 * 3)
 				thueThuNhapCaNhan = (tong * THUE_SUAT_BAC_1 / 100);
-			else if (tong <= THU_NHAP_BAC_2)
+			else if (tong <= THU_NHAP_BAC_2 * 3)
 				thueThuNhapCaNhan = (tong * THUE_SUAT_BAC_2 / 100 - 250000 * 3);
-			else if (tong <= THU_NHAP_BAC_3)
+			else if (tong <= THU_NHAP_BAC_3 * 3)
 				thueThuNhapCaNhan = (tong * THUE_SUAT_BAC_3 / 100 - 750000 * 3);
-			else if (tong <= THU_NHAP_BAC_4)
+			else if (tong <= THU_NHAP_BAC_4 * 3)
 				thueThuNhapCaNhan = (tong * THUE_SUAT_BAC_4 / 100 - 1650000 * 3);
-			else if (tong <= THU_NHAP_BAC_5)
+			else if (tong <= THU_NHAP_BAC_5 * 3)
 				thueThuNhapCaNhan = (tong * THUE_SUAT_BAC_5 / 100 - 3250000 * 3);
-			else if (tong <= THU_NHAP_BAC_6)
+			else if (tong <= THU_NHAP_BAC_6 * 3)
 				thueThuNhapCaNhan = (tong * THUE_SUAT_BAC_6 / 100 - 5850000 * 3);
 			else
 				thueThuNhapCaNhan = (tong * THUE_SUAT_BAC_7 / 100 - 9850000 * 3);
