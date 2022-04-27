@@ -2,6 +2,13 @@ package com.example.hotrotinhthue.service;
 
 import com.example.hotrotinhthue.model.NguoiDung;
 import com.example.hotrotinhthue.model.ToKhaiThue;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertNull;
+
+import java.sql.Date;
+
+import javax.transaction.Transactional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -14,8 +21,11 @@ import org.springframework.validation.BindingResult;
 
 import static org.assertj.core.api.Assertions.*;
 
+import com.example.hotrotinhthue.model.ToKhaiThue;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
 public class ToKhaiThueServiceTest {
 	@Autowired
 	private ToKhaiThueService toKhaiThueService;
@@ -28,9 +38,18 @@ public class ToKhaiThueServiceTest {
 	//test create toKhai voi nguoi dung ton tai
 	@Test
 	public void initToKhaiThue_test() {
-		Long id = 1L;
-		ToKhaiThue toKhaiThue = toKhaiThueService.initToKhaiThue(id);
-		assertThat(toKhaiThue).isNotNull();
+		long id=1;
+		
+		// expected result
+		ToKhaiThue toKhaiThue=new ToKhaiThue();
+		toKhaiThue.setNamKeKhai(2022);
+		toKhaiThue.setHoTen("Đinh Mạnh Cường");
+		toKhaiThue.setMaSoThue("123");
+		toKhaiThue.setDiaChi("Hà Tây");
+		toKhaiThue.setSdt("0431354251");
+		toKhaiThue.setEmail("cuongdinh@gmail.com");
+		
+		assertThat(toKhaiThueService.initToKhaiThue(id)).isEqualTo(toKhaiThue);
 	}
 
 	//test create toKhai voi nguoi khong ton tai

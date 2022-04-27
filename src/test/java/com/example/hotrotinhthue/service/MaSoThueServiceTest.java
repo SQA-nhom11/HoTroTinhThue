@@ -1,6 +1,9 @@
 package com.example.hotrotinhthue.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertNull;
+
+import javax.transaction.Transactional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +15,7 @@ import com.example.hotrotinhthue.model.MaSoThue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
 public class MaSoThueServiceTest {
 	@Autowired
 	private MaSoThueService maSoThueService;
@@ -34,9 +38,6 @@ public class MaSoThueServiceTest {
 		// input
 		String id="333";
 		
-		// expected result
-		MaSoThue maSoThue=null;
-		
-		assertThat(maSoThueService.getMaSoThue(id)).isEqualTo(maSoThue);
+		assertNull(maSoThueService.getMaSoThue(id));
 	}
 }

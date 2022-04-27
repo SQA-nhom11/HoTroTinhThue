@@ -1,20 +1,21 @@
 package com.example.hotrotinhthue.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertNull;
+
+import javax.transaction.Transactional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.hotrotinhthue.model.DaiLyThue;
-import com.example.hotrotinhthue.repository.DaiLyThueRepo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
 public class DaiLyThueServiceTest {	
 	@Autowired
 	private DaiLyThueService daiLyThueService;
@@ -36,10 +37,7 @@ public class DaiLyThueServiceTest {
 	public void getDaiLyThue_test2() {
 		// input
 		String id="333";
-		
-		// expected result
-		DaiLyThue daiLyThue=null;
-		
-		assertThat(daiLyThueService.getDaiLyThue(id)).isEqualTo(daiLyThue);
+
+		assertNull(daiLyThueService.getDaiLyThue(id));
 	}
 }
