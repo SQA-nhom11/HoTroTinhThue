@@ -2,6 +2,8 @@ package com.example.hotrotinhthue.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import javax.transaction.Transactional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -13,10 +15,9 @@ import org.springframework.validation.BindingResult;
 
 import com.example.hotrotinhthue.model.NguoiDung;
 
-import junit.framework.Assert;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
 public class NguoiDungServiceTest {
 	@Autowired
 	private NguoiDungService nguoiDungService;

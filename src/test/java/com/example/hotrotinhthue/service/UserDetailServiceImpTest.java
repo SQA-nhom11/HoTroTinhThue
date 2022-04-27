@@ -2,6 +2,8 @@ package com.example.hotrotinhthue.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import javax.transaction.Transactional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import com.example.hotrotinhthue.model.NguoiDung;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
 public class UserDetailServiceImpTest {
 	@Autowired
 	private UserDetailServiceImp userDetailServiceImp;
