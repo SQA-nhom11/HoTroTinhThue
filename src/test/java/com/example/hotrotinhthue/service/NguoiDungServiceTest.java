@@ -1,6 +1,7 @@
 package com.example.hotrotinhthue.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertNull;
 
 import javax.transaction.Transactional;
 
@@ -44,10 +45,7 @@ public class NguoiDungServiceTest {
 		Mockito.when(mockBindingResult.hasErrors()).thenReturn(true);
 		String nhapLaiMatKhau="matkhau";
 		
-		// expected result
-		NguoiDung nguoiDungExpected=null;
-		
-		assertThat(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau)).isEqualTo(nguoiDungExpected);
+		assertNull(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau));
 	}
 	
 	// Ma so thue da dang ki
@@ -58,10 +56,7 @@ public class NguoiDungServiceTest {
 		Mockito.when(mockBindingResult.hasErrors()).thenReturn(false);
 		String nhapLaiMatKhau="matkhau";
 		
-		// expected result
-		NguoiDung nguoiDungExpected=null;
-				
-		assertThat(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau)).isEqualTo(nguoiDungExpected);
+		assertNull(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau));
 	}
 	
 	// Ma so thue khong ton tai
@@ -72,10 +67,7 @@ public class NguoiDungServiceTest {
 		Mockito.when(mockBindingResult.hasErrors()).thenReturn(false);
 		String nhapLaiMatKhau="matkhau";
 				
-		// expected result
-		NguoiDung nguoiDungExpected=null;
-				
-		assertThat(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau)).isEqualTo(nguoiDungExpected);
+		assertNull(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau));
 	}
 	
 	// Thong tin ho va ten hoac CCCD khong dung voi ma so thue
@@ -86,10 +78,7 @@ public class NguoiDungServiceTest {
 		Mockito.when(mockBindingResult.hasErrors()).thenReturn(false);
 		String nhapLaiMatKhau="matkhau";
 						
-		// expected result
-		NguoiDung nguoiDungExpected=null;
-						
-		assertThat(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau)).isEqualTo(nguoiDungExpected);
+		assertNull(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau));
 	}
 	
 	// Mat khau khong hop le
@@ -100,10 +89,7 @@ public class NguoiDungServiceTest {
 		Mockito.when(mockBindingResult.hasErrors()).thenReturn(false);
 		String nhapLaiMatKhau="mk";
 						
-		// expected result
-		NguoiDung nguoiDungExpected=null;
-						
-		assertThat(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau)).isEqualTo(nguoiDungExpected);
+		assertNull(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau));
 	}
 	
 	// Mat khau khong trung nhau
@@ -114,10 +100,7 @@ public class NguoiDungServiceTest {
 		Mockito.when(mockBindingResult.hasErrors()).thenReturn(false);
 		String nhapLaiMatKhau="cuonggay123";
 						
-		// expected result
-		NguoiDung nguoiDungExpected=null;
-						
-		assertThat(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau)).isEqualTo(nguoiDungExpected);
+		assertNull(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau));
 	}
 	
 	
@@ -146,10 +129,7 @@ public class NguoiDungServiceTest {
 		nguoiDungMoi.setEmail("cuongdinh@gmail.com");
 		long id=1;
 		
-		// expected result
-		NguoiDung nguoiDungExpected=null;
-		
-		assertThat(nguoiDungService.changeNguoiDungInfo(nguoiDungMoi, id)).isEqualTo(nguoiDungExpected);
+		assertNull(nguoiDungService.changeNguoiDungInfo(nguoiDungMoi, id));
 	}
 	
 	// Co quan thue de trong
@@ -163,10 +143,7 @@ public class NguoiDungServiceTest {
 		nguoiDungMoi.setEmail("cuongdinh@gmail.com");
 		long id=1;
 		
-		// expected result
-		NguoiDung nguoiDungExpected=null;
-		
-		assertThat(nguoiDungService.changeNguoiDungInfo(nguoiDungMoi, id)).isEqualTo(nguoiDungExpected);
+		assertNull(nguoiDungService.changeNguoiDungInfo(nguoiDungMoi, id));
 	}
 	
 	// So dien thoai khong hop le
@@ -180,10 +157,7 @@ public class NguoiDungServiceTest {
 		nguoiDungMoi.setEmail("cuongdinh@gmail.com");
 		long id=1;
 		
-		// expected result
-		NguoiDung nguoiDungExpected=null;
-			
-		assertThat(nguoiDungService.changeNguoiDungInfo(nguoiDungMoi, id)).isEqualTo(nguoiDungExpected);
+		assertNull(nguoiDungService.changeNguoiDungInfo(nguoiDungMoi, id));
 	}
 
 	// Email khong hop le
@@ -197,10 +171,7 @@ public class NguoiDungServiceTest {
 		nguoiDungMoi.setEmail("cuongpham@abc");
 		long id=1;
 		
-		// expected result
-		NguoiDung nguoiDungExpected=null;
-			
-		assertThat(nguoiDungService.changeNguoiDungInfo(nguoiDungMoi, id)).isEqualTo(nguoiDungExpected);
+		assertNull(nguoiDungService.changeNguoiDungInfo(nguoiDungMoi, id));
 	}
 	
 	// Pass validate
@@ -227,9 +198,7 @@ public class NguoiDungServiceTest {
 		String nhapLaiMatKhau="cuongdepzai";
 		long id=1;
 		
-		// expected result
-		NguoiDung nguoiDungExpected=null;
-		assertThat(nguoiDungService.changeNguoiDungPassword(matKhauMoi, nhapLaiMatKhau, id)).isEqualTo(nguoiDungExpected);
+		assertNull(nguoiDungService.changeNguoiDungPassword(matKhauMoi, nhapLaiMatKhau, id));
 	}
 	
 	// mat khau khong trung nhau
@@ -240,9 +209,7 @@ public class NguoiDungServiceTest {
 		String nhapLaiMatKhau="cuongdz321";
 		long id=1;
 		
-		// expected result
-		NguoiDung nguoiDungExpected=null;
-		assertThat(nguoiDungService.changeNguoiDungPassword(matKhauMoi, nhapLaiMatKhau, id)).isEqualTo(nguoiDungExpected);
+		assertNull(nguoiDungService.changeNguoiDungPassword(matKhauMoi, nhapLaiMatKhau, id));
 	}
 	
 	// Pass validate
@@ -275,10 +242,7 @@ public class NguoiDungServiceTest {
 		// input
 		long id=333;
 		
-		// expected result
-		NguoiDung nguoiDung=null;
-		
-		assertThat(nguoiDungService.getNguoiDung(id)).isEqualTo(nguoiDung);
+		assertNull(nguoiDungService.getNguoiDung(id));
 	}
 	
 	// nguoi dung co ton tai
@@ -298,9 +262,6 @@ public class NguoiDungServiceTest {
 		// input
 		String maSoThue="333";
 		
-		// expected result
-		NguoiDung nguoiDung=null;
-		
-		assertThat(nguoiDungService.getNguoiDungByMaSoThue(maSoThue)).isEqualTo(nguoiDung);
+		assertNull(nguoiDungService.getNguoiDungByMaSoThue(maSoThue));
 	}
 }

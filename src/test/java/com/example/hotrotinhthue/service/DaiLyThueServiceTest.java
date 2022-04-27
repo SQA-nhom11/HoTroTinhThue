@@ -1,6 +1,7 @@
 package com.example.hotrotinhthue.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertNull;
 
 import javax.transaction.Transactional;
 
@@ -36,10 +37,7 @@ public class DaiLyThueServiceTest {
 	public void getDaiLyThue_test2() {
 		// input
 		String id="333";
-		
-		// expected result
-		DaiLyThue daiLyThue=null;
-		
-		assertThat(daiLyThueService.getDaiLyThue(id)).isEqualTo(daiLyThue);
+
+		assertNull(daiLyThueService.getDaiLyThue(id));
 	}
 }

@@ -1,6 +1,7 @@
 package com.example.hotrotinhthue.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertNull;
 
 import javax.transaction.Transactional;
 
@@ -37,9 +38,6 @@ public class MaSoThueServiceTest {
 		// input
 		String id="333";
 		
-		// expected result
-		MaSoThue maSoThue=null;
-		
-		assertThat(maSoThueService.getMaSoThue(id)).isEqualTo(maSoThue);
+		assertNull(maSoThueService.getMaSoThue(id));
 	}
 }
