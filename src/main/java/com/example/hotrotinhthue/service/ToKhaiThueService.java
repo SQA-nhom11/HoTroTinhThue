@@ -49,7 +49,7 @@ public class ToKhaiThueService implements Constants {
 				return null;
 			if (toKhaiThue.getDiaChiDLT().trim().equals(""))
 				return null;
-			if (!Pattern.matches("^[0-9]+$", toKhaiThue.getSdtDLT()))
+			if (!Pattern.matches("^\\d{10}$", toKhaiThue.getSdtDLT()))
 				return null;
 			if (!Pattern.matches("^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$", toKhaiThue.getEmailDLT()))
 				return null;
@@ -64,14 +64,12 @@ public class ToKhaiThueService implements Constants {
 
 	public ToKhaiThue step2ToKhaiThue(boolean cuTru, Long chiTieu20, Long chiTieu21, Long chiTieu24, Long chiTieu25,
 			Long chiTieu26, Long chiTieu27, Long chiTieu30, ToKhaiThue toKhaiThue, long id) {
+		if (toKhaiThue.getKyTinhThue().equals("Tháng")) toKhaiThue.setChiTieu23(GIAM_TRU_BAN_THAN);
+		else toKhaiThue.setChiTieu23(GIAM_TRU_BAN_THAN * 3);
 		if (cuTru) {
 			toKhaiThue.setCuTru(true);
 			toKhaiThue.setChiTieu20(chiTieu20);
 			toKhaiThue.setChiTieu21(chiTieu21);
-			if (toKhaiThue.getKyTinhThue().equals("Tháng"))
-				toKhaiThue.setChiTieu23(GIAM_TRU_BAN_THAN);
-			else
-				toKhaiThue.setChiTieu23(GIAM_TRU_BAN_THAN * 3);
 			toKhaiThue.setChiTieu24(chiTieu24.longValue());
 			toKhaiThue.setChiTieu25(chiTieu25.longValue());
 			toKhaiThue.setChiTieu26(chiTieu26.longValue());
@@ -79,8 +77,7 @@ public class ToKhaiThueService implements Constants {
 			toKhaiThue.setChiTieu22(toKhaiThue.getChiTieu23() + chiTieu24.longValue() + chiTieu25.longValue()
 					+ chiTieu26.longValue() + chiTieu27.longValue());
 			toKhaiThue.setChiTieu28(chiTieu20.longValue() - chiTieu21.longValue() - toKhaiThue.getChiTieu22());
-			if (toKhaiThue.getChiTieu28() < 0)
-				toKhaiThue.setChiTieu28(0);
+			if (toKhaiThue.getChiTieu28() < 0) toKhaiThue.setChiTieu28(0);
 			toKhaiThue.setChiTieu29(tongThue(toKhaiThue.getChiTieu28(), toKhaiThue.getKyTinhThue()));
 			toKhaiThue.setChiTieu30(0);
 			toKhaiThue.setChiTieu31(20);
@@ -89,10 +86,6 @@ public class ToKhaiThueService implements Constants {
 			toKhaiThue.setCuTru(false);
 			toKhaiThue.setChiTieu20(0);
 			toKhaiThue.setChiTieu21(0);
-			if (toKhaiThue.getKyTinhThue().equals("Tháng"))
-				toKhaiThue.setChiTieu23(GIAM_TRU_BAN_THAN);
-			else
-				toKhaiThue.setChiTieu23(GIAM_TRU_BAN_THAN * 3);
 			toKhaiThue.setChiTieu24(0);
 			toKhaiThue.setChiTieu25(0);
 			toKhaiThue.setChiTieu26(0);
