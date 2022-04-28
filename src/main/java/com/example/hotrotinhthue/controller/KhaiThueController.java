@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("khai-thue")
@@ -49,11 +50,11 @@ public class KhaiThueController {
 
 	@PostMapping("tinh-thue")
 	public String tinhThue(boolean cuTru, Long chiTieu20, Long chiTieu21, Long chiTieu24, Long chiTieu25,
-			Long chiTieu26, Long chiTieu27, Long chiTieu30, HttpSession session, Authentication authentication, Model model) {
+			Long chiTieu26, Long chiTieu27, Long chiTieu30, HttpSession session, Authentication authentication, RedirectAttributes model) {
 		ToKhaiThue toKhaiThue=(ToKhaiThue) session.getAttribute("toKhaiThue");
 		toKhaiThueService.step2ToKhaiThue(cuTru, chiTieu20, chiTieu21, chiTieu24, chiTieu25, chiTieu26, chiTieu27, chiTieu30, toKhaiThue, ((NguoiDung) authentication.getPrincipal()).getId());
-		model.addAttribute("message", "Khai thuế thành công, mời bạn đóng thuế hoặc quay về trang chủ!");
-		model.addAttribute("nguoiDung", nguoiDungService.getNguoiDung(((NguoiDung) authentication.getPrincipal()).getId()));
-		return "nop-thue/index";
+		model.addFlashAttribute("message", "Khai thuế thành công, mời bạn đóng thuế hoặc quay về trang chủ!");
+		model.addFlashAttribute("nguoiDung", nguoiDungService.getNguoiDung(((NguoiDung) authentication.getPrincipal()).getId()));
+		return "redirect:/nop-thue";
 	}
 }
