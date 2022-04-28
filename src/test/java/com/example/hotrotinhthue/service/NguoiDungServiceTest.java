@@ -98,7 +98,7 @@ public class NguoiDungServiceTest {
 		// input
 		NguoiDung nguoiDung=new NguoiDung(100, "456", "giang456", "Nguyễn Trường Giang", "Hà Đông", "174382976452", "Hà Nội", "0325395325", "giangnguyen@gmail.com", null);
 		Mockito.when(mockBindingResult.hasErrors()).thenReturn(false);
-		String nhapLaiMatKhau="cuonggay123";
+		String nhapLaiMatKhau="gianggay123";
 						
 		assertNull(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau));
 	}

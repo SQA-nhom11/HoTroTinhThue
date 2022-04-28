@@ -32,6 +32,7 @@ public class ToKhaiThueService implements Constants {
 		toKhaiThue.setDiaChi(nguoiDung.getDiaChi());
 		toKhaiThue.setSdt(nguoiDung.getSdt());
 		toKhaiThue.setEmail(nguoiDung.getEmail());
+		toKhaiThue.setFax("");
 
 		return toKhaiThue;
 	}
@@ -70,6 +71,11 @@ public class ToKhaiThueService implements Constants {
 
 	public ToKhaiThue step2ToKhaiThue(boolean cuTru, Long chiTieu20, Long chiTieu21, Long chiTieu24, Long chiTieu25,
 			Long chiTieu26, Long chiTieu27, Long chiTieu30, ToKhaiThue toKhaiThue, long id) {
+		System.out.println(chiTieu20 + ", " + chiTieu21 + ", " + chiTieu24 + ", " + chiTieu25 + ", " + chiTieu26 + ", "
+				+ chiTieu27 + ", " + chiTieu30);
+		if(chiTieu20 < 0 || chiTieu21 < 0 || chiTieu24 < 0 || chiTieu25 < 0 ||
+				chiTieu26 < 0 || chiTieu27 < 0 || chiTieu30 < 0)
+			return null;
 		if (cuTru) {
 			toKhaiThue.setCuTru(true);
 			toKhaiThue.setChiTieu20(chiTieu20);
@@ -129,32 +135,32 @@ public class ToKhaiThueService implements Constants {
 		long thueThuNhapCaNhan = 0;
 		if (kyTinhThue.equals("Tháng")) {
 			if (tong <= THU_NHAP_BAC_1)
-				thueThuNhapCaNhan = (long)Math.round(tong * THUE_SUAT_BAC_1 / 100);
+				thueThuNhapCaNhan = (long)Math.round(tong * 1.0 * THUE_SUAT_BAC_1 / 100);
 			else if (tong <= THU_NHAP_BAC_2)
-				thueThuNhapCaNhan = (long)Math.round(tong * THUE_SUAT_BAC_2 / 100 - 250000);
+				thueThuNhapCaNhan = (long)Math.round(tong * 1.0 * THUE_SUAT_BAC_2 / 100) - 250000;
 			else if (tong <= THU_NHAP_BAC_3)
-				thueThuNhapCaNhan = (long)Math.round(tong * THUE_SUAT_BAC_3 / 100 - 750000);
+				thueThuNhapCaNhan = (long)Math.round(tong * 1.0 * THUE_SUAT_BAC_3 / 100) - 750000;
 			else if (tong <= THU_NHAP_BAC_4)
-				thueThuNhapCaNhan = (long)Math.round(tong * THUE_SUAT_BAC_4 / 100 - 1650000);
+				thueThuNhapCaNhan = (long)Math.round(tong * 1.0 * THUE_SUAT_BAC_4 / 100) - 1650000;
 			else if (tong <= THU_NHAP_BAC_5)
-				thueThuNhapCaNhan = (long)Math.round(tong * THUE_SUAT_BAC_5 / 100 - 3250000);
+				thueThuNhapCaNhan = (long)Math.round(tong * 1.0 * THUE_SUAT_BAC_5 / 100) - 3250000;
 			else if (tong <= THU_NHAP_BAC_6)
-				thueThuNhapCaNhan = (long)Math.round(tong * THUE_SUAT_BAC_6 / 100 - 5850000);
+				thueThuNhapCaNhan = (long)Math.round(tong * 1.0 * THUE_SUAT_BAC_6 / 100) - 5850000;
 			else
-				thueThuNhapCaNhan = (long)Math.round(tong * THUE_SUAT_BAC_7 / 100 - 9850000);
+				thueThuNhapCaNhan = (long)Math.round(tong * 1.0 * THUE_SUAT_BAC_7 / 100) - 9850000;
 		} else {
 			if (tong <= THU_NHAP_BAC_1 * 3)
-				thueThuNhapCaNhan = (long)Math.round(tong * THUE_SUAT_BAC_1 / 100);
+				thueThuNhapCaNhan = (long)Math.round(tong * 1.0 * THUE_SUAT_BAC_1 / 100);
 			else if (tong <= THU_NHAP_BAC_2 * 3)
-				thueThuNhapCaNhan = (long)Math.round(tong * THUE_SUAT_BAC_2 / 100 - 250000 * 3);
+				thueThuNhapCaNhan = (long)Math.round(tong * 1.0 * THUE_SUAT_BAC_2 / 100 - 250000 * 3);
 			else if (tong <= THU_NHAP_BAC_3 * 3)
-				thueThuNhapCaNhan = (long)Math.round(tong * THUE_SUAT_BAC_3 / 100 - 750000 * 3);
+				thueThuNhapCaNhan = (long)Math.round(tong * 1.0 * THUE_SUAT_BAC_3 / 100 - 750000 * 3);
 			else if (tong <= THU_NHAP_BAC_4 * 3)
-				thueThuNhapCaNhan = (long)Math.round(tong * THUE_SUAT_BAC_4 / 100 - 1650000 * 3);
+				thueThuNhapCaNhan = (long)Math.round(tong * 1.0 * THUE_SUAT_BAC_4 / 100 - 1650000 * 3);
 			else if (tong <= THU_NHAP_BAC_5 * 3)
-				thueThuNhapCaNhan = (long)Math.round(tong * THUE_SUAT_BAC_5 / 100 - 3250000 * 3);
+				thueThuNhapCaNhan = (long)Math.round(tong * 1.0 * THUE_SUAT_BAC_5 / 100 - 3250000 * 3);
 			else if (tong <= THU_NHAP_BAC_6 * 3)
-				thueThuNhapCaNhan = (long)Math.round(tong * THUE_SUAT_BAC_6 / 100 - 5850000 * 3);
+				thueThuNhapCaNhan = (long)Math.round(tong * 1.0 * THUE_SUAT_BAC_6 / 100 - 5850000 * 3);
 			else
 				thueThuNhapCaNhan = (long)Math.round(tong * THUE_SUAT_BAC_7 / 100 - 9850000 * 3);
 		}

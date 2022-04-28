@@ -304,6 +304,18 @@ public class ToKhaiThueServiceTest {
 		assertThat(toKhaiThue).isNotNull();
 	}
 
+	//Test to khai co cu tru co 1 truong < 0
+	@Test
+	public void step2ToKhaiThue_test4() {
+		Long id = 1L;
+		ToKhaiThue toKhaiThue = toKhaiThueService.initToKhaiThue(id);
+		toKhaiThue = toKhaiThueService.step1ToKhaiThue(toKhaiThue);
+		toKhaiThue.setKyTinhThue("Tháng");
+		toKhaiThue = toKhaiThueService.step2ToKhaiThue(true, -100000000l, 0l, 4400000l,
+				0l, 0l, 0l, 0l, toKhaiThue, id.longValue());
+		assertThat(toKhaiThue).isNull();
+	}
+
 	// Nguoi dung khong co to khai nao
 		@Test
 		public void checkToKhai_test1() {
@@ -439,7 +451,7 @@ public class ToKhaiThueServiceTest {
 		String kyTinhThue="Quý";
 		
 		// expected result
-		long thueThuNhapCaNhan=1469272;
+		long thueThuNhapCaNhan=2188544;
 		assertThat(toKhaiThueService.tongThue(tong, kyTinhThue)).isEqualTo(thueThuNhapCaNhan);
 	}
 

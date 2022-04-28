@@ -18,9 +18,10 @@ import com.example.hotrotinhthue.model.NguoiDung;
 public class UserDetailServiceImpTest {
 	@Autowired
 	private UserDetailServiceImp userDetailServiceImp;
-	
+
+	//Ma so thue ton tai
 	@Test
-	public void loadUserByUsername_test() {
+	public void loadUserByUsername_test1() {
 		// input
 		String username="123";
 		
@@ -28,5 +29,16 @@ public class UserDetailServiceImpTest {
 		NguoiDung nguoiDung=new NguoiDung(1, "123", "", "Đinh Mạnh Cường", "Hà Tây", "292414832415", "Hà Nội", "0431354251", "cuongdinh@gmail.com", null);
 		
 		assertThat(userDetailServiceImp.loadUserByUsername(username)).isEqualToIgnoringGivenFields(nguoiDung, "matKhau", "toKhaiThueList");
+	}
+
+	//Ma so thue ko ton tai
+	@Test
+	public void loadUserByUsername_test2() {
+		// input
+		String username="11255";
+
+		NguoiDung nguoiDung=new NguoiDung(1, "123", "", "Đinh Mạnh Cường", "Hà Tây", "292414832415", "Hà Nội", "0431354251", "cuongdinh@gmail.com", null);
+
+		assertThat(userDetailServiceImp.loadUserByUsername(username)).isEqualTo(null);
 	}
 }
