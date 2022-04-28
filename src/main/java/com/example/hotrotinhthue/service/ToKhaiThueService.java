@@ -73,10 +73,12 @@ public class ToKhaiThueService implements Constants {
 			Long chiTieu26, Long chiTieu27, Long chiTieu30, ToKhaiThue toKhaiThue, long id) {
 		System.out.println(chiTieu20 + ", " + chiTieu21 + ", " + chiTieu24 + ", " + chiTieu25 + ", " + chiTieu26 + ", "
 				+ chiTieu27 + ", " + chiTieu30);
-		if(chiTieu20 < 0 || chiTieu21 < 0 || chiTieu24 < 0 || chiTieu25 < 0 ||
-				chiTieu26 < 0 || chiTieu27 < 0 || chiTieu30 < 0)
-			return null;
+		System.out.println(toKhaiThue);
 		if (cuTru) {
+			if(chiTieu20 < 0 || chiTieu21 < 0 || chiTieu24 < 0 || chiTieu25 < 0 ||
+					chiTieu26 < 0 || chiTieu27 < 0)
+				return null;
+
 			toKhaiThue.setCuTru(true);
 			toKhaiThue.setChiTieu20(chiTieu20);
 			toKhaiThue.setChiTieu21(chiTieu21);
@@ -98,6 +100,8 @@ public class ToKhaiThueService implements Constants {
 			toKhaiThue.setChiTieu31(20);
 			toKhaiThue.setChiTieu32(0);
 		} else {
+			if(chiTieu30 < 0)
+				return null;
 			toKhaiThue.setCuTru(false);
 			toKhaiThue.setChiTieu20(0);
 			toKhaiThue.setChiTieu21(0);
