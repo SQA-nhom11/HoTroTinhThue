@@ -162,7 +162,7 @@ public class ToKhaiThueService implements Constants {
 			else if (tong <= THU_NHAP_BAC_6 * 3)
 				thueThuNhapCaNhan = (long)Math.round(tong * 1.0 * THUE_SUAT_BAC_6 / 100 - 5850000 * 3);
 			else
-				thueThuNhapCaNhan = (long)Math.round(tong * THUE_SUAT_BAC_7 / 100 - 9850000 * 3);
+				thueThuNhapCaNhan = (long)Math.round(tong * 1.0 * THUE_SUAT_BAC_7 / 100 - 9850000 * 3);
 		}
 		return thueThuNhapCaNhan;
 	}
