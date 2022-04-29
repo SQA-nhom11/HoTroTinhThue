@@ -36,6 +36,7 @@ public class ToKhaiThueServiceTest {
 		toKhaiThue.setDiaChi("Hà Tây");
 		toKhaiThue.setSdt("0431354251");
 		toKhaiThue.setEmail("cuongdinh@gmail.com");
+		toKhaiThue.setFax("");
 		
 		assertThat(toKhaiThueService.initToKhaiThue(id)).isEqualTo(toKhaiThue);
 	}
