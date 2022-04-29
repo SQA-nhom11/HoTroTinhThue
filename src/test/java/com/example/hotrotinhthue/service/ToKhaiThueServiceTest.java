@@ -85,6 +85,7 @@ public class ToKhaiThueServiceTest {
 	// dai ly thue, ma so thue dai ly thue khong co trong database
 	@Test
 	public void step1ToKhaiThue_test3() {
+		// input
 		Long id = 1L;
 		ToKhaiThue toKhaiThue = toKhaiThueService.initToKhaiThue(id);
 		toKhaiThue.setFax("1234567890");
@@ -182,7 +183,7 @@ public class ToKhaiThueServiceTest {
 		toKhaiThue.setSdtDLT("0123456789");
 		toKhaiThue.setSoHopDong("123");
 		toKhaiThue.setNgayHopDong("12-02-2022");
-
+		
 		assertNull(toKhaiThueService.step1ToKhaiThue(toKhaiThue));
 	}
 
@@ -266,28 +267,34 @@ public class ToKhaiThueServiceTest {
 		toKhaiThue.setSdtDLT("0123456789");
 		toKhaiThue.setSoHopDong("123");
 		toKhaiThue.setNgayHopDong("12-02-2022");
+		
 		assertNotNull(toKhaiThueService.step1ToKhaiThue(toKhaiThue));
 	}
 
 	//Test to khai co cu tru theo tháng
 	@Test
 	public void step2ToKhaiThue_test1() {
+		// input
 		Long id = 1L;
 		ToKhaiThue toKhaiThue = toKhaiThueService.initToKhaiThue(id);
 		toKhaiThue = toKhaiThueService.step1ToKhaiThue(toKhaiThue);
 		toKhaiThue.setKyTinhThue("Tháng");
+		
 		toKhaiThue = toKhaiThueService.step2ToKhaiThue(true, 100000000l, 0l, 4400000l,
 				0l, 0l, 0l, 0l, toKhaiThue, id.longValue());
+		
 		assertThat(toKhaiThue).isNotNull();
 	}
 
 	//Test to khai co cu tru theo quý
 	@Test
 	public void step2ToKhaiThue_test2() {
+		// input
 		Long id = 1L;
 		ToKhaiThue toKhaiThue = toKhaiThueService.initToKhaiThue(id);
 		toKhaiThue = toKhaiThueService.step1ToKhaiThue(toKhaiThue);
 		toKhaiThue.setKyTinhThue("Quý");
+		
 		toKhaiThue = toKhaiThueService.step2ToKhaiThue(true, 100000000l, 0l, 4400000l,
 				0l, 0l, 0l, 0l, toKhaiThue, id.longValue());
 		assertThat(toKhaiThue).isNotNull();
@@ -296,10 +303,12 @@ public class ToKhaiThueServiceTest {
 	//Test to khai khong co cu tru
 	@Test
 	public void step2ToKhaiThue_test3() {
+		// input
 		Long id = 1L;
 		ToKhaiThue toKhaiThue = toKhaiThueService.initToKhaiThue(id);
 		toKhaiThue = toKhaiThueService.step1ToKhaiThue(toKhaiThue);
 		toKhaiThue.setKyTinhThue("Quý");
+		
 		toKhaiThue = toKhaiThueService.step2ToKhaiThue(false, 0l, 0l, 0l, 0l,
 				0l, 0l, 100000000l, toKhaiThue, id.longValue());
 		assertThat(toKhaiThue).isNotNull();
@@ -308,12 +317,15 @@ public class ToKhaiThueServiceTest {
 	//Test to khai co cu tru co 1 truong < 0
 	@Test
 	public void step2ToKhaiThue_test4() {
+		// input
 		Long id = 1L;
 		ToKhaiThue toKhaiThue = toKhaiThueService.initToKhaiThue(id);
 		toKhaiThue = toKhaiThueService.step1ToKhaiThue(toKhaiThue);
 		toKhaiThue.setKyTinhThue("Tháng");
+		
 		toKhaiThue = toKhaiThueService.step2ToKhaiThue(true, -100000000l, 0l, 4400000l,
 				0l, 0l, 0l, 0l, toKhaiThue, id.longValue());
+
 		assertThat(toKhaiThue).isNull();
 	}
 
