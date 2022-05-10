@@ -267,8 +267,10 @@ public class ToKhaiThueServiceTest {
 		toKhaiThue.setSdtDLT("0123456789");
 		toKhaiThue.setSoHopDong("123");
 		toKhaiThue.setNgayHopDong("12-02-2022");
+
+		ToKhaiThue toKhaiStep1 = toKhaiThueService.step1ToKhaiThue(toKhaiThue);
 		
-		assertNotNull(toKhaiThueService.step1ToKhaiThue(toKhaiThue));
+		assertNotNull(toKhaiStep1);
 	}
 
 	//Test to khai co cu tru theo tháng
@@ -282,8 +284,16 @@ public class ToKhaiThueServiceTest {
 		
 		toKhaiThue = toKhaiThueService.step2ToKhaiThue(true, 100000000l, 0l, 4400000l,
 				0l, 0l, 0l, 0l, toKhaiThue, id.longValue());
+
+		// expected result
+		long chiTieu22 = 15400000l;
+		long chiTieu28 = 84600000l;
+		long chiTieu29 = 19760000l;
 		
 		assertThat(toKhaiThue).isNotNull();
+		assertThat(toKhaiThue.getChiTieu22()).isEqualTo(chiTieu22);
+		assertThat(toKhaiThue.getChiTieu28()).isEqualTo(chiTieu28);
+		assertThat(toKhaiThue.getChiTieu29()).isEqualTo(chiTieu29);
 	}
 
 	//Test to khai co cu tru theo quý
@@ -295,9 +305,18 @@ public class ToKhaiThueServiceTest {
 		toKhaiThue = toKhaiThueService.step1ToKhaiThue(toKhaiThue);
 		toKhaiThue.setKyTinhThue("Quý");
 		
-		toKhaiThue = toKhaiThueService.step2ToKhaiThue(true, 100000000l, 0l, 4400000l,
+		toKhaiThue = toKhaiThueService.step2ToKhaiThue(true, 100000000l, 0l, 13200000l,
 				0l, 0l, 0l, 0l, toKhaiThue, id.longValue());
+
+		// expected result
+		long chiTieu22 = 46200000l;
+		long chiTieu28 = 53800000l;
+		long chiTieu29 = 5820000l;
+
 		assertThat(toKhaiThue).isNotNull();
+		assertThat(toKhaiThue.getChiTieu22()).isEqualTo(chiTieu22);
+		assertThat(toKhaiThue.getChiTieu28()).isEqualTo(chiTieu28);
+		assertThat(toKhaiThue.getChiTieu29()).isEqualTo(chiTieu29);
 	}
 
 	//Test to khai khong co cu tru
@@ -308,10 +327,14 @@ public class ToKhaiThueServiceTest {
 		ToKhaiThue toKhaiThue = toKhaiThueService.initToKhaiThue(id);
 		toKhaiThue = toKhaiThueService.step1ToKhaiThue(toKhaiThue);
 		toKhaiThue.setKyTinhThue("Quý");
-		
+
+		// expected result
+		long chiTieu32 = 20000000l;
+
 		toKhaiThue = toKhaiThueService.step2ToKhaiThue(false, 0l, 0l, 0l, 0l,
 				0l, 0l, 100000000l, toKhaiThue, id.longValue());
 		assertThat(toKhaiThue).isNotNull();
+		assertThat(toKhaiThue.getChiTieu32()).isEqualTo(chiTieu32);
 	}
 
 	//Test to khai co cu tru co 1 truong < 0
@@ -322,11 +345,34 @@ public class ToKhaiThueServiceTest {
 		ToKhaiThue toKhaiThue = toKhaiThueService.initToKhaiThue(id);
 		toKhaiThue = toKhaiThueService.step1ToKhaiThue(toKhaiThue);
 		toKhaiThue.setKyTinhThue("Tháng");
-		
+
 		toKhaiThue = toKhaiThueService.step2ToKhaiThue(true, -100000000l, 0l, 4400000l,
 				0l, 0l, 0l, 0l, toKhaiThue, id.longValue());
 
 		assertThat(toKhaiThue).isNull();
+	}
+
+	//Test to khai co cu tru theo quý co chi tieu tong thu nhap tinh thue = 0
+	@Test
+	public void step2ToKhaiThue_test5() {
+		// input
+		Long id = 1L;
+		ToKhaiThue toKhaiThue = toKhaiThueService.initToKhaiThue(id);
+		toKhaiThue = toKhaiThueService.step1ToKhaiThue(toKhaiThue);
+		toKhaiThue.setKyTinhThue("Quý");
+
+		toKhaiThue = toKhaiThueService.step2ToKhaiThue(true, 10000000l, 0l, 13200000l,
+				0l, 0l, 0l, 0l, toKhaiThue, id.longValue());
+
+		// expected result
+		long chiTieu22 = 46200000l;
+		long chiTieu28 = 0l;
+		long chiTieu29 = 0;
+
+		assertThat(toKhaiThue).isNotNull();
+		assertThat(toKhaiThue.getChiTieu22()).isEqualTo(chiTieu22);
+		assertThat(toKhaiThue.getChiTieu28()).isEqualTo(chiTieu28);
+		assertThat(toKhaiThue.getChiTieu29()).isEqualTo(chiTieu29);
 	}
 
 	// Nguoi dung khong co to khai nao
@@ -415,7 +461,7 @@ public class ToKhaiThueServiceTest {
 			String kyTinhThue="Tháng";
 					
 			// expected result
-			long thueThuNhapCaNhan=9838363;
+			long thueThuNhapCaNhan=9323636;
 			assertThat(toKhaiThueService.tongThue(tong, kyTinhThue)).isEqualTo(thueThuNhapCaNhan);
 		}
 		
