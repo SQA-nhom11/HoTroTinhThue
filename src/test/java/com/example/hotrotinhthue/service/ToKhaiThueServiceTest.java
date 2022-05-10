@@ -411,7 +411,7 @@ public class ToKhaiThueServiceTest {
 		@Test
 		public void tongThue_test5() {
 			// input
-			long tong=52294543;
+			long tong=50294543;
 			String kyTinhThue="Tháng";
 					
 			// expected result

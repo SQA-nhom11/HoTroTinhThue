@@ -21,6 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "nguoidung")
 public class NguoiDung implements UserDetails {
+
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;

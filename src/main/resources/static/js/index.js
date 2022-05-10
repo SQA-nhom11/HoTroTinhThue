@@ -1460,7 +1460,7 @@ async function validateDangKyForm(form) {
         error = true;
       } else if(hoTen !== data.hoTen) {
         $("#ten").focus();
-        $("#loiHoTen").text("*Tên đại lý thuế không khớp với mã số thuế");
+        $("#loiHoTen").text("*Họ tên không khớp với mã số thuế");
         $("#loiHoTen").show();
         error = true;
       } else if(cccd !== data.cccd) {
