@@ -56,7 +56,7 @@ $(document).ready(function () {
   $("#hoTen").change(function () {
     var hoTen = $("#hoTen").val();
     if (!hoTen) {
-      $("#loiTenNguoiNopThue").text("*Họ tên không để trống");
+      $("#loiTenNguoiNopThue").text("*Họ và tên không để trống");
       $("#loiTenNguoiNopThue").show();
       return;
     }
@@ -323,7 +323,7 @@ $(document).ready(function () {
     var hoTen = $('#ten').val();
     if(!hoTen) {
       $("#ten").focus();
-      $("#loiHoTen").text("*Họ tên không được để trống");
+      $("#loiHoTen").text("*Họ và tên không được để trống");
       $("#loiHoTen").show();
       return;
     }
@@ -1008,7 +1008,7 @@ async function validateToKhaiForm(form) {
   var hoTen = $("#hoTen").val();
   if (!hoTen) {
     $("#hoTen").focus();
-    $("#loiTenNguoiNopThue").text("*Họ tên không để trống");
+    $("#loiTenNguoiNopThue").text("*Họ và tên không để trống");
     $("#loiTenNguoiNopThue").show();
     return false;
   }
@@ -1373,7 +1373,7 @@ async function validateDangKyForm(form) {
 
   if(!hoTen) {
     $("#ten").focus();
-    $("#loiHoTen").text("*Họ tên không được để trống");
+    $("#loiHoTen").text("*Họ và tên không được để trống");
     $("#loiHoTen").show();
     error = true;
   }
@@ -1460,7 +1460,7 @@ async function validateDangKyForm(form) {
         error = true;
       } else if(hoTen !== data.hoTen) {
         $("#ten").focus();
-        $("#loiHoTen").text("*Họ tên không khớp với mã số thuế");
+        $("#loiHoTen").text("*Họ và tên không khớp với mã số thuế");
         $("#loiHoTen").show();
         error = true;
       } else if(cccd !== data.cccd) {
