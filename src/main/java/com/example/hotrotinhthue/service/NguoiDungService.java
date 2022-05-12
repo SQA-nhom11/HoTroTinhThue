@@ -26,11 +26,7 @@ public class NguoiDungService {
     private MaSoThueService maSoThueService;
 
     public NguoiDung loadUserByUsername(String maSoThue) {
-        try {
-            return (NguoiDung)nguoiDungRepo.findByMaSoThue(maSoThue);
-        } catch (Exception e) {
-            return null;
-        }
+        return (NguoiDung)nguoiDungRepo.findByMaSoThue(maSoThue);
     }
     
     public NguoiDung addNguoiDung(NguoiDung nguoiDung, BindingResult result, String nhapLaiMatKhau) {
@@ -63,12 +59,6 @@ public class NguoiDungService {
 			System.out.println("Mat khau khong hop le");
 			return null;
 		}
-    	
-    	// Password check
-    	if(!Pattern.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,16}$", nguoiDung.getMatKhau())) {
-    		System.out.println("Mat khau khong hop le");
-    		return null;
-    	}
     	
     	// Re-enter password check
     	if(!nguoiDung.getMatKhau().equals(nhapLaiMatKhau)) {

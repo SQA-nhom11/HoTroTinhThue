@@ -37,6 +37,17 @@ public class NguoiDungServiceTest {
 		assertThat(nguoiDungService.loadUserByUsername(username)).isEqualToIgnoringGivenFields(nguoiDung, "matKhau", "toKhaiThueList");
 	}
 	
+	@Test
+	public void loadUserByUsername_test1() {
+		// input
+		String username="vcxvcxvcx";
+		
+		// expected result
+		NguoiDung nguoiDung=new NguoiDung(1, "123", "", "Đinh Mạnh Cường", "Hà Tây", "292414832415", "Hà Nội", "0431354251", "cuongdinh@gmail.com", null);
+		
+		assertNull(nguoiDungService.loadUserByUsername(username));
+	}
+	
 	// Loi validate
 	@Test
 	public void addNguoiDung_test1() {
