@@ -81,7 +81,7 @@ public class NguoiDungServiceTest {
 		assertNull(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau));
 	}
 	
-	// Thong tin ho va ten hoac CCCD khong dung voi ma so thue
+	// Thong tin ho va ten khong dung voi ma so thue
 	@Test
 	public void addNguoiDung_test4() {
 		// input
@@ -91,10 +91,21 @@ public class NguoiDungServiceTest {
 						
 		assertNull(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau));
 	}
+
+	// Thong tin CCCD khong dung voi ma so thue
+	@Test
+	public void addNguoiDung_test5() {
+		// input
+		NguoiDung nguoiDung=new NguoiDung(100, "456", "matkhau", "Nguyễn Trường Giang", "Hà Đông", "124382976452", "Hà Nội", "0325395325", "duyhung24@gmail.com", null);
+		Mockito.when(mockBindingResult.hasErrors()).thenReturn(false);
+		String nhapLaiMatKhau="matkhau";
+
+		assertNull(nguoiDungService.addNguoiDung(nguoiDung, mockBindingResult, nhapLaiMatKhau));
+	}
 	
 	// Mat khau khong hop le
 	@Test
-	public void addNguoiDung_test5() {
+	public void addNguoiDung_test6() {
 		// input
 		NguoiDung nguoiDung=new NguoiDung(100, "456", "mk", "Nguyễn Trường Giang", "Hà Đông", "174382976452", "Hà Nội", "0325395325", "giangnguyen@gmail.com", null);
 		Mockito.when(mockBindingResult.hasErrors()).thenReturn(false);
@@ -105,7 +116,7 @@ public class NguoiDungServiceTest {
 	
 	// Mat khau khong trung nhau
 	@Test
-	public void addNguoiDung_test6() {
+	public void addNguoiDung_test7() {
 		// input
 		NguoiDung nguoiDung=new NguoiDung(100, "456", "giang456", "Nguyễn Trường Giang", "Hà Đông", "174382976452", "Hà Nội", "0325395325", "giangnguyen@gmail.com", null);
 		Mockito.when(mockBindingResult.hasErrors()).thenReturn(false);
@@ -117,7 +128,7 @@ public class NguoiDungServiceTest {
 	
 	// Pass validate
 	@Test
-	public void addNguoiDung_test7() {
+	public void addNguoiDung_test8() {
 		// input
 		NguoiDung nguoiDung=new NguoiDung(100, "456", "giang456", "Nguyễn Trường Giang", "Hà Đông", "174382976452", "Hà Nội", "0325395325", "giangnguyen@gmail.com", null);
 		Mockito.when(mockBindingResult.hasErrors()).thenReturn(false);

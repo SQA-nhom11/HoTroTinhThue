@@ -44,7 +44,8 @@ public class NguoiDungService {
         
         // Data exist check
         MaSoThue mst=maSoThueService.getMaSoThue(nguoiDung.getMaSoThue());
-    	if(mst==null || !mst.getId().equals(nguoiDung.getMaSoThue())) {
+		System.out.println(mst);
+    	if(mst==null) {
     		System.out.println("Mo so thue khong ton tai!");
     		return null;
     	}

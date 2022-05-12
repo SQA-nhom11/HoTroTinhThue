@@ -48,8 +48,7 @@ public class ToKhaiThueService implements Constants {
 				return null;
 			if (toKhaiThue.getTenDaiLyThue().trim().equals(""))
 				return null;
-			if (daiLyThueService.getDaiLyThue(toKhaiThue.getMaSoThueDLT().trim()) != null
-					&& !daiLyThueService.getDaiLyThue(toKhaiThue.getMaSoThueDLT().trim()).getTen()
+			if (!daiLyThueService.getDaiLyThue(toKhaiThue.getMaSoThueDLT().trim()).getTen()
 							.equals(toKhaiThue.getTenDaiLyThue().trim()))
 				return null;
 			if (toKhaiThue.getDiaChiDLT().trim().equals(""))
@@ -75,7 +74,7 @@ public class ToKhaiThueService implements Constants {
 				+ chiTieu27 + ", " + chiTieu30);
 		System.out.println(toKhaiThue);
 		if (cuTru) {
-			if(chiTieu20 < 0 || chiTieu21 < 0 || chiTieu24 < 0 || chiTieu25 < 0 ||
+			if(chiTieu20 <= 0 || chiTieu21 < 0 || chiTieu24 < 0 || chiTieu25 < 0 ||
 					chiTieu26 < 0 || chiTieu27 < 0)
 				return null;
 
