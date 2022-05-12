@@ -468,7 +468,7 @@ public class ToKhaiThueServiceTest {
 		assertThat(toKhaiThue).isNull();
 	}
 
-	//Test to khai co cu tru co chi tieu 31 < 0
+	//Test to khai khong co cu tru co chi tieu 31 < 0
 	@Test
 	public void step2ToKhaiThue_test11() {
 		// input
